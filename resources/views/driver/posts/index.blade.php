@@ -3,11 +3,11 @@
 @section('style')
     body {
         front-size:16px;
-        color:#999;
+        color:#87CEFA;
         }
     h1 {
         font-size:50px; 
-        color:#999; 
+        color:#87CEFA; 
         margin:20px;
         text-align:center;
         }
@@ -18,9 +18,9 @@
         margin-bottom:20px;
         }
     th {
-        border: solid 1px #999;
-        background-color:#999;
-        color:#fff;
+        border: solid 1px #87CEFA;
+        background-color:#87CEFA;
+        color:#F0FFFF;
         padding:5px; 
         text-align:left;
         width:100vw;
@@ -40,13 +40,14 @@
 @section('content')
     <h1>Driver List</h1>
     <div class='drivers'>
+        @foreach($posts as $post) 
         <div class='driver'>
             <table>
                 <div class='name'>
-                    <tr><th>Ibuki</th></tr>
+                    <tr><th><a>{{$post->user->name}}</a></th></tr>
                 </div>
                 <div class='car'>
-                    <tr><td>車種： ソリオ</td></tr>
+                    <tr><td>車種： {{$post->car_model}}</td></tr>
                     <tr>
                         <td>
                             <div style="text-align: center">
@@ -55,19 +56,23 @@
                         </td
                     </tr>
                 </div>
-                <div class='start-address'>
-                    <tr><td>出発地：六甲駅</td></tr>
+                <div class='current-location'>
+                    <tr><td>現在地：{{$post->current_location}}</td></tr>
                 </div>
-                <div class='end-address'>
-                    <tr><td>到着地：三ノ宮駅</td></tr>
+                <div class='distance'>
+                    <tr><td>距離：{{$post->distance}}km</td></tr>
                 </div>
                 <div class='arrival-time'>
-                    <tr><td>所要時間：15分</td></tr>
+                    <tr><td>到着所要時間：{{$post->arrival_time}}分</td></tr>
                 </div>
                 <div class='request'>
-                    <tr><td>してほしいこと：おすすめのカフェ教えてください！</td></tr>
+                    <tr><td>してほしいこと：{{$post->request}}</td></tr>
                 </div>
             </table>
         </div>
+        @endforeach
     </div>
+    <p class='pagination'>
+        {{$posts->links()}}
+    </p>  
 @endsection

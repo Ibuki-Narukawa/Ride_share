@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/drivers/posts','Driver\PostController@index');
+Route::get('/driver/posts','Driver\PostController@index');
