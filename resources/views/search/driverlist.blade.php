@@ -38,19 +38,13 @@
 @endsection
 
 @section('content')
-    <h1>Driver List</h1>
+    <h1>検索結果</h1>
     <div class='driver-posts'>
         @foreach($posts as $post) 
         <div class='driver-post'>
             <table>
                 <div class='name'>
                     <tr><th><a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
-                </div>
-                <div class='start-datetime'>
-                    <tr><td>送迎開始日時：{{$post->start_datetime}}</th></tr>
-                </div>
-                <div class='end_datetime'>
-                    <tr><td>送迎終了日時：{{$post->end_datetime}}</th></tr>
                 </div>
                 <div class='car'>
                     <tr><td>車種： {{$post->car_model}}</td></tr>
@@ -65,11 +59,14 @@
                 <div class='current-location'>
                     <tr><td>現在地：{{$post->current_location}}</td></tr>
                 </div>
+                <div class='distance'>
+                    <tr><td>距離：{{$post->distance}}km</td></tr>
+                </div>
+                <div class='arrival-time'>
+                    <tr><td>到着所要時間：{{$post->arrival_time}}分</td></tr>
+                </div>
                 <div class='request'>
                     <tr><td>してほしいこと：{{$post->request}}</td></tr>
-                </div>
-                <div class='update-at'>
-                    <tr><td>最終更新日：{{$post->updated_at}}</td></tr>
                 </div>
             </table>
         </div>
