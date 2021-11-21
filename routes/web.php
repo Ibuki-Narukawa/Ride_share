@@ -16,3 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/driver/posts','Driver\PostController@index');
+
+Route::get('/driver/posts/{id}','Driver\PostController@show');
+
+Route::get('/search/driverlist','SearchController@driverlist');
+
+Route::get('/search/driverlist/{id}','SearchController@show');

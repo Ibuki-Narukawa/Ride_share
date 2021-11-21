@@ -19,6 +19,7 @@ class CreateDriverPostsTable extends Migration
             $table->dateTime('end_datetime')->nullable()->default(null);
             $table->string('car_model', 50);
             $table->string('car_image', 100);
+            $table->tinyInteger('max_passengers');
             $table->string('current_location', 100);
             $table->integer('distance')->unsigned();
             $table->tinyInteger('arrival_time');
