@@ -17,7 +17,7 @@ $factory->define(DriverPost::class, function (Faker $faker) {
         'current_location' => $faker->streetAddress,
         'distance' => random_int(1,100),
         'arrival_time' => random_int(1,20),
-        'request' => $faker->sentence,
+        'asking' => $faker->sentence,
         'user_id' => random_int(1,10),
     ];
 });

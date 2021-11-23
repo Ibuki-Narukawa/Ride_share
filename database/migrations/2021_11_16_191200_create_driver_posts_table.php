@@ -15,15 +15,15 @@ class CreateDriverPostsTable extends Migration
     {
         Schema::create('driver_posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('start_datetime')->nullable()->default(null);
-            $table->dateTime('end_datetime')->nullable()->default(null);
-            $table->string('car_model', 50);
-            $table->string('car_image', 100);
-            $table->tinyInteger('max_passengers');
-            $table->string('current_location', 100);
-            $table->integer('distance')->unsigned();
-            $table->tinyInteger('arrival_time');
-            $table->string('request', 400);
+            $table->dateTime('start_datetime')->nullable();
+            $table->dateTime('end_datetime')->nullable();
+            $table->string('car_model', 50)->nullable();
+            $table->string('car_image', 100)->nullable();
+            $table->tinyInteger('max_passengers')->nullable();
+            $table->string('current_location', 100)->nullable();
+            $table->integer('distance')->unsigned()->nullable();
+            $table->tinyInteger('arrival_time')->nullable();
+            $table->string('asking', 500)->nullable();
             $table->tinyInteger('status')->unsigned()->default(1)->comment('ステータス : 1 : フリー : 2 : 予約済み : 3 :完了');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
