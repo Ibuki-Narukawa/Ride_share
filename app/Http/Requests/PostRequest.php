@@ -30,7 +30,6 @@ class PostRequest extends FormRequest
             'asking' => 'string|max:500',
             'car_model' => 'required|string|max:30',
             'max_passengers' => 'required|numeric|between:1,10',
-            'car_image' => 'image',
         ];
     }
     
@@ -45,7 +44,6 @@ class PostRequest extends FormRequest
             'car_model.required' => '車種は必ず入力してください。',
             'max_passengers.required' => '相乗り可能人数は必ず入力してください。',
             'max_passengers.between' => '相乗り可能人数は１～１０の間で入力してください。',
-            'car_image.image' => 'jpeg,png形式のみ登録可能です。'
         ];
     }
 }
