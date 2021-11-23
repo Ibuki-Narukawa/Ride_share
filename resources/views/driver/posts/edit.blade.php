@@ -58,54 +58,60 @@
 @endsection
 
 @section('content')
-    <h1>Driver Create</h1>
+    <h1>Driver Edit</h1>
     @if(count($errors)>0)
     <p>入力に問題があります。再入力してください。</p>
     @endif
     <div class='driver-post'>
-        <form action='/driver/posts/create' method='post' enctype='multipart/form-data'>
+        <form action='/driver/posts/{{$form->id}}' method='post' enctype='multipart/form-data'>
             @csrf
+            @method('put')
             <table>
                 <tr><th>送迎開始日時：</th></tr>
-                <tr><td><input class='start-datetime' type='datetime-local'name='start_datetime' value={{old('start_datetime')}}></td></tr>
+                <tr><td><input class='start-datetime' type='datetime-local'name='start_datetime' value={{old('start_datetime',str_replace(' ', 'T', $form->start_datetime))}}></td></tr>
                 @if($errors->has('start_datetime'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('start_datetime')}}</td></tr>
                 @endif
                 <tr><th>送迎終了日時：</th></tr>
-                <tr><td><input class='end-datetime' type='datetime-local'name='end_datetime' value={{old('end_datetime')}}></td></tr>
+                <tr><td><input class='end-datetime' type='datetime-local'name='end_datetime' value={{old('end_datetime',str_replace(' ', 'T', $form->end_datetime))}}></td></tr>
                 @if($errors->has('end_datetime'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('end_datetime')}}</td></tr>
                 @endif
                 <tr><th>現在地：</th></tr>
-                <tr><td><input class='current-location' type='text' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location')}}></td></tr>
+                <tr><td><input class='current-location' type='text' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location',$form->current_location)}}></td></tr>
                 @if($errors->has('current_location'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('current_location')}}</td></tr>
                 @endif
                 <tr><th>送迎の代わりにしてほしいこと：</th></tr>
-                <tr><td><textarea class='asking' name='asking' placeholder='おすすめのカフェ教えてください！' value={{old('asking')}}></textarea></td></tr>
+                <tr><td><textarea class='asking' name='asking' placeholder='おすすめのカフェ教えてください！'>{{old('asking',$form->asking)}}</textarea></td></tr>
                 @if($errors->has('request'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('request')}}</td></tr>
                 @endif
                 <tr><th>車種：</th></tr>
-                <tr><td><input class='car-model' type='text' name='car_model' placeholder='ソリオ' value={{old('car_model')}}></td></tr>
+                <tr><td><input class='car-model' type='text' name='car_model' placeholder='ソリオ' value={{old('car_model',$form->car_model)}}></td></tr>
                 @if($errors->has('car_model'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('car_model')}}</td></tr>
                 @endif
                 <tr><th>相乗り可能人数：</th></tr>
-                <tr><td><input class='max-passengers' type='number' name='max_passengers' min='1' max='10' placeholder='1' value={{old('max_passengers')}}>　人まで</td></tr>
+                <tr><td><input class='max-passengers' type='number' name='max_passengers' min='1' max='10' placeholder='1' value={{old('max_passengers',$form->max_passengers)}}>　人まで</td></tr>
                 @if($errors->has('max_passengers'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('max_passengers')}}</td></tr>
                 @endif
                 <tr><th>車の画像：</th></tr>
-                <tr><td><input class='car-image' type='file' name='car_image' accept='image/png, image/jpeg' value={{old('car_image')}}></td></tr>
+                <tr>
+                    <td>
+                    <p>現画像ファイル：{{$form->car_image}}</p>
+                    <input class='car-image' type='file' name='car_image' accept='image/png, image/jpeg' value={{old('car_image')}}>
+                    </td>
+                </tr>
                 @if($errors->has('car_image'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('car_image')}}</td></tr>
                 @endif
             </table>
-            <p class='submitBtn'><input type='submit' value='登録'></p>
+            <p class='submitBtn'><input type='submit' value='更新'></p>
         </form>
     </div>
     <div class='footer'>
-        <p>[<a href='/driver/posts'>back</a>]</p>  
+        <p>[<a href='/driver/posts/{{$form->id}}'>back</a>]</p>  
     </div>
 @endsection

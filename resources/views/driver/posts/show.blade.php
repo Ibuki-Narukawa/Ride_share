@@ -4,12 +4,12 @@
     body {
         front-size:16px;
         color:#87CEFA;
+        text-align:center;
         }
     h1 {
         font-size:50px; 
         color:#87CEFA; 
         margin:20px;
-        text-align:center;
         }
     .driver-post {
         padding:0px 5px;
@@ -44,6 +44,11 @@
 
 @section('content')
     <h1>Driver Show</h1>
+    <div class='operationBar'>
+        <div class='editBtn btn'>
+            <h3>[<a href='/driver/posts/{{$post->id}}/edit'>Edit</a>]</h3>
+        </div>
+    </div>
     <div class='driver-post'>
         <table>
             <div class='name'>

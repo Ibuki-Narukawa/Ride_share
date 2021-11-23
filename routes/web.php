@@ -23,6 +23,10 @@ Route::post('/driver/posts/create','Driver\PostController@store');
 
 Route::get('/driver/posts/{id}','Driver\PostController@show');
 
+Route::get('/driver/posts/{id}/edit','Driver\PostController@edit');
+
+Route::put('/driver/posts/{id}','Driver\PostController@update');
+
 Route::get('/search/driverlist','SearchController@driverlist');
 
 Route::get('/search/driverlist/{id}','SearchController@show');

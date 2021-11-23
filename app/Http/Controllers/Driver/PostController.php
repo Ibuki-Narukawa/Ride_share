@@ -45,5 +45,33 @@ class PostController extends Controller
         $post->save();
         return redirect('/driver/posts/'.$post->id);
     }
+    
+    public function edit(Request $request){
+        $post = DriverPost::find($request->id);
+        return view('driver.posts.edit',['form'=>$post]);
+    }
+    
+    public function update(PostRequest $request){
+        $post = DriverPost::find($request->id);
+        if ($file = $request->car_image){
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('img/cars/');
+            $file->move($target_path, $fileName);
+        } 
+        else{
+            $fileName = $post->car_image;
+        }
+        
+        $post->user_id = random_int(1,10);
+        $post->start_datetime = $request->start_datetime;
+        $post->end_datetime = $request->end_datetime;
+        $post->current_location = $request->current_location;
+        $post->asking = $request->asking;
+        $post->car_model = $request->car_model;
+        $post->max_passengers = $request->max_passengers;
+        $post->car_image = $fileName;
+        $post->save();
+        return redirect('/driver/posts/'.$post->id);
+    }
 }
 
