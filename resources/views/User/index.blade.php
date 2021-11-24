@@ -43,7 +43,7 @@
         <div class='user'>
             <table>
                 <div class='name'>
-                    <tr><th><a href='/users/{{$user->id}}'>{{$user->name}}</a></th></tr>
+                    <tr><th>氏名：<a href='/users/{{$user->id}}'>{{$user->name}}</a></th></tr>
                 </div>
                 <div class='email'>
                     <tr><td>email: {{$user->email}}</td></tr>

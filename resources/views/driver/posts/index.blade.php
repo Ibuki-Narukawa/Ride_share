@@ -52,7 +52,7 @@
                     <tr><th>id:{{$post->id}}</th></tr>
                 </div>
                 <div class='name'>
-                    <tr><th><a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
+                    <tr><th>氏名：<a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
                 </div>
                 <div class='start-datetime'>
                     <tr><td>送迎開始日時：{{$post->start_datetime}}</th></tr>

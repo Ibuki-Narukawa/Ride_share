@@ -69,7 +69,7 @@
     <div class='driver-post'>
         <table>
             <div class='name'>
-                <tr><th><a>{{$post->user->name}}</a></th></tr>
+                <tr><th>氏名：<a>{{$post->user->name}}</a></th></tr>
             </div>
             <div class='status'>
                 @if($post->status==1)
