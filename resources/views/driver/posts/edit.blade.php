@@ -100,7 +100,13 @@
                 <tr><th>車の画像：</th></tr>
                 <tr>
                     <td>
-                    <p>現画像ファイル：{{$form->car_image}}</p>
+                    <div style='text-align: center'>
+                        @php
+                        $image_filename = $form->car_image;
+                        @endphp
+                        <p>現画像ファイル：{{$image_filename}}</p>
+                        <image src="{{ asset('img/cars/'.$image_filename,true) }}">
+                    </div>
                     <input class='car-image' type='file' name='car_image' accept='image/png, image/jpeg' value={{old('car_image')}}>
                     </td>
                 </tr>

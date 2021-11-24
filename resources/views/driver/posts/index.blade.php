@@ -48,6 +48,9 @@
         @foreach($posts as $post) 
         <div class='driver-post'>
             <table>
+                <div class='id'>
+                    <tr><th>id:{{$post->id}}</th></tr>
+                </div>
                 <div class='name'>
                     <tr><th><a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
                 </div>

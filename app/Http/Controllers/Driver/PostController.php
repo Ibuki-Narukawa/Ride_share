@@ -73,5 +73,11 @@ class PostController extends Controller
         $post->save();
         return redirect('/driver/posts/'.$post->id);
     }
+    
+    public function destroy(Request $request){
+        $post = DriverPost::find($request->id);
+        $post->delete();
+        return redirect('/driver/posts');
+    }
 }
 

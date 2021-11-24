@@ -40,6 +40,15 @@
     .footer {
         text-align:center;
         }
+    .operationBar {
+        width:25%;
+        margin:0 auto;
+        display:flex;
+        }
+    .btn {
+        text-align:center;
+        width:50%;
+        }
 @endsection
 
 @section('content')
@@ -47,6 +56,14 @@
     <div class='operationBar'>
         <div class='editBtn btn'>
             <h3>[<a href='/driver/posts/{{$post->id}}/edit'>Edit</a>]</h3>
+        </div>
+        <div class='deleteBtn btn'>
+            <form action='/driver/posts/{{$post->id}}/delete' id='form_delete' method='post' enctype='multipart/form-data'>
+                @csrf
+                @method('delete')
+                <input type='submit' style='display:none'>
+                <h3>[<span onclick='return deletePost(this);'>Delete</span>]</h3>
+            </form>
         </div>
     </div>
     <div class='driver-post'>
@@ -96,18 +113,13 @@
         </table>
     </div>
     <div class='footer'>
-        <div class='btn apply-btn'>
-            @csrf
-            <input type='submit' style='display:none' method='post'>
-            <button><span onclick='return applyPost(this);'>a</span></button>
-        </div>
         <p>[<a href='/driver/posts'>back</a>]</p>   
     </div>
     <script>
-        function applyPost(e){
+        function deletePost(e){
             'use strict';
-            if(confirm('本当にこのドライバーに申請しますか？')){
-            document.getElementById('form_delete').submit();
+            if(confirm('本当にこの投稿を削除しますか？')){
+                document.getElementById('form_delete').submit();
             }
         }
     </script>

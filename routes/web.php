@@ -27,6 +27,8 @@ Route::get('/driver/posts/{id}/edit','Driver\PostController@edit');
 
 Route::put('/driver/posts/{id}','Driver\PostController@update');
 
+Route::delete('/driver/posts/{id}/delete','Driver\PostController@destroy');
+
 Route::get('/search/driverlist','SearchController@driverlist');
 
 Route::get('/search/driverlist/{id}','SearchController@show');
