@@ -9,6 +9,7 @@ class DriverPostsTableSeeder extends Seeder
      *
      * @return void
      */
+    
     public function run()
     {
         DB::table('driver_posts')->truncate();
