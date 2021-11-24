@@ -13,4 +13,8 @@ class UserController extends Controller
         return view('User.index',['users'=>$users]);
     }
     
+    public function show(Request $request){
+        $user = User::find($request->id);
+        return view('User.show',['user'=>$user]);
+    }
 }

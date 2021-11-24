@@ -31,6 +31,8 @@ Route::delete('/driver/posts/{id}/delete','Driver\PostController@destroy');
 
 Route::get('/users','UserController@index');
 
+Route::get('/users/{id}','UserController@show');
+
 Route::get('/search/driverlist','SearchController@driverlist');
 
 Route::get('/search/driverlist/{id}','SearchController@show');
