@@ -41,6 +41,11 @@
 
 @section('content')
     <h1>My Page</h1>
+    <div class='operationBar'>
+        <div class='editBtn btn'>
+            <h3>[<a href='/users/{{$user->id}}/edit'>Edit</a>]</h3>
+        </div>
+    </div>
     <div class='user'>
         <table>
             <div class='name'>
