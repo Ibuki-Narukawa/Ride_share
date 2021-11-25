@@ -27,11 +27,15 @@ Route::get('/driver/posts/{id}/edit','Driver\PostController@edit');
 
 Route::put('/driver/posts/{id}','Driver\PostController@update');
 
-Route::delete('/driver/posts/{id}/delete','Driver\PostController@destroy');
+Route::delete('/driver/posts/{id}','Driver\PostController@destroy');
 
 Route::get('/users','UserController@index');
 
 Route::get('/users/{id}','UserController@show');
+
+Route::get('/users/{id}/edit','UserController@edit');
+
+Route::put('/users/{id}','UserController@update');
 
 Route::get('/search/driverlist','SearchController@driverlist');
 

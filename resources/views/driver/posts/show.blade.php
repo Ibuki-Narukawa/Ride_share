@@ -58,7 +58,7 @@
             <h3>[<a href='/driver/posts/{{$post->id}}/edit'>Edit</a>]</h3>
         </div>
         <div class='deleteBtn btn'>
-            <form action='/driver/posts/{{$post->id}}/delete' id='form_delete' method='post' enctype='multipart/form-data'>
+            <form action='/driver/posts/{{$post->id}}' id='form_delete' method='post' enctype='multipart/form-data'>
                 @csrf
                 @method('delete')
                 <input type='submit' style='display:none'>
