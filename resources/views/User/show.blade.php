@@ -3,12 +3,11 @@
 @section('style')
     body {
         front-size:16px;
-        color:#87CEFA;
+        color:#00BFFF;
         text-align:center;
         }
     h1 {
         font-size:50px; 
-        color:#87CEFA; 
         margin:20px;
         }
     .user {
@@ -22,8 +21,8 @@
         width:100%;
         }
     th {
-        border: solid 1px #87CEFA;
-        background-color:#87CEFA;
+        border: solid 1px #00BFFF;
+        background-color:#00BFFF;
         color:#F0FFFF;
         padding:5px; 
         text-align:left;
