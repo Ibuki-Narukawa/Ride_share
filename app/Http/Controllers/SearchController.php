@@ -8,6 +8,10 @@ use App\DriverPost;
 
 class SearchController extends Controller
 {
+    public function index(){
+        return view('search.index');
+    }
+    
     public function driverlist(){
         $posts = DriverPost::with('user')->orderBy('arrival_time', 'ASC')->paginate(5);
         return view('search.driverlist',['posts'=>$posts]);

@@ -3,12 +3,11 @@
 @section('style')
     body {
         front-size:16px;
-        color:#87CEFA;
+        color:#00BFFF;
         text-align:center;
         }
     h1 {
         font-size:50px; 
-        color:#87CEFA; 
         margin:20px;
         }
     .driver-post {
@@ -22,8 +21,8 @@
         width:100%;
         }
     th {
-        border: solid 1px #87CEFA;
-        background-color:#87CEFA;
+        border: solid 1px #00BFFF;
+        background-color:#00BFFF;
         color:#F0FFFF;
         padding:5px; 
         text-align:left;
@@ -48,18 +47,18 @@
         @foreach($posts as $post) 
         <div class='driver-post'>
             <table>
-                <div class='id'>
+                {{--<div class='id'>
                     <tr><th>id:{{$post->id}}</th></tr>
-                </div>
+                </div>--}}
                 <div class='name'>
                     <tr><th>氏名：<a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
                 </div>
-                <div class='start-datetime'>
+                {{--<div class='start-datetime'>
                     <tr><td>送迎開始日時：{{$post->start_datetime}}</th></tr>
                 </div>
                 <div class='end_datetime'>
                     <tr><td>送迎終了日時：{{$post->end_datetime}}</th></tr>
-                </div>
+                </div>--}}
                 <div class='current-location'>
                     <tr><td>現在地：{{$post->current_location}}</td></tr>
                 </div>

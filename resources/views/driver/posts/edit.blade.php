@@ -3,12 +3,11 @@
 @section('style')
     body {
         front-size:16px;
-        color:#87CEFA;
+        color:#00BFFF;
         text-align:center;
         }
     h1 {
         font-size:50px; 
-        color:#87CEFA; 
         margin:20px;
         }
     .driver-post {
@@ -22,8 +21,8 @@
         width:100%
         }
     th {
-        border: solid 1px #87CEFA;
-        background-color:#87CEFA;
+        border: solid 1px #00BFFF;
+        background-color:#00BFFF;
         color:#F0FFFF;
         padding:5px; 
         text-align:left;
@@ -80,7 +79,7 @@
                 @endif
                 
                 <tr><th>現在地：</th></tr>
-                <tr><td><input class='current-location' type='text' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location',$form->current_location)}}></td></tr>
+                <tr><td><input class='current-location' type='text' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value="{{old('current_location',$form->current_location)}}"></td></tr>
                 @if($errors->has('current_location'))
                 <tr><td class='errorMessage'>Error: {{$errors->first('current_location')}}</td></tr>
                 @endif
