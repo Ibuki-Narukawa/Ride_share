@@ -44,29 +44,30 @@
         <div class='driver-post'>
             <table>
                 <div class='name'>
-                    <tr><th><a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
+                    <tr><th>氏名：<a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
+                </div>
+                <div class='current-location'>
+                    <tr><td>現在地：{{$post->current_location}}</td></tr>
+                </div>
+                <div class='request'>
+                    <tr><td>してほしいこと：{{$post->asking}}</td></tr>
                 </div>
                 <div class='car'>
                     <tr><td>車種： {{$post->car_model}}</td></tr>
                     <tr>
                         <td>
-                            <div style="text-align: center">
-                                <image src="{{ asset('img/car/solio.jpg',true) }}" >
+                            <div style='text-align: center'>
+                                @php
+                                $image_filename = $post->car_image;
+                                @endphp
+                                <p>{{$image_filename}}</p>
+                                <image src="{{ asset('img/cars/'.$image_filename,true) }}">
                             </div>
                         </td
                     </tr>
                 </div>
-                <div class='current-location'>
-                    <tr><td>現在地：{{$post->current_location}}</td></tr>
-                </div>
-                <div class='distance'>
-                    <tr><td>距離：{{$post->distance}}km</td></tr>
-                </div>
-                <div class='arrival-time'>
-                    <tr><td>到着所要時間：{{$post->arrival_time}}分</td></tr>
-                </div>
-                <div class='request'>
-                    <tr><td>してほしいこと：{{$post->request}}</td></tr>
+                <div class='update-at'>
+                    <tr><td>最終更新日：{{$post->updated_at}}</td></tr>
                 </div>
             </table>
         </div>

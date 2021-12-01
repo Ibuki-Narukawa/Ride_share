@@ -19,8 +19,8 @@ var directionsRenderer = new google.maps.DirectionsRenderer();
 
 directionsRenderer.setMap(mapObj); 
 
-var start = tokyoTower; 
-var end = new google.maps.LatLng(35.7100069, 139.8108103);  
+//var start = tokyoTower; 
+//var end = new google.maps.LatLng(35.7100069, 139.8108103);  
     
 function calcRoute(){
     var request = {
@@ -44,7 +44,7 @@ function calcRoute(){
 var options = {
     fields: ["formatted_address", "geometry", "name"],
     strictBounds: false,
-    types: ["establishment"],
+    types: [],
 }
 
 var inputFrom = document.getElementById("from");

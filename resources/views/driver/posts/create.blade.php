@@ -54,6 +54,11 @@
     .button, input, select, textarea{
         font-family: inherit;
         }
+    #map{
+        width: 90%;
+        height: 350px;
+        margin:20px auto;
+    }
 @endsection
 
 @section('content')
@@ -70,31 +75,46 @@
                 @if($errors->has('start_datetime'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('start_datetime')}}</td></tr>
                 @endif
+                
                 <tr><th>送迎終了日時：</th></tr>
                 <tr><td><input class='end-datetime' type='datetime-local'name='end_datetime' value={{old('end_datetime')}}></td></tr>
                 @if($errors->has('end_datetime'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('end_datetime')}}</td></tr>
                 @endif
+                
                 <tr><th>現在地：</th></tr>
-                <tr><td><input class='current-location' type='text' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location')}}></td></tr>
+                <tr><td><input class='current-location' type='text' id='pac-input' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location')}}></td></tr>
+                <tr>
+                    <td>
+                        <div id="map"></div>
+                        <div id="infowindow-content">
+                            <span id="place-name" class="title"></span><br />
+                            <span id="place-address"></span>
+                        </div>
+                    </td>
+                </tr>
                 @if($errors->has('current_location'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('current_location')}}</td></tr>
                 @endif
+                
                 <tr><th>送迎の代わりにしてほしいこと：</th></tr>
                 <tr><td><textarea class='asking' name='asking' placeholder='おすすめのカフェ教えてください！' value={{old('asking')}}></textarea></td></tr>
                 @if($errors->has('request'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('request')}}</td></tr>
                 @endif
+                
                 <tr><th>車種：</th></tr>
                 <tr><td><input class='car-model' type='text' name='car_model' placeholder='ソリオ' value={{old('car_model')}}></td></tr>
                 @if($errors->has('car_model'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('car_model')}}</td></tr>
                 @endif
+                
                 <tr><th>相乗り可能人数：</th></tr>
                 <tr><td><input class='max-passengers' type='number' name='max_passengers' min='1' max='10' placeholder='1' value={{old('max_passengers')}}>　人まで</td></tr>
                 @if($errors->has('max_passengers'))
                 <tr><td class='errorMessage'>Error:{{$errors->first('max_passengers')}}</td></tr>
                 @endif
+                
                 <tr><th>車の画像：</th></tr>
                 <tr><td><input class='car-image' type='file' name='car_image' accept='image/png, image/jpeg' value={{old('car_image')}}></td></tr>
                 @if($errors->has('car_image'))
@@ -107,4 +127,10 @@
     <div class='footer'>
         <p>[<a href='/driver/posts'>back</a>]</p>  
     </div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
+        async
+    ></script>
+    
+    <script src="{{ asset('js/map_current_location.js') }}"></script>
 @endsection
