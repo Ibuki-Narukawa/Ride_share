@@ -12,8 +12,7 @@
         text-align:center;
         }
     .driver-post {
-        padding:0px 5px;
-        width:60%;
+        width:75%;
         margin:0 auto;
         margin-bottom:20px;
         }
@@ -44,7 +43,7 @@
         <div class='driver-post'>
             <table>
                 <div class='name'>
-                    <tr><th>氏名：<a href='/driver/posts/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
+                    <tr><th>氏名：<a href='/search/driverlist/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
                 </div>
                 <div class='current-location'>
                     <tr><td>現在地：{{$post->current_location}}</td></tr>
