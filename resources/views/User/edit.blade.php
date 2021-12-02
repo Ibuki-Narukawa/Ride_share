@@ -11,8 +11,7 @@
         margin:20px;
         }
     .user {
-        padding:0px 5px;
-        width:70vw;
+        width:75vw;
         margin:0 auto;
         margin-bottom:20px;
         }

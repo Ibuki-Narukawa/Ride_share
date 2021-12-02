@@ -1,5 +1,5 @@
 var geocoder = new google.maps.Geocoder();  
-var address = document.getElementById("address").value;
+var address = document.getElementById("address").textContent;
 var map = document.getElementById("map");
 
 const infowindow = new google.maps.InfoWindow();
@@ -30,7 +30,7 @@ if (address){
             infowindowContent.children["place-address"].textContent = results[0].formatted_address;
             infowindow.open(mapObj, marker);
         }else{
-            window.alert('現在地から位置の取得ができませんでした。理由: ' + status + '.\nデフォルトマップを表示します。もう一度現在地を入力してください。');
+            alert('現在地から位置の取得ができませんでした。理由: ' + status + '.\nデフォルトマップを表示します。もう一度現在地を入力してください。');
             var myLatLng = {lat: 34.694659, lng: 135.194954};
             opt = {
             zoom: 10,
@@ -58,38 +58,3 @@ if (address){
     });
 }
 
-//document.getElementById("test").innerHTML ="" + document.getElementById('address').value + "<br>" + myLatLng;
-mapObj = new google.maps.Map(map,opt);
-
-var options = {
-    fields: ["formatted_address", "geometry", "name"],
-    strictBounds: false,
-    types: [],
-}
-
-var input = document.getElementById("address");
-var autocomplete = new google.maps.places.Autocomplete(input, options);
-
-autocomplete.addListener("place_changed", () => {
-    infowindow.close();
-    marker.setVisible(false);
-    
-    const place = autocomplete.getPlace();
-    
-    if (!place.geometry || !place.geometry.location) {
-      // User entered the name of a Place that was not suggested and
-      // pressed the Enter key, or the Place Details request failed.
-        window.alert("No details available for input: '" + place.name + "'");
-        event.preventDefault();   
-    }
-    
-    mapObj.setCenter(place.geometry.location);
-    mapObj.setZoom(15);
-    
-    marker.setPosition(place.geometry.location);
-    marker.setVisible(true);
-    infowindowContent.children["place-name"].textContent = place.name;
-    infowindowContent.children["place-address"].textContent = place.formatted_address;
-    infowindow.open(mapObj, marker);
-    
-});

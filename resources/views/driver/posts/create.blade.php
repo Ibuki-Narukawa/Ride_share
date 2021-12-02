@@ -11,8 +11,7 @@
         margin:20px;
         }
     .driver-post {
-        padding:0px 5px;
-        width:70vw;
+        width:75vw;
         margin:0 auto;
         margin-bottom:20px;
         }
@@ -58,7 +57,7 @@
         width: 90%;
         height: 350px;
         margin:20px auto;
-    }
+        }
 @endsection
 
 @section('content')
@@ -83,7 +82,7 @@
                 @endif
                 
                 <tr><th>現在地：</th></tr>
-                <tr><td><input class='current-location' type='text' id='pac-input' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location')}}></td></tr>
+                <tr><td><input class='current-location' type='text' id="address" name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location')}}></td></tr>
                 <tr>
                     <td>
                         <div id="map"></div>

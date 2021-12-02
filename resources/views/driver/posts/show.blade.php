@@ -11,8 +11,7 @@
         margin:20px;
         }
     .driver-post {
-        padding:0px 5px;
-        width:70vw;
+        width:75vw;
         margin:0 auto;
         margin-bottom:20px;
         }
@@ -40,13 +39,18 @@
         text-align:center;
         }
     .operationBar {
-        width:25%;
+        width:60%;
         margin:0 auto;
         display:flex;
         }
     .btn {
         text-align:center;
         width:50%;
+        }
+    #map{
+        width: 90%;
+        height: 350px;
+        margin:20px auto;
         }
 @endsection
 
@@ -86,7 +90,16 @@
                 <tr><td>送迎終了日時：{{$post->end_datetime}}</th></tr>
             </div>
             <div class='current-location'>
-                <tr><td>現在地：{{$post->current_location}}</td></tr>
+                <tr><td>現在地：<span id="address">{{$post->current_location}}</span></td></tr>
+                <tr>
+                    <td>
+                        <div id="map"></div>
+                        <div id="infowindow-content">
+                            <span id="place-name" class="title"></span><br />
+                            <span id="place-address"></span>
+                        </div>
+                    </td>
+                </tr>
             </div>
             <div class='request'>
                 <tr><td>してほしいこと：{{$post->asking}}</td></tr>
@@ -122,4 +135,10 @@
             }
         }
     </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
+        async
+    ></script>
+    
+    <script src="{{ asset('js/map_show.js') }}"></script>
 @endsection

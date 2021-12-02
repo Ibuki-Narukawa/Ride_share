@@ -12,8 +12,7 @@
         text-align:center;
         }
     .driver-post {
-        padding:0px 5px;
-        width:60%;
+        width:75%;
         margin:0 auto;
         margin-bottom:20px;
         }
@@ -62,7 +61,7 @@
                 <tr>
                     <td>
                         <div style="text-align: center">
-                            <image src="{{ asset('img/car/solio.jpg',true) }}" >
+                            <image src="{{ asset('img/cars/solio.jpg',true) }}" >
                         </div>
                     </td>
                 </tr>
@@ -87,7 +86,7 @@
             <input type='submit' style='display:none' method='post'>
             <button><span onclick='return applyPost(this);'>申請する</span></button>
         </div>
-        <p>[<a href='/driver/posts'>back</a>]</p>   
+        <p>[<a href='/search/driverlist'>back</a>]</p>   
     </div>
     <script>
         function applyPost(e){

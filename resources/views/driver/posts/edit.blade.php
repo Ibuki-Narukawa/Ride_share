@@ -11,8 +11,7 @@
         margin:20px;
         }
     .driver-post {
-        padding:0px 5px;
-        width:70vw;
+        width:75vw;
         margin:0 auto;
         margin-bottom:20px;
         }
@@ -54,6 +53,11 @@
     .button, input, select, textarea{
         font-family: inherit;
         }
+    #map{
+        width: 90%;
+        height: 350px;
+        margin:20px auto;
+        }
 @endsection
 
 @section('content')
@@ -79,9 +83,18 @@
                 @endif
                 
                 <tr><th>現在地：</th></tr>
-                <tr><td><input class='current-location' type='text' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value="{{old('current_location',$form->current_location)}}"></td></tr>
+                <tr><td><input class='current-location' type='text' id='address' name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value="{{old('current_location',$form->current_location)}}"></td></tr>
+                <tr>
+                    <td>
+                        <div id="map"></div>
+                        <div id="infowindow-content">
+                            <span id="place-name" class="title"></span><br />
+                            <span id="place-address"></span>
+                        </div>
+                    </td>
+                </tr>
                 @if($errors->has('current_location'))
-                <tr><td class='errorMessage'>Error: {{$errors->first('current_location')}}</td></tr>
+                <tr><td class='errorMessage'>Error:{{$errors->first('current_location')}}</td></tr>
                 @endif
                 
                 <tr><th>送迎の代わりにしてほしいこと：</th></tr>
@@ -125,4 +138,11 @@
     <div class='footer'>
         <p>[<a href='/driver/posts/{{$form->id}}'>back</a>]</p>  
     </div>
+    
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
+        async
+    ></script>
+    
+    <script src="{{ asset('js/map_current_location.js') }}"></script>
 @endsection
