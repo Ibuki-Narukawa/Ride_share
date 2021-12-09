@@ -24,7 +24,7 @@ $factory->define(User::class, function (Faker $faker) {
         'user_image' => '男性１.jpeg',
         'email' => $faker->unique()->safeEmail,
         'age' => random_int(18,60),
-        'self_introduction' => $faker->sentence,
+        'self_introduction' => $faker->realText(200),
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),

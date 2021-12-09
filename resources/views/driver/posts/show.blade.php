@@ -5,53 +5,53 @@
         front-size:16px;
         color:#00BFFF;
         text-align:center;
-        }
+    }
     h1 {
         font-size:50px; 
         margin:20px;
-        }
+    }
     .driver-post {
         width:75vw;
         margin:0 auto;
         margin-bottom:20px;
-        }
-    table{
+    }
+    table {
         table-layout: fixed;
         width:100%
-        }
+    }
     th {
         border: solid 1px #00BFFF;
         background-color:#00BFFF;
         color:#F0FFFF;
         padding:5px; 
         text-align:left;
-        }
+    }
     td {
         border:solid 1px #aaa; 
         color:#999; 
         text-align:left;
         padding:10px;
-        }
-    img{
+    }
+    img {
         width:200px;
-        }
+    }
     .footer {
         text-align:center;
-        }
+    }
     .operationBar {
         width:60%;
         margin:0 auto;
         display:flex;
-        }
+    }
     .btn {
         text-align:center;
         width:50%;
-        }
-    #map{
+    }
+    #map {
         width: 90%;
         height: 350px;
         margin:20px auto;
-        }
+    }
 @endsection
 
 @section('content')
@@ -93,10 +93,10 @@
                 <tr><td>現在地：<span id="address">{{$post->current_location}}</span></td></tr>
                 <tr>
                     <td>
-                        <div id="map"></div>
-                        <div id="infowindow-content">
-                            <span id="place-name" class="title"></span><br />
-                            <span id="place-address"></span>
+                        <div id='map'></div>
+                        <div id='infowindow-content'>
+                            <span id='place-name' class='title'></span><br />
+                            <span id='place-address'></span>
                         </div>
                     </td>
                 </tr>

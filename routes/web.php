@@ -37,7 +37,9 @@ Route::get('/users/{id}/edit','UserController@edit');
 
 Route::put('/users/{id}','UserController@update');
 
-Route::get('/search','SearchController@index');
+Route::get('/search','SearchController@search');
+
+Route::get('/search/distanceMatrix','SearchController@distanceMatrix');
 
 Route::get('/search/driverlist','SearchController@driverlist');
 

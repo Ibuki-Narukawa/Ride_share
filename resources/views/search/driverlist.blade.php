@@ -4,18 +4,18 @@
     body {
         front-size:16px;
         color:#87CEFA;
-        }
+    }
     h1 {
         font-size:50px; 
         color:#87CEFA; 
         margin:20px;
         text-align:center;
-        }
+    }
     .driver-post {
         width:75%;
         margin:0 auto;
         margin-bottom:20px;
-        }
+    }
     th {
         border: solid 1px #87CEFA;
         background-color:#87CEFA;
@@ -23,7 +23,7 @@
         padding:5px; 
         text-align:left;
         width:100vw;
-        }
+    }
     td {
         border:solid 1px #aaa; 
         color:#999; 
@@ -31,9 +31,9 @@
         padding:10px;
         width:100vw;
         }
-    img{
+    img {
         width:200px;
-        }
+    }
 @endsection
 
 @section('content')
@@ -41,6 +41,7 @@
     <div class='driver-posts'>
         @foreach($posts as $post) 
         <div class='driver-post'>
+            <input id='drivers[{{$post->id}}]' value={{$post->current_location}} style='display:none'>
             <table>
                 <div class='name'>
                     <tr><th>氏名：<a href='/search/driverlist/{{$post->id}}'>{{$post->user->name}}</a></th></tr>
@@ -75,4 +76,11 @@
     <p class='pagination'>
         {{$posts->links()}}
     </p>  
+    
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
+        async
+    ></script>
+    
+    <script src="{{ asset('js/map_directions.js') }}"></script>
 @endsection
