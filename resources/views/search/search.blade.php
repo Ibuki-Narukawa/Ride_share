@@ -64,10 +64,10 @@
                 <tr><td><input class='start-datetime' type='datetime-local'name='start_datetime' value={{old('start_datetime')}}></td></tr>
                 
                 <tr><th>出発地：</th></tr>
-                <tr><td><input type='text' id='from' placeholder='Origin' class='form-control'></td></tr>
+                <tr><td><input type='text' id='from' placeholder='Origin' class='form-control' name='from'></td></tr>
                 
                 <tr><th>目的地：</th></tr>
-                <tr><td><input type='text' id='to' placeholder='Desitination' class='form-control'></td></tr>
+                <tr><td><input type='text' id='to' placeholder='Desitination' class='form-control' name='to'></td></tr>
                 
                 <tr><th>経路：</th></tr>
                 <tr>
