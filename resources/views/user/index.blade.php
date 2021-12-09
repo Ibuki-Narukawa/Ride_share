@@ -5,33 +5,33 @@
         front-size:16px;
         color:#00BFFF;
         text-align:center;
-        }
+    }
     h1 {
         font-size:50px; 
         margin:20px;
-        }
+    }
     .user {
         width:75vw;
         margin:0 auto;
         margin-bottom:20px;
-        }
-    table{
+    }
+    table {
         table-layout: fixed;
         width:100%;
-        }
+    }
     th {
         border: solid 1px #00BFFF;
         background-color:#00BFFF;
         color:#F0FFFF;
         padding:5px; 
         text-align:left;
-        }
+    }
     td {
         border:solid 1px #aaa; 
         color:#999; 
         text-align:left;
         padding:10px;
-        }
+    }
 @endsection
 
 @section('content')

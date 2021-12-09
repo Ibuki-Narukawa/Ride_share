@@ -10,17 +10,17 @@ class UserController extends Controller
 {
     public function index(Request $request){
         $users = User::orderBy('updated_at', 'DESC')->paginate(5);
-        return view('User.index',['users'=>$users]);
+        return view('user.index',['users'=>$users]);
     }
     
     public function show(Request $request){
         $user = User::find($request->id);
-        return view('User.show',['user'=>$user]);
+        return view('user.show',['user'=>$user]);
     }
     
     public function edit(Request $request){
         $user = User::find($request->id);
-        return view('User.edit',['form'=>$user]);
+        return view('user.edit',['form'=>$user]);
     }
     
     public function update(UserRequest $request){

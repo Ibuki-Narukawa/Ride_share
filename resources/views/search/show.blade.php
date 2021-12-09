@@ -4,39 +4,46 @@
     body {
         front-size:16px;
         color:#87CEFA;
-        }
+    }
     h1 {
         font-size:50px; 
         color:#87CEFA; 
         margin:20px;
         text-align:center;
-        }
+    }
     .driver-post {
         width:75%;
         margin:0 auto;
         margin-bottom:20px;
-        }
+    }
+    table {
+        table-layout: fixed;
+        width:100%
+    }
     th {
-        border: solid 1px #87CEFA;
-        background-color:#87CEFA;
+        border: solid 1px #00BFFF;
+        background-color:#00BFFF;
         color:#F0FFFF;
         padding:5px; 
         text-align:left;
-        width:100vw;
-        }
+    }
     td {
         border:solid 1px #aaa; 
         color:#999; 
         text-align:left;
         padding:10px;
-        width:100vw;
-        }
-    img{
+    }
+    img {
         width:200px;
-        }
+    }
     .footer {
         text-align:center;
-        }
+    }
+    #map {
+        width: 90%;
+        height: 350px;
+        margin:20px auto;
+    }
 @endsection
 
 @section('content')
@@ -44,39 +51,37 @@
     <div class='driver-post'>
         <table>
             <div class='name'>
-                <tr><th><a>{{$post->user->name}}</a></th></tr>
+                <tr><th>氏名：<a>{{$post->user->name}}</a></th></tr>
             </div>
-            <div class='status'>
-                @if($post->status==1)
-                <tr><td>状態：空車</td></tr>
-                @elseif($post->status==2)
-                <tr><td>状態：予約済み</td></tr>
-                @elseif($post->status==3)
-                <tr><td>状態：ドライブ完了</td></tr>
-                @endif
-            </div>
-            <div class='car-info'>
-                <tr><td>車種： {{$post->car_model}}</td></tr>
-                <tr><td>相乗り可能人数：{{$post->max_passengers}}人</td></tr>
+            <div class='current-location'>
+                <tr><td>現在地：<span id="address">{{$post->current_location}}</span></td></tr>
                 <tr>
                     <td>
-                        <div style="text-align: center">
-                            <image src="{{ asset('img/cars/solio.jpg',true) }}" >
+                        <div id='map'></div>
+                        <div id='infowindow-content'>
+                            <span id='place-name' class='title'></span><br />
+                            <span id='place-address'></span>
                         </div>
                     </td>
                 </tr>
             </div>
-            <div class='current-location'>
-                <tr><td>現在地：{{$post->current_location}}</td></tr>
-            </div>
-            <div class='distance'>
-                <tr><td>距離：{{$post->distance}}km</td></tr>
-            </div>
-            <div class='arrival-time'>
-                <tr><td>到着所要時間：{{$post->arrival_time}}分</td></tr>
-            </div>
             <div class='request'>
-                <tr><td>してほしいこと：{{$post->request}}</td></tr>
+                <tr><td>してほしいこと：{{$post->asking}}</td></tr>
+            </div>
+            <div class='car-info'>
+                <tr><td>車種： {{$post->car_model}}</td></tr>
+                <tr><td>相乗り可能人数：{{$post->max_passengers}}人まで</td></tr>
+                <tr>
+                    <td>
+                        <div style='text-align: center'>
+                            @php
+                            $image_filename = $post->car_image;
+                            @endphp
+                            <p>{{$image_filename}}</p>
+                            <image src="{{ asset('img/cars/'.$image_filename,true) }}">
+                        </div>
+                    </td>
+                </tr>
             </div>
         </table>
     </div>
@@ -86,7 +91,7 @@
             <input type='submit' style='display:none' method='post'>
             <button><span onclick='return applyPost(this);'>申請する</span></button>
         </div>
-        <p>[<a href='/search/driverlist'>back</a>]</p>   
+        <p>[<a href='/search/distanceMatrix'>back</a>]</p>   
     </div>
     <script>
         function applyPost(e){
@@ -96,4 +101,10 @@
             }
         }
     </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
+        async
+    ></script>
+    
+    <script src="{{ asset('js/map_show.js') }}"></script>
 @endsection
