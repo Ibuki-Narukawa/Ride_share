@@ -12,9 +12,12 @@ class SearchController extends Controller
         return view('search.search');
     }
     
-    public function distanceMatrix(){
+    public function distanceMatrix(Request $request){
         $posts = DriverPost::all();
-        return view('search.distanceMatrix',['posts'=>$posts]);
+        $start_datetime = $request->start_datetime;
+        $from = $request->from;
+        $to = $request->to;
+        return view('search.distanceMatrix',['posts'=>$posts, 'start_datetime'=>$start_datetime, 'from'=>$from, 'to'=>$to]);
     }
     
     public function driverlist(){

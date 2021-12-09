@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('head')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('style')
     body {
         front-size:16px;
@@ -73,13 +78,18 @@
 					<th>時間</th>
 				</tr>
 			</thead>
-			<tbody id='result-body'></tbody>
+			<tbody id='result-body'>
+			    <form name="csrf-token" value="1234567890" ></form>
+			</tbody>
 		</table>
 	</div> 
     
     <script>
         window.driverPosts = new Array();
         window.driverPosts = @json($posts);
+        window.startDatetime = @json($start_datetime);
+        window.origin = @json($from);
+        window.To = @json($to);
     </script>
     
     <script
