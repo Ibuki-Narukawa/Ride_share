@@ -14,8 +14,6 @@ $factory->define(DriverPost::class, function (Faker $faker) {
         'car_image' => 'solio.jpg',
         'max_passengers' => random_int(1,4),
         'current_location' => $faker->address,
-        'distance' => random_int(1,100),
-        'arrival_time' => random_int(1,20),
         'asking' => $faker->realText(30),
         'user_id' => random_int(1,20),
     ];

@@ -1,4 +1,4 @@
-console.log(startDatetime);
+console.log(driverPosts);
 let tokyoTower = new google.maps.LatLng(35.658584, 139.7454316);
 // 出発点
 var origins = [

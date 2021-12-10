@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\DriverPost;
+use App\Http\Requests\CarpoolerRequest;
 
 class SearchController extends Controller
 {
@@ -12,8 +12,8 @@ class SearchController extends Controller
         return view('search.search');
     }
     
-    public function distanceMatrix(Request $request){
-        $posts = DriverPost::all();
+    public function distanceMatrix(CarpoolerRequest $request){
+        $posts = DriverPost::get();
         $start_datetime = $request->start_datetime;
         $from = $request->from;
         $to = $request->to;
@@ -32,7 +32,7 @@ class SearchController extends Controller
         
     }
     
-    public function show(Request $request){
+    public function show(CarpoolerRequest $request){
         $post = DriverPost::find($request->id);
         $start_datetime = $request->start_datetime;
         $from = $request->from;

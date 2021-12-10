@@ -63,7 +63,8 @@
 @endsection
 
 @section('content')
-    <h1>Distace Matrix</h1>
+    <h1>検索結果</h1>
+    <p>失敗したら、リロードしてみてください。</p>
     <div id='map'></div>
     <div id='infowindow-content'>
         <span id='place-name' class='title'></span><br />

@@ -3,11 +3,11 @@
 @section('style')
     body {
         front-size:16px;
-        color:#87CEFA;
+        color:#00BFFF;
     }
     h1 {
         font-size:50px; 
-        color:#87CEFA; 
+        color:#00BFFF; 
         margin:20px;
         text-align:center;
     }
@@ -57,7 +57,7 @@
     <div class='driver-post'>
         <table>
             <div class='name'>
-                <tr><th>氏名：<a>{{$post->user->name}}</a></th></tr>
+                <tr><th>氏名：<a href='/users/{{$post->user->id}}'>{{$post->user->name}}</a></th></tr>
             </div>
             <div class='current-location'>
                 <tr><td>現在地：<span id="address">{{$post->current_location}}</span></td></tr>
@@ -109,10 +109,14 @@
         </div>
     </div>
     <script>
+        window.startDatetime = @json($start_datetime);
+        window.origin = @json($from);
+        window.To = @json($to);
+        
         function applyPost(e){
             'use strict';
-            if(confirm('本当にこのドライバーに申請しますか？')){
-            document.getElementById('form_delete').submit();
+            if(window.confirm('本当にこのドライバーに申請しますか?\n\n検索データ\n出発時刻：' + startDatetime + '\n出発地：' + origin + '\n目的地：' + To )){
+                document.getElementById('form').submit();
             }
         }
     </script>

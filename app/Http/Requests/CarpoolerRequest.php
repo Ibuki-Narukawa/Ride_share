@@ -13,7 +13,7 @@ class CarpoolerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class CarpoolerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'start_datetime' => 'required|after_or_equal:now',
+            'from' => 'required|string|max:50',
+            'to' => 'required|string|max:50',
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'start_datetime.required' => '開始日時は必ず入力してください。',
+            'start_datetime.after_or_equal' => '出発日時は現在時刻以降にしてください。',
+            'from.required' => '出発地は必ず入力してください。',
+            'to.required' => '目的地は必ず入力してください。',
         ];
     }
 }
