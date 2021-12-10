@@ -21,8 +21,8 @@ class CreateDriverPostsTable extends Migration
             $table->string('car_image', 100)->nullable();
             $table->tinyInteger('max_passengers')->nullable();
             $table->string('current_location', 100)->nullable();
-            $table->integer('distance')->unsigned()->nullable();
-            $table->tinyInteger('arrival_time')->nullable();
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->string('asking', 500)->nullable();
             $table->tinyInteger('status')->unsigned()->default(1)->comment('ステータス : 1 : フリー : 2 : 予約済み : 3 :完了');
             $table->integer('user_id')->unsigned();

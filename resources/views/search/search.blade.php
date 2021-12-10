@@ -56,8 +56,7 @@
 @endsection
 
 @section('content')
-    <h1>検索ページ</h1>
-    <p>出発地と目的地を入力してください。</p>
+    <h1>ドライバー検索ページ</h1>
     @if(count($errors)>0)
     <p>入力に問題があります。再入力してください。</p>
     @endif

@@ -82,7 +82,7 @@
                 @endif
                 
                 <tr><th>現在地：</th></tr>
-                <tr><td><input class='current-location' type='text' id="address" name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value={{old('current_location')}}></td></tr>
+                <tr><td><input class='current-location' type='text' id="address" name='current_location' placeholder='兵庫県神戸市中央区布引町4丁目' value="{{old('current_location')}}"></td></tr>
                 <tr>
                     <td>
                         <div id="map"></div>

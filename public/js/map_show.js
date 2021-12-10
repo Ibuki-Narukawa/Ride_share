@@ -14,6 +14,7 @@ var opt;
 if (address){
     geocoder.geocode({ address: address }, function(results, status){
         if (status === 'OK'){  //status を確認して処理開始
+            console.log(results[0]);
             opt = {
                 zoom: 15,
                 center: results[0].geometry.location,
