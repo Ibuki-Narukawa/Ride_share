@@ -73,9 +73,10 @@
 	    <table class='table'>
 			<thead>
 				<tr>
-					<th>現在地</th>
+					<th>ドライバーの現在地</th>
 					<th>距離</th>
 					<th>時間</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody id='result-body'>

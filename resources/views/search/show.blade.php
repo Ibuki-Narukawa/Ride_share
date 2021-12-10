@@ -37,7 +37,13 @@
         width:200px;
     }
     .footer {
+        //width:60%;
+        //margin:0 auto;
+         //display:flex;
         text-align:center;
+    }
+    .btn {
+        margin:20px;
     }
     #map {
         width: 90%;
@@ -86,12 +92,21 @@
         </table>
     </div>
     <div class='footer'>
-        <div class='btn apply-btn'>
+         <div class='btn apply-btn'>
             @csrf
             <input type='submit' style='display:none' method='post'>
-            <button><span onclick='return applyPost(this);'>申請する</span></button>
+            <button class='operationBar'><span onclick='return applyPost(this);'>申請する</span></button>
         </div>
-        <p>[<a href='/search/distanceMatrix'>back</a>]</p>   
+        
+        <div class='btn back-btn'>
+            <form action='/search/distanceMatrix' method='post'>
+                @csrf
+                <input style='display:none' type='datetime-local' name='start_datetime' value={{$start_datetime}}>
+                <input style='display:none' type='text' name='from' value={{$from}}>
+                <input style='display:none' type='text' name='to' value={{$to}}>
+                <input type='submit' value='戻る'></p>
+            </form>
+        </div>
     </div>
     <script>
         function applyPost(e){

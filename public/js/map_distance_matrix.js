@@ -1,4 +1,4 @@
-//console.log(driverPosts);
+console.log(startDatetime);
 let tokyoTower = new google.maps.LatLng(35.658584, 139.7454316);
 // 出発点
 var origins = [
@@ -66,27 +66,6 @@ for(var i=0; i<driverPosts.length; i++){
 		geocode(destinationResults, driverPosts[i].current_location, driverPosts[i].id);	
 	}
 }
-console.log(origins);
-console.log(origins[0]);
-	
-/*var opt = {
-    zoom: 13,
-    center: origins[0],
-    mapTypeId: 'roadmap'
-};
-var map = document.getElementById('map');
-var mapObj = new google.maps.Map(map,opt);
-var originMarker = new google.maps.Marker({
-	map: mapObj,
-	position: origins[0],
-	animation: google.maps.Animation.DROP,
-});
-google.maps.event.addListener(originMarker, 'click', function() {
-	// 吹き出しを表示
-	infowindowContent.children['place-name'].textContent = '東京タワー';
-	infowindowContent.children['place-address'].textContent = tokyoTower;
-	infowindow.open(mapObj, this);
-});*/
 
 var initMap = function(){
 	var opt = {
@@ -157,7 +136,7 @@ var calcDistanceMatrix = function() {
 		destinations: destinations, // 到着地点
 		travelMode: google.maps.TravelMode.DRIVING, // 車モード 
 		drivingOptions: { // 車モードの時のみ有効
-			departureTime: new Date('2021/12/24 10:00:00'), // 
+			departureTime: new Date(startDatetime), // 
 			trafficModel: google.maps.TrafficModel.BEST_GUESS // 最適な検索
 		}
 	}, function(response, status) {
@@ -269,18 +248,16 @@ var directionsRenderer = new google.maps.DirectionsRenderer();
 var calcRoute = function(end, mapObj) {
 	clearRoute();
 	var travelMode = 'DRIVING';
-	//var trafficModel = $("#trafficModel").val();
-	//var departureTime = $("#departureTime").val();
 
 	directionsRenderer.setMap(mapObj);
 	directionsService.route({
 		origin: origins[0],
 		destination: end,
 		travelMode: travelMode,
-		/*drivingOptions: {
-			departureTime: new Date(departureTime),
-			trafficModel: getTrafficModel(trafficModel),
-		}*/
+		drivingOptions: {
+			departureTime:new Date(startDatetime),
+			trafficModel: google.maps.TrafficModel.BEST_GUESS,
+		}
 	}, function(response, status) {
 		console.log(response);
 		if (status === google.maps.DirectionsStatus.OK) {

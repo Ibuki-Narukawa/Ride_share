@@ -34,7 +34,10 @@ class SearchController extends Controller
     
     public function show(Request $request){
         $post = DriverPost::find($request->id);
-        return view('search.show',['post'=>$post]);
+        $start_datetime = $request->start_datetime;
+        $from = $request->from;
+        $to = $request->to;
+        return view('search.show',['post'=>$post, 'start_datetime'=>$start_datetime, 'from'=>$from, 'to'=>$to]);
     }
     
     
