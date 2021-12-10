@@ -41,12 +41,14 @@
     .button, input, select, textarea {
         font-family: inherit;
     }
+    .error-message {
+        color:red;
+    }
     #map {
         width: 90%;
         height: 350px;
         margin:20px auto;
     }
-    
     #output {
         text-align: center;
         padding: 5px;
@@ -56,18 +58,30 @@
 @section('content')
     <h1>検索ページ</h1>
     <p>出発地と目的地を入力してください。</p>
+    @if(count($errors)>0)
+    <p>入力に問題があります。再入力してください。</p>
+    @endif
     <div class='carpooler-request'>
         <form action='/search/distanceMatrix' method='post' class='form-horizontal'>
             @csrf
             <table>
                 <tr><th>出発日時：</th></tr>
                 <tr><td><input class='start-datetime' type='datetime-local'name='start_datetime' value={{old('start_datetime')}}></td></tr>
+                @if($errors->has('start_datetime'))
+                <tr><td class='error-message'>Error:{{$errors->first('start_datetime')}}</td></tr>
+                @endif
                 
                 <tr><th>出発地：</th></tr>
-                <tr><td><input type='text' id='from' placeholder='Origin' class='form-control' name='from'></td></tr>
+                <tr><td><input type='text' id='from' placeholder='Origin' class='form-control' name='from' value={{old('from')}}></td></tr>
+                @if($errors->has('from'))
+                <tr><td class='error-message'>Error:{{$errors->first('from')}}</td></tr>
+                @endif
                 
                 <tr><th>目的地：</th></tr>
-                <tr><td><input type='text' id='to' placeholder='Desitination' class='form-control' name='to'></td></tr>
+                <tr><td><input type='text' id='to' placeholder='Desitination' class='form-control' name='to' value={{old('to')}}></td></tr>
+                @if($errors->has('to'))
+                <tr><td class='error-message'>Error:{{$errors->first('to')}}</td></tr>
+                @endif
                 
                 <tr><th>経路：</th></tr>
                 <tr>
