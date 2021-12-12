@@ -20,6 +20,7 @@ class PostController extends Controller
     }
     
     public function create(){
+        
         return view('driver.posts.create');
     }
     
@@ -42,6 +43,8 @@ class PostController extends Controller
         $post->car_model = $request->car_model;
         $post->max_passengers = $request->max_passengers;
         $post->car_image = $fileName;
+        $post->latitude = $request->lat;
+        $post->longitude = $request->lng;
         $post->save();
         return redirect('/driver/posts/'.$post->id);
     }
@@ -70,6 +73,8 @@ class PostController extends Controller
         $post->car_model = $request->car_model;
         $post->max_passengers = $request->max_passengers;
         $post->car_image = $fileName;
+        $post->latitude = $request->lat;
+        $post->longitude = $request->lng;
         $post->save();
         return redirect('/driver/posts/'.$post->id);
     }

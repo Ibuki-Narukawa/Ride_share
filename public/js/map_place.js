@@ -35,7 +35,6 @@ var initMap = function(){
         infowindow.open(mapObj, marker);
     }
     else{
-        alert('現在地から位置の取得ができませんでした。理由: ' + status + '.\nデフォルトマップを表示します。もう一度現在地を入力してください。');
         LatLng = {lat: 34.694659, lng: 135.194954};
         opt = {
             zoom: 10,
@@ -50,6 +49,54 @@ var initMap = function(){
         });
     }
 };
+
+var options = {
+    fields: ['formatted_address', 'geometry', 'name'],
+    strictBounds: false,
+    componentRestrictions: {country: 'jp'},
+    types: [],
+}
+
+var input = document.getElementById('address');
+var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+autocomplete.addListener('place_changed', () => {
+    infowindow.close();
+    marker.setVisible(false);
+    
+    const place = autocomplete.getPlace();
+    
+    if (!place.geometry || !place.geometry.location) {
+        window.alert("No details available for input: '" + place.name + "'");
+        event.preventDefault();   
+    }
+    
+    lat = place.geometry.location.lat();
+    lng = place.geometry.location.lng();
+    
+    mapObj.setCenter(place.geometry.location);
+    mapObj.setZoom(15);
+    
+    marker = new google.maps.Marker({
+        map: mapObj,
+        anchorPoint: new google.maps.Point(0, -29),
+    });
+    
+    marker.setPosition(place.geometry.location);
+    marker.setVisible(true);
+    infowindowContent.children['place-name'].textContent = place.name;
+    infowindowContent.children['place-address'].textContent = place.formatted_address;
+    infowindow.open(mapObj, marker);
+    
+});
+
+function submitPost(e){
+	document.getElementById('lat').value = lat;
+	document.getElementById('lng').value = lng;
+	                                              
+	//event.preventDefault();                                             
+    document.getElementById('form_create').submit();
+}
 
 var isset = function(data){
     if(data === '' || data === null || data === undefined){

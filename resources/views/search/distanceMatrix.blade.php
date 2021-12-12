@@ -89,9 +89,13 @@
     <script>
         window.driverPosts = new Array();
         window.driverPosts = @json($posts);
-        window.startDatetime = @json($start_datetime);
-        window.origin = @json($from);
-        window.To = @json($to);
+        window.startDatetime = @json($carpooler->start_datetime);
+        window.origin = @json($carpooler->from);
+        window.To = @json($carpooler->to);
+        window.latFrom = @json($carpooler->latFrom);
+        window.lngtFrom = @json($carpooler->lngFrom);
+        window.latTo = @json($carpooler->latTo);
+        window.lngTo = @json($carpooler->lngTo);
     </script>
     
     <script

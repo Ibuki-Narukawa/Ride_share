@@ -93,6 +93,7 @@ autocomplete.addListener("place_changed", () => {
         anchorPoint: new google.maps.Point(0, -29),
     });
     
+    console.log(place.geometry.location.lat);
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
     infowindowContent.children["place-name"].textContent = place.name;

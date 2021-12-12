@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('style')
     body {
         front-size:16px;
@@ -66,7 +70,7 @@
     <p>入力に問題があります。再入力してください。</p>
     @endif
     <div class='driver-post'>
-        <form action='/driver/posts/create' method='post' enctype='multipart/form-data'>
+        <form action='/driver/posts/create' method='post' enctype='multipart/form-data'　id='form_create'>
             @csrf
             <table>
                 <tr><th>送迎開始日時：</th></tr>
@@ -120,16 +124,19 @@
                 <tr><td class='error-message'>Error:{{$errors->first('car_image')}}</td></tr>
                 @endif
             </table>
-            <p class='submit-btn'><input type='submit' value='登録'></p>
+            <p class='submit-btn'><button onclick='return submitPost(this);'>登録</button></p>
+            <input name='lat' style='display:none' type='number' step='0.00000000000001' id='lat' value={{old('lat')}}>
+            <input name='lng' style='display:none' type='number' step='0.00000000000001' id='lng' value={{old('lng')}}>
         </form>
     </div>
     <div class='footer'>
         <p>[<a href='/driver/posts'>back</a>]</p>  
     </div>
+    
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async
     ></script>
     
-    <script src="{{ asset('js/map_current_location.js') }}"></script>
+    <script src="{{ asset('js/map_place.js') }}"></script>
 @endsection

@@ -90,7 +90,11 @@
                     </td>
                 </tr>
             </table>
-            <p class='submit-btn'><input type='submit' value='検索'></p>
+            <p class='submit-btn'><button onclick='return submitPost(this);'>検索</button></p>
+            <input name='latFrom' style='display:none' type='number' step='0.00000000000001' id='latFrom' value={{old('latFrom')}}>
+            <input name='lngFrom' style='display:none' type='number' step='0.00000000000001' id='lngFrom' value={{old('lngFrom')}}>
+            <input name='latTo' style='display:none' type='number' step='0.00000000000001' id='latTo' value={{old('latTo')}}>
+            <input name='lngTo' style='display:none' type='number' step='0.00000000000001' id='lngTo' value={{old('lngTo')}}>
         </form>
     </div>
     
@@ -99,6 +103,6 @@
         async
     ></script>
     
-    <script src="{{ asset('js/map_directions.js') }}"></script>
+    <script src="{{ asset('js/map_directions2.js') }}"></script>
     
 @endsection
