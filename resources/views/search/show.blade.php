@@ -104,22 +104,38 @@
                 <input style='display:none' type='datetime-local' name='start_datetime' value={{$start_datetime}}>
                 <input style='display:none' type='text' name='from' value={{$from}}>
                 <input style='display:none' type='text' name='to' value={{$to}}>
+                <input name='latFrom' style='display:none' type='number' step='0.00000000000001' id='latFrom' value={{$latFrom}}>
+                <input name='lngFrom' style='display:none' type='number' step='0.00000000000001' id='lngFrom' value={{$lngFrom}}>
+                <input name='latTo' style='display:none' type='number' step='0.00000000000001' id='latTo' value={{$latTo}}>
+                <input name='lngTo' style='display:none' type='number' step='0.00000000000001' id='lngTo' value={{$lngTo}}>
                 <input type='submit' value='戻る'></p>
             </form>
         </div>
     </div>
+    
     <script>
         window.startDatetime = @json($start_datetime);
         window.origin = @json($from);
         window.To = @json($to);
+        window.latFrom = @json($latFrom);
+        window.lngFrom = @json($lngFrom);
+        window.latTo = @json($latTo);
+        window.lngTo = @json($lngTo);
         
         function applyPost(e){
             'use strict';
-            if(window.confirm('本当にこのドライバーに申請しますか?\n\n検索データ\n出発時刻：' + startDatetime + '\n出発地：' + origin + '\n目的地：' + To )){
+            if(window.confirm('本当にこのドライバーに申請しますか?\n\n検索データ\n出発時刻：' + startDatetime + '\n出発地：' + origin + '\n緯度：' + latFrom + ' 経度：' + lngFrom +'\n目的地：' + To  + '\n緯度：' + latTo + ' 経度：' + lngTo)){
                 document.getElementById('form').submit();
             }
         }
     </script>
+    
+    <script>
+        window.latitude = @json($post->latitude);
+        window.longitude = @json($post->longitude);
+        window.address = @json($post->current_location);
+    </script>
+    
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async

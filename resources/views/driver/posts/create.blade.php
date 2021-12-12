@@ -133,6 +133,12 @@
         <p>[<a href='/driver/posts'>back</a>]</p>  
     </div>
     
+    <script>
+        var latitude;
+        var longitude;
+        var address;
+    </script>
+    
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async

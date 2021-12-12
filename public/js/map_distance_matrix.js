@@ -1,70 +1,33 @@
-console.log(driverPosts);
-let tokyoTower = new google.maps.LatLng(35.658584, 139.7454316);
-// 出発点
-var origins = [
-	//tokyoTower,
-];
-// 到着点
-/*var destinations = [
-	new google.maps.LatLng(35.8, 140.5),
-	new google.maps.LatLng(36.5, 139.3)
-];*/
-//console.log(destinations);
-
-// ジオコードを実行し、緯度経度を返す
-var geocode = function(callback,address,id) {
-	var geocoder = new google.maps.Geocoder();
-	geocoder.geocode({
-		address: address
-	}, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			callback({'latlng':results[0].geometry.location, 'id':id});
-		}
-		else if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) { 
-	        nextAddress--;
-            delay++;
-		}
-	});
-};
-
-//相乗り者の乗り場のジオコーディング結果を配列に挿入する。
-var originResults = function(geoCodeResults) {
-	origins.push(geoCodeResults.latlng);
-	//initMap();
-};
-
+var lat;
+var lng;
+var map;
+var mapObj;
+var originMarker;
+var marker;
+var markers = new Array();
+var opt;
+const infowindow = new google.maps.InfoWindow();
+const infowindowContent = document.getElementById('infowindow-content');
+infowindow.setContent(infowindowContent);
+var LatLng;
+var origins = new Array();
 var destinations = new Array();
 var postId = new Array();
+var distanceMatrixService = new google.maps.DistanceMatrixService();
+var directionsService = new google.maps.DirectionsService();
+var directionsRenderer = new google.maps.DirectionsRenderer();
 
-// ドライバーの現在地のジオコーディング結果を配列に挿入する。
-var destinationResults = function(geoCodeResults) {
-    destinations.push(geoCodeResults.latlng);
-    postId.push(geoCodeResults.id);
-};
 
-//最後の要素を受け取り、calcDistanceMatrix()へ渡す。
-var lastResults = function(geoCodeResults) {
-    destinations.push(geoCodeResults.latlng);
-    postId.push(geoCodeResults.id);
-    destinations.forEach(destination => {
-    	console.log(destination);	
-    });
-    calcDistanceMatrix();
-    //createPlacesMarker('test',geoCodeResults);
-};
+origins = [
+    new google.maps.LatLng(latFrom, lngFrom),
+];
 
-//相乗り者の乗り場をorigins配列に挿入。
-geocode(originResults, origin, 0);
-
-//console.log(driverPosts[0]['current_location']);
-//ドライバー投稿の現在地の情報をdestinations配列に挿入。
 for(var i=0; i<driverPosts.length; i++){
-	if(i==driverPosts.length-1){
-		geocode(lastResults, driverPosts[i].current_location, driverPosts[i].id);	
-	}
-	else{
-		geocode(destinationResults, driverPosts[i].current_location, driverPosts[i].id);	
-	}
+    lat = driverPosts[i].latitude;
+    lng = driverPosts[i].longitude;
+	LatLng = new google.maps.LatLng(lat, lng);
+	destinations.push(LatLng);
+	postId.push(driverPosts[i].id);
 }
 
 var initMap = function(){
@@ -73,13 +36,12 @@ var initMap = function(){
 	    center: origins[0],
 	    mapTypeId: 'roadmap'
 	};
-	var map = document.getElementById('map');
-	var mapObj = new google.maps.Map(map,opt);
-	var originMarker = new google.maps.Marker({
+	map = document.getElementById('map');
+	mapObj = new google.maps.Map(map,opt);
+	originMarker = new google.maps.Marker({
 		map: mapObj,
 		position: origins[0],
 		animation: google.maps.Animation.DROP,
-		title: origin
 	});
 	google.maps.event.addListener(originMarker, 'click', function() {
 		// 吹き出しを表示
@@ -87,18 +49,10 @@ var initMap = function(){
 		infowindowContent.children['place-address'].textContent = origins[0];
 		infowindow.open(mapObj, this);
 	});
-	return mapObj;
 };
 
-var distanceMatrixService = new google.maps.DistanceMatrixService();
-
-var markers = new Array();
-const infowindow = new google.maps.InfoWindow();
-const infowindowContent = document.getElementById('infowindow-content');
-infowindow.setContent(infowindowContent);
-
 // マーカーを作成
-var createPlacesMarker = function(name,latlng, mapObj) {
+var createPlacesMarker = function(name,latlng) {
 	var marker = new google.maps.Marker({
 		map: mapObj,
 		position: latlng,
@@ -119,7 +73,7 @@ var createPlacesMarker = function(name,latlng, mapObj) {
 		infowindow.open(mapObj, this);
 	});
 };
-	
+
 // 全てのマーカーを削除
 var clearPlacesMarker = function() {
 	for (var i=0; i<_markers.length; i++) {
@@ -130,7 +84,6 @@ var clearPlacesMarker = function() {
 
 // DistanceMatrix の実行
 var calcDistanceMatrix = function() {
-	var mapObj = initMap();
 	distanceMatrixService.getDistanceMatrix({
 		origins: origins, // 出発地点
 		destinations: destinations, // 到着地点
@@ -141,7 +94,6 @@ var calcDistanceMatrix = function() {
 		}
 	}, function(response, status) {
 		if (status == google.maps.DistanceMatrixStatus.OK) {
-			console.log(destinations)
 		    var sortResults = new Array();
 	
 			// 出発地点と到着地点の住所（配列）を取得
@@ -158,12 +110,12 @@ var calcDistanceMatrix = function() {
 				for (var j = 0; j<results.length; j++) {
 					var from = originsName[i]; // 出発地点の住所
 					var to = destinationsName[j]; // 到着地点の住所
-					var duration = results[j].duration.value; // 時間
 					var distance = results[j].distance.value; // 距離
-					console.log("{},{},{},{}", from,  to, duration, distance, j, postId[j]);
+					var duration = results[j].duration.value; // 時間
+					//console.log("{},{},{},{}", from,  to, duration, distance, j, postId[j]);
 					if(distance<30000){
 						sortResults.push([from, to, duration, distance, results[j], j, postId[j]]);	
-						createPlacesMarker(to,destinations[j], mapObj);
+						createPlacesMarker(to,destinations[j]);
 						bounds.extend(destinations[j]);
 					}
 				}
@@ -205,12 +157,12 @@ var calcDistanceMatrix = function() {
 					//console.log(x);
 					var place = destinations[x];
 					//console.log(place);
-					calcRoute(place, mapObj);
+					calcRoute(place);
 					google.maps.event.trigger(markers[i], 'click');
 		
 				});
 			}
-			
+		console.log(sortResults);	
 		}
 		else {
 			alert('DistanceMatrix 失敗(' + status + ')');
@@ -236,16 +188,17 @@ var submitForm = function(id){
 		fd.set('start_datetime', startDatetime);
 		fd.set('from', origin);
 		fd.set('to', To);
+		fd.set('latFrom', latFrom);
+		fd.set('lngFrom', lngFrom);
+		fd.set('latTo', latTo);
+		fd.set('lngTo', lngTo);
     });
 	
 	form.submit();
 }
 
-var directionsService = new google.maps.DirectionsService();
-var directionsRenderer = new google.maps.DirectionsRenderer();
-
 // ルート検索実行
-var calcRoute = function(end, mapObj) {
+var calcRoute = function(end) {
 	clearRoute();
 	var travelMode = 'DRIVING';
 
@@ -273,9 +226,7 @@ var clearRoute = function() {
 	directionsRenderer.setMap(null);
 };
 
-// ルートと検索結果をクリア
-var clearAll = function() {
-	clearRoute();
-	document.querySelector('#result-body').innerHTML='';
-};
-
+window.onload = function(){
+    initMap();
+    calcDistanceMatrix();
+}

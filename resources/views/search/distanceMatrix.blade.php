@@ -41,12 +41,12 @@
         background-color:#00BFFF;
         color:#F0FFFF;
         padding:5px; 
-        text-align:left;
+        text-align:center;
     }
     td {
         border:solid 1px #aaa; 
         color:#999; 
-        text-align:left;
+        text-align:center;
         padding:10px;
     }
     #route-result {
@@ -64,7 +64,6 @@
 
 @section('content')
     <h1>検索結果</h1>
-    <p>失敗したら、リロードしてみてください。</p>
     <div id='map'></div>
     <div id='infowindow-content'>
         <span id='place-name' class='title'></span><br />
@@ -89,13 +88,13 @@
     <script>
         window.driverPosts = new Array();
         window.driverPosts = @json($posts);
-        window.startDatetime = @json($carpooler->start_datetime);
-        window.origin = @json($carpooler->from);
-        window.To = @json($carpooler->to);
-        window.latFrom = @json($carpooler->latFrom);
-        window.lngtFrom = @json($carpooler->lngFrom);
-        window.latTo = @json($carpooler->latTo);
-        window.lngTo = @json($carpooler->lngTo);
+        window.startDatetime = @json($start_datetime);
+        window.origin = @json($from);
+        window.To = @json($to);
+        window.latFrom = @json($latFrom);
+        window.lngFrom = @json($lngFrom);
+        window.latTo = @json($latTo);
+        window.lngTo = @json($lngTo);
     </script>
     
     <script
