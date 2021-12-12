@@ -17,7 +17,13 @@ class SearchController extends Controller
         $start_datetime = $request->start_datetime;
         $from = $request->from;
         $to = $request->to;
-        return view('search.distanceMatrix',['posts'=>$posts, 'start_datetime'=>$start_datetime, 'from'=>$from, 'to'=>$to]);
+        $latFrom = $request->latFrom;
+        $lngFrom = $request->lngFrom;
+        $latTo = $request->latTo;
+        $lngTo = $request->lngTo;
+        
+        $carpooler_data = [$start_datetime, $from, $to, $latFrom, $lngFrom, $latTo, $lngTo]; 
+        return view('search.distanceMatrix',['posts'=>$posts, 'carpooler_data'=>$carpooler_data]);
     }
     
     public function driverlist(){
@@ -37,7 +43,13 @@ class SearchController extends Controller
         $start_datetime = $request->start_datetime;
         $from = $request->from;
         $to = $request->to;
-        return view('search.show',['post'=>$post, 'start_datetime'=>$start_datetime, 'from'=>$from, 'to'=>$to]);
+        $latFrom = $request->latFrom;
+        $lngFrom = $request->lngFrom;
+        $latTo = $request->latTo;
+        $lngTo = $request->lngTo;
+        
+        $carpooler_data = [$start_datetime, $from, $to, $latFrom, $lngFrom, $latTo, $lngTo]; 
+        return view('search.show',['post'=>$post, 'carpooler_data'=>$carpooler_data]);
     }
     
     
