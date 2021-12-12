@@ -103,6 +103,6 @@
         async
     ></script>
     
-    <script src="{{ asset('js/map_directions2.js') }}"></script>
+    <script src="{{ asset('js/map_directions.js') }}"></script>
     
 @endsection
