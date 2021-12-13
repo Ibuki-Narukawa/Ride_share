@@ -75,10 +75,10 @@
                                 <p>{{$image_filename}}</p>
                                 <image src="{{ asset('img/cars/'.$image_filename,true) }}">
                             </div>
-                        </td
+                        </td>
                     </tr>
                 </div>
-                <div class='update-at'>
+                <div class='updated-at'>
                     <tr><td>最終更新日：{{$post->updated_at}}</td></tr>
                 </div>
             </table>
