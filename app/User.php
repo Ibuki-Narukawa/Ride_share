@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function dirverPosts(){
         return $this->hasMany('App\DriverPost');     
     }
+    
+    public function carpoolers(){
+        return $this->hasMany('App\Carpooler');     
+    }
 }

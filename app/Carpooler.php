@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DriverPost extends Model
+class Carpooler extends Model
 {
     use SoftDeletes;
     
@@ -15,5 +15,7 @@ class DriverPost extends Model
         return $this->belongsTo('App\User');
     }
     
-    
+    public function driverPost(){
+        return $this->belongsTo('App\DriverPost');
+    }
 }
