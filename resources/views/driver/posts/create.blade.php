@@ -99,6 +99,9 @@
                 @if($errors->has('current_location'))
                 <tr><td class='error-message'>Error:{{$errors->first('current_location')}}</td></tr>
                 @endif
+                @if($errors->has('latitude'))
+                <tr><td class='error-message'>Error:{{$errors->first('latitude')}}</td></tr>
+                @endif
                 
                 <tr><th>送迎の代わりにしてほしいこと：</th></tr>
                 <tr><td><textarea class='asking' name='asking' placeholder='おすすめのカフェ教えてください！' value={{old('asking')}}></textarea></td></tr>
