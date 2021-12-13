@@ -44,3 +44,5 @@ Route::post('/search/distanceMatrix','SearchController@distanceMatrix');
 Route::get('/search/driverlist','SearchController@driverlist');
 
 Route::post('/search/driverlist/{id}','SearchController@show');
+
+Route::get('/carpooler/applications','Carpooler\ApplicationController@index');
