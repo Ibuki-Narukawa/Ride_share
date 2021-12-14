@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
 });
 
 Route::get('/driver/posts','Driver\PostController@index');
@@ -52,3 +52,7 @@ Route::get('/carpooler/applications/{id}','Carpooler\ApplicationController@show'
 Route::delete('/carpooler/applications/{id}','Carpooler\ApplicationController@destroy');
 
 Route::post('/carpooler/applications/create','Carpooler\ApplicationController@store');
+
+Route::get('/driver/applications','Driver\ApplicationController@index');
+
+Route::get('/driver/applications/{id}','Driver\ApplicationController@show');
