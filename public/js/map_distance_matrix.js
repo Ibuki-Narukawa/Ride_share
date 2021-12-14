@@ -1,3 +1,4 @@
+console.log(driverPosts);
 var lat;
 var lng;
 var map;
@@ -95,7 +96,7 @@ var calcDistanceMatrix = function() {
 	}, function(response, status) {
 		if (status == google.maps.DistanceMatrixStatus.OK) {
 		    var sortResults = new Array();
-	
+
 			// 出発地点と到着地点の住所（配列）を取得
 			var originsName = response.originAddresses;
 			var destinationsName = response.destinationAddresses;
@@ -104,19 +105,22 @@ var calcDistanceMatrix = function() {
 			for (var i=0; i<originsName.length; i++) {
 				// 出発地点から到着地点への計算結果を取得
 				var results = response.rows[i].elements;
+				
 				var bounds = new google.maps.LatLngBounds();
 	
 				// 到着地点でループ
 				for (var j = 0; j<results.length; j++) {
-					var from = originsName[i]; // 出発地点の住所
-					var to = destinationsName[j]; // 到着地点の住所
-					var distance = results[j].distance.value; // 距離
-					var duration = results[j].duration.value; // 時間
-					//console.log("{},{},{},{}", from,  to, duration, distance, j, postId[j]);
-					if(distance<30000){
-						sortResults.push([from, to, duration, distance, results[j], j, postId[j]]);	
-						createPlacesMarker(to,destinations[j]);
-						bounds.extend(destinations[j]);
+					if(isset(results[j].distance)){
+						var from = originsName[i]; // 出発地点の住所
+						var to = destinationsName[j]; // 到着地点の住所
+						var distance = results[j].distance.value; // 距離
+						var duration = results[j].duration.value; // 時間
+						//console.log("{},{},{},{}", from,  to, duration, distance, j, postId[j]);
+						if(distance<30000){
+							sortResults.push([from, to, duration, distance, results[j], j, postId[j]]);	
+							createPlacesMarker(to,destinations[j]);
+							bounds.extend(destinations[j]);
+						}
 					}
 				}
 				if(sortResults.length>0){
@@ -195,7 +199,7 @@ var submitForm = function(id){
     });
 	
 	form.submit();
-}
+};
 
 // ルート検索実行
 var calcRoute = function(end) {
@@ -224,6 +228,14 @@ var calcRoute = function(end) {
 // ルートをクリア
 var clearRoute = function() {
 	directionsRenderer.setMap(null);
+};
+
+var isset = function(data){
+    if(data === '' || data === null || data === undefined){
+        return false;
+    }else{
+        return true;
+    }
 };
 
 window.onload = function(){

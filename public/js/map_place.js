@@ -90,13 +90,13 @@ autocomplete.addListener('place_changed', () => {
     
 });
 
-function submitPost(e){
+var submitPost = function(e){
 	document.getElementById('lat').value = lat;
 	document.getElementById('lng').value = lng;
 	                                              
 	//event.preventDefault();                                             
     document.getElementById('form_create').submit();
-}
+};
 
 var isset = function(data){
     if(data === '' || data === null || data === undefined){
