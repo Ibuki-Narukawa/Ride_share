@@ -26,12 +26,12 @@ class PostRequest extends FormRequest
         return [
             'start_datetime' => 'required_with:end_datetime|after_or_equal:now',
             'end_datetime' => 'required_with:start_datetime|after_or_equal:start_datetime',
-            'current_location' => 'required|string|max:50',
+            'current_location' => 'required|string|max:100',
             'asking' => 'string|max:500',
             'car_model' => 'required|string|max:30',
             'max_passengers' => 'required|numeric|between:1,10',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
         ];
     }
     
@@ -46,8 +46,8 @@ class PostRequest extends FormRequest
             'car_model.required' => '車種は必ず入力してください。',
             'max_passengers.required' => '相乗り可能人数は必ず入力してください。',
             'max_passengers.between' => '相乗り可能人数は１～１０の間で入力してください。',
-            'latitude.required' => '現在地が取得できませんでした。もう一度入力してください。',
-            'longitude.required' => '現在地が取得できませんでした。もう一度入力してください。',
+            'lat.required' => '現在地が取得できませんでした。もう一度入力してください。',
+            'lng.required' => '現在地が取得できませんでした。もう一度入力してください。',
             
         ];
     }

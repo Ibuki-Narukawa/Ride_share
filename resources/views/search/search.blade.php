@@ -71,7 +71,7 @@
                 @endif
                 
                 <tr><th>出発地：</th></tr>
-                <tr><td><input type='text' id='from' placeholder='Origin' class='form-control' name='from' value="{{old('from')}}"></td></tr>
+                <tr><td><input type='text' id='from' placeholder='Origin' class='form-control' name='from' value={{old('from')}}></td></tr>
                 @if($errors->has('from'))
                 <tr><td class='error-message'>Error:{{$errors->first('from')}}</td></tr>
                 @endif
@@ -80,7 +80,7 @@
                 @endif
                 
                 <tr><th>目的地：</th></tr>
-                <tr><td><input type='text' id='to' placeholder='Desitination' class='form-control' name='to' value="{{old('to')}}"></td></tr>
+                <tr><td><input type='text' id='to' placeholder='Desitination' class='form-control' name='to' value={{old('to')}}></td></tr>
                 @if($errors->has('to'))
                 <tr><td class='error-message'>Error:{{$errors->first('to')}}</td></tr>
                 @endif

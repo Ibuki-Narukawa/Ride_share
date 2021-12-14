@@ -10,7 +10,7 @@
         font-size:50px; 
         margin:20px;
     }
-    .carpooler {
+    .application {
         width:75vw;
         margin:0 auto;
         margin-bottom:20px;
@@ -39,27 +39,30 @@
 
 @section('content')
     <h1>相乗り者リクエスト一覧</h1>
-    <div class='carpoolers'>
-        @foreach($carpoolers as $carpooler)
-        <div class='carpooler'>
+    <div class='applications'>
+        @foreach($applications as $application)
+        <div class='application'>
             <table>
                 <div class='name'>
-                    <tr><th>氏名：{{$carpooler->user->name}}</th></tr>
+                    <tr><th>氏名：<a href='/carpooler/applications/{{$application->id}}'>{{$application->user->name}}</a></th></tr>
                 </div>
                 <div class='start-datetime'>
-                    <tr><td>出発日時：{{$carpooler->start_datetime}}</th></tr>
+                    <tr><td>出発日時：{{$application->start_datetime}}</th></tr>
                 </div>
                 <div class='origin'>
-                    <tr><td>出発地：{{$carpooler->origin}}</td></tr>
+                    <tr><td>出発地：{{$application->origin}}</td></tr>
                 </div>
                 <div class='destination'>
-                    <tr><td>目的地：{{$carpooler->destination}}</td></tr>
+                    <tr><td>目的地：{{$application->destination}}</td></tr>
                 </div>
                 <div class='updated-at'>
-                    <tr><td>{{$carpooler->updated_at}}</td></tr>
+                    <tr><td>{{$application->updated_at}}</td></tr>
                 </div>
             </table>
         </div>
         @endforeach
     </div>
+    <p class='pagination'>
+        {{$applications->links()}}
+    </p> 
 @endsection

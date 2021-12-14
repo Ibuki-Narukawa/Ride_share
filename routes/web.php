@@ -46,3 +46,9 @@ Route::get('/search/driverlist','SearchController@driverlist');
 Route::post('/search/driverlist/{id}','SearchController@show');
 
 Route::get('/carpooler/applications','Carpooler\ApplicationController@index');
+
+Route::get('/carpooler/applications/{id}','Carpooler\ApplicationController@show');
+
+Route::delete('/carpooler/applications/{id}','Carpooler\ApplicationController@destroy');
+
+Route::post('/carpooler/applications/create','Carpooler\ApplicationController@store');
