@@ -21,7 +21,7 @@ class ApplicationController extends Controller
     }
     
     public function store(CarpoolerRequest $request){
-        $posts = DriverPost::where('status','=',1)->get();
+        /*$posts = DriverPost::where('status','=',1)->get();*/
         $start_datetime = $request->start_datetime;
         $from = $request->from;
         $to = $request->to;
@@ -42,7 +42,7 @@ class ApplicationController extends Controller
         $application->driver_post_id = $request->driver_post_id;
         $application->save();
         
-        return view('search.distanceMatrix',[
+        /*return view('search.distanceMatrix',[
             'posts' => $posts, 
             'start_datetime' => $start_datetime,
             'from' => $from, 
@@ -51,12 +51,14 @@ class ApplicationController extends Controller
             'lngFrom' => $lngFrom,
             'latTo' => $latTo,
             'lngTo' => $lngTo
-        ]);
+        ]);*/
+        
+        return redirect('/driver/applications');
     }
     
     public function destroy(Request $request){
         $application = Carpooler::find($request->id);
         $application->delete();
-        return redirect('/carpooler/applications');
+        return redirect('/capooler/applications');
     }
 }
