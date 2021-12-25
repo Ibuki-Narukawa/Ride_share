@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function carpoolers(){
         return $this->hasMany('App\Carpooler');     
     }
+    
+    public function messages(){
+        return $this->hasMany('App\Message');
+    }
 }

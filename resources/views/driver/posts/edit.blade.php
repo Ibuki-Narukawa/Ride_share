@@ -126,7 +126,7 @@
                             $image_filename = $form->car_image;
                             @endphp
                             <p>現画像ファイル：{{$image_filename}}</p>
-                            <image src="{{ asset('img/cars/'.$image_filename,true) }}">
+                            <image src="{{ Storage::disk('s3')->url("img/cars/".$image_filename) }}" alt="">
                         </div>
                         <input class='car-image' type='file' name='car_image' accept='image/png, image/jpeg'>
                     </td>

@@ -91,7 +91,7 @@
                             $image_filename = $form->user_image;
                             @endphp
                             <p>現画像ファイル：{{$image_filename}}</p>
-                            <image src="{{ asset('img/users/'.$image_filename,true) }}">
+                            <image src="{{ Storage::disk('s3')->url("img/users/".$image_filename) }}" alt="">
                         </div>
                         <input class='user-image' type='file' name='user_image' accept='image/png, image/jpeg'>
                     </td>

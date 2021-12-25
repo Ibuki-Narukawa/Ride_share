@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\DriverPost;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -25,13 +26,20 @@ class PostController extends Controller
     }
     
     public function store(PostRequest $request){
-        if ($file = $request->car_image){
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('img/cars/');
-            $file->move($target_path, $fileName);
+        if ($file = $request->file('car_image')){
+            $file_name = time() . $file->getClientOriginalName();
+            $file->storeAs('img/cars/', $file_name, 's3');
+            
+            /*$path=Storage::disk('s3')->putFileAs('img/cars', $file, $file_name, 'public');*/
+            /*Storage::putFileAs('photos', new File('/path/to/photo'), 'photo.jpg');*/
+            /*Storage::disk('s3')->putFile('img/cars/' . $file_name, $file, 'public');*/
+            /*Storage::put('img/cars/' . $file_name, $file, 'public');
+            /*$target_path = Storage::disk('s3')->putFile('/img/cars/', $file, 'public');*/
+            /*$target_path = public_path('img/cars/');
+            $file->move($target_path, $fileName);*/
         } 
         else {
-            $fileName = '';
+            $file_name = '';
         }
         
         $post = new DriverPost;
@@ -42,7 +50,7 @@ class PostController extends Controller
         $post->asking = $request->asking;
         $post->car_model = $request->car_model;
         $post->max_passengers = $request->max_passengers;
-        $post->car_image = $fileName;
+        $post->car_image = $file_name;
         $post->latitude = $request->lat;
         $post->longitude = $request->lng;
         $post->save();
@@ -56,13 +64,12 @@ class PostController extends Controller
     
     public function update(PostRequest $request){
         $post = DriverPost::find($request->id);
-        if ($file = $request->car_image){
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('img/cars/');
-            $file->move($target_path, $fileName);
+        if ($file = $request->file('car_image')){
+            $file_name = time() . $file->getClientOriginalName();
+            $file->storeAs('img/cars/', $file_name, 's3');
         } 
         else{
-            $fileName = $post->car_image;
+            $file_name = $post->car_image;
         }
         
         $post->user_id = random_int(1,10);
@@ -72,7 +79,7 @@ class PostController extends Controller
         $post->asking = $request->asking;
         $post->car_model = $request->car_model;
         $post->max_passengers = $request->max_passengers;
-        $post->car_image = $fileName;
+        $post->car_image = $file_name;
         $post->latitude = $request->lat;
         $post->longitude = $request->lng;
         $post->save();

@@ -25,17 +25,16 @@ class UserController extends Controller
     
     public function update(UserRequest $request){
         $user = User::find($request->id);
-        if ($file = $request->user_image){
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('img/users/');
-            $file->move($target_path, $fileName);
+       
+        if ($file = $request->file('user_image')){
+            $file_name = time() . $file->getClientOriginalName();
+            $file->storeAs('img/users/', $file_name, 's3');
         } 
         else{
-            $fileName = $user->user_image;
+            $file_name = $user->user_image;
         }
         
-        $form = $request->all();
-        $user->user_image = $fileName;
+        $form = $request->all(); $user->user_image = $file_name;
         $user->fill($form)->save();
         return redirect('/users/'.$user->id);
     }
