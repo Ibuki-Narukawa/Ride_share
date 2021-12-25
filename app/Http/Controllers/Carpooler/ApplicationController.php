@@ -59,6 +59,6 @@ class ApplicationController extends Controller
     public function destroy(Request $request){
         $application = Carpooler::find($request->id);
         $application->delete();
-        return redirect('/capooler/applications');
+        return redirect('/carpooler/applications');
     }
 }

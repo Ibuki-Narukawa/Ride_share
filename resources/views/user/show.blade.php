@@ -64,7 +64,7 @@
                             $image_filename = $user->user_image;
                             @endphp
                             <p>{{$image_filename}}</p>
-                            <image src="{{ asset('img/users/'.$image_filename,true) }}">
+                            <image src="{{ Storage::disk('s3')->url("img/users/".$image_filename) }}" alt="">
                         </div>
                         </td>
                     </tr>

@@ -73,7 +73,7 @@
                                 $image_filename = $post->car_image;
                                 @endphp
                                 <p>{{$image_filename}}</p>
-                                <image src="{{ asset('img/cars/'.$image_filename,true) }}">
+                                <image src="{{ Storage::disk('s3')->url("img/cars/".$image_filename) }}" alt="">
                             </div>
                         </td>
                     </tr>

@@ -84,7 +84,7 @@
                             $image_filename = $post->car_image;
                             @endphp
                             <p>{{$image_filename}}</p>
-                            <image src="{{ asset('img/cars/'.$image_filename,true) }}">
+                            <image src="{{ Storage::disk('s3')->url("img/cars/".$image_filename) }}" alt="">
                         </div>
                     </td>
                 </tr>
@@ -97,8 +97,8 @@
                 @csrf
                 <input style='display:none' type='number' name='driver_post_id' value={{$post->id}}>
                 <input style='display:none' type='datetime-local' name='start_datetime' value={{$start_datetime}}>
-                <input style='display:none' type='text' name='from' value={{$from}}>
-                <input style='display:none' type='text' name='to' value={{$to}}>
+                <input style='display:none' type='text' name='from' value="{{$from}}">
+                <input style='display:none' type='text' name='to' value="{{$to}}">
                 <input name='latFrom' style='display:none' type='number' step='0.00000000000001' id='latFrom' value={{$latFrom}}>
                 <input name='lngFrom' style='display:none' type='number' step='0.00000000000001' id='lngFrom' value={{$lngFrom}}>
                 <input name='latTo' style='display:none' type='number' step='0.00000000000001' id='latTo' value={{$latTo}}>
@@ -112,8 +112,8 @@
             <form action='/search/distanceMatrix' method='post'>
                 @csrf
                 <input style='display:none' type='datetime-local' name='start_datetime' value={{$start_datetime}}>
-                <input style='display:none' type='text' name='from' value={{$from}}>
-                <input style='display:none' type='text' name='to' value={{$to}}>
+                <input style='display:none' type='text' name='from' value="{{$from}}">
+                <input style='display:none' type='text' name='to' value="{{$to}}">
                 <input name='latFrom' style='display:none' type='number' step='0.00000000000001' id='latFrom' value={{$latFrom}}>
                 <input name='lngFrom' style='display:none' type='number' step='0.00000000000001' id='lngFrom' value={{$lngFrom}}>
                 <input name='latTo' style='display:none' type='number' step='0.00000000000001' id='latTo' value={{$latTo}}>
