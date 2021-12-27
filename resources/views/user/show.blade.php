@@ -57,23 +57,23 @@
                 @endif
             </div>
             <div class='user_image'>
-                    <tr>
-                        <td>
-                            <div style='text-align: center'>
-                            @php
-                            $image_filename = $user->user_image;
-                            @endphp
-                            <p>{{$image_filename}}</p>
-                            <image src="{{ Storage::disk('s3')->url("img/users/".$image_filename) }}" alt="">
-                        </div>
-                        </td>
-                    </tr>
-                </div>
-            <div class='email'>
-                <tr><td>email: {{$user->email}}</td></tr>
+                <tr>
+                    <td>
+                        <div style='text-align: center'>
+                        @php
+                        $image_filename = $user->user_image;
+                        @endphp
+                        <p>{{$image_filename}}</p>
+                        <image src="{{ Storage::disk('s3')->url("img/users/".$image_filename) }}" alt="">
+                    </div>
+                    </td>
+                </tr>
             </div>
             <div class='age'>
                 <tr><td>age: {{$user->age}} 歳</td></tr>
+            </div>
+            <div class='email'>
+                <tr><td>email: {{$user->email}}</td></tr>
             </div>
             <div class='self_introduction'>
                 <tr>

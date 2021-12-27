@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', function () {
     return view('homepage');
@@ -56,3 +57,5 @@ Route::post('/carpooler/applications/create','Carpooler\ApplicationController@st
 Route::get('/driver/applications','Driver\ApplicationController@index');
 
 Route::get('/driver/applications/{id}','Driver\ApplicationController@show');
+
+Route::get('/home', 'HomeController@index')->name('home');

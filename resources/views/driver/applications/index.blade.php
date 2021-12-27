@@ -44,7 +44,7 @@
         <div class='driver-post'>
             <table>
                 <div class='name'>
-                    <tr><th>氏名：<a href='/driver/applications/{{$application->id}}'>{{$post->user->name}}</a></th></tr>
+                    <tr><th>ドライバー名：<a href='/driver/applications/{{$application->id}}'>{{$post->user->name}}</a></th></tr>
                 </div>
                 <div class='current-location'>
                     <tr><td>現在地：{{$post->current_location}}</td></tr>

@@ -100,16 +100,16 @@
                 <tr><td class='error-message'>Error: {{$errors->first('user_image')}}</td></tr>
                 @endif
                 
-                <tr><th>メールアドレス：</th></tr>
-                <tr><td><input class='email' type='text' name='email' value={{old('email',$form->email)}}></td></tr>
-                @if($errors->has('email'))
-                <tr><td class='error-message'>Error: {{$errors->first('email')}}</td></tr>
-                @endif
-                
                 <tr><th>年齢：</th></tr>
                 <tr><td><input class='age' type='number' name='age' min='18' max='100' placeholder='18' value={{old('age',$form->age)}}>　歳</td></tr>
                 @if($errors->has('age'))
                 <tr><td class='error-message'>Error: {{$errors->first('age')}}</td></tr>
+                @endif
+                
+                <tr><th>メールアドレス：</th></tr>
+                <tr><td><input class='email' type='text' name='email' value={{old('email',$form->email)}}></td></tr>
+                @if($errors->has('email'))
+                <tr><td class='error-message'>Error: {{$errors->first('email')}}</td></tr>
                 @endif
                 
                 <tr><th>自己紹介文：</th></tr>

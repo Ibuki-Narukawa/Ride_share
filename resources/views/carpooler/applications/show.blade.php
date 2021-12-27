@@ -92,7 +92,7 @@
             </tr>
             
             <div class='updated-at'>
-                <tr><td>{{$application->updated_at}}</td></tr>
+                <tr><td>着信日時：{{$application->updated_at}}</td></tr>
             </div>
         </table>
     </div>
@@ -144,10 +144,10 @@
         }
     </script>
     
-    <script
+    {{--<script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async
-    ></script>
+    ></script>--}}
     
     <script src="{{ asset('js/map_directions_show.js') }}"></script>
     

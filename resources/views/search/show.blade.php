@@ -37,9 +37,6 @@
         width:200px;
     }
     .footer {
-        //width:60%;
-        //margin:0 auto;
-         //display:flex;
         text-align:center;
     }
     .btn {
@@ -118,7 +115,7 @@
                 <input name='lngFrom' style='display:none' type='number' step='0.00000000000001' id='lngFrom' value={{$lngFrom}}>
                 <input name='latTo' style='display:none' type='number' step='0.00000000000001' id='latTo' value={{$latTo}}>
                 <input name='lngTo' style='display:none' type='number' step='0.00000000000001' id='lngTo' value={{$lngTo}}>
-                <input type='submit' value='戻る'></p>
+                <button type='submit'>戻る</button>
             </form>
         </div>
     </div>
@@ -147,10 +144,10 @@
         window.address = @json($post->current_location);
     </script>
     
-    <script
+    {{--<script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async
-    ></script>
+    ></script>--}}
     
     <script src="{{ asset('js/map_show.js') }}"></script>
 @endsection

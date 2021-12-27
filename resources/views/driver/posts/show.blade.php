@@ -142,10 +142,10 @@
         window.address = @json($post->current_location);
     </script>
         
-    <script
+    {{--<script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async
-    ></script>
+    ></script>--}}
     
     <script src="{{ asset('js/map_show.js') }}"></script>
 @endsection
