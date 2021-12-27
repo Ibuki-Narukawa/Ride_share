@@ -25,15 +25,16 @@
         text-align: center;
         padding: 5px;
     }
-    .route-result{
-        width:75vw;
+    #route-result{
+        height:230px;
+        width:85vw;
         margin:0 auto;
         margin-bottom:30px;
         overflow:auto;
     }
     table {
         table-layout: auto;
-        width:80vw;
+        width:100vw;
         margin:0 auto;
     }
     th {
@@ -48,10 +49,6 @@
         color:#999; 
         text-align:center;
         padding:10px;
-    }
-    #route-result {
-        height:230px;
-        overflow-y:scroll;
     }
     thead {
         position: sticky;
@@ -97,10 +94,11 @@
         window.lngTo = @json($lngTo);
     </script>
     
-    <script
+    {{--<script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async
-    ></script>
+    ></script>--}}
     
     <script src="{{ asset('js/map_distance_matrix.js') }}"></script>
+    
 @endsection

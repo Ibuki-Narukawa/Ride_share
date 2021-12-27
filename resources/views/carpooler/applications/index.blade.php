@@ -44,7 +44,7 @@
         <div class='application'>
             <table>
                 <div class='name'>
-                    <tr><th>氏名：<a href='/carpooler/applications/{{$application->id}}'>{{$application->user->name}}</a></th></tr>
+                    <tr><th>相乗り者名：<a href='/carpooler/applications/{{$application->id}}'>{{$application->user->name}}</a></th></tr>
                 </div>
                 <div class='start-datetime'>
                     <tr><td>出発日時：{{$application->start_datetime}}</th></tr>
@@ -56,7 +56,7 @@
                     <tr><td>目的地：{{$application->destination}}</td></tr>
                 </div>
                 <div class='updated-at'>
-                    <tr><td>{{$application->updated_at}}</td></tr>
+                    <tr><td>着信日時：{{$application->updated_at}}</td></tr>
                 </div>
             </table>
         </div>

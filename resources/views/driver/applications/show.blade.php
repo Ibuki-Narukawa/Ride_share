@@ -37,13 +37,11 @@
         width:200px;
     }
     .footer {
-        //width:60%;
-        //margin:0 auto;
-         //display:flex;
         text-align:center;
     }
     .btn {
         margin:20px;
+        width:50%;
     }
     #map {
         width: 90%;
@@ -92,13 +90,11 @@
         </table>
     </div>
     <div class='footer'>
-        <div class='btn delete-btn'>
+        <!--<div class='btn delete-btn'>-->
             
-        </div>
+        <!--</div>-->
         
-        <div class='btn back-btn'>
-            <p>[<a href='/driver/applications'>back</a>]</p>
-        </div>
+        <p>[<a href='/driver/applications'>back</a>]</p>
     </div>
     
     <script>
@@ -117,10 +113,10 @@
         window.address = @json($post->current_location);
     </script>
     
-    <script
+    {{--<script
         src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
         async
-    ></script>
+    ></script>--}}
     
     <script src="{{ asset('js/map_show.js') }}"></script>
 @endsection

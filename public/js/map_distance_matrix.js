@@ -60,7 +60,7 @@ var createPlacesMarker = function(name,latlng) {
 		animation: google.maps.Animation.DROP,
 		title: name,
 		icon: {
-			url: '../../img/map/driver.png',
+			url: 'https://ride-share-bucket.s3.us-east-2.amazonaws.com/img/map/driver.png',
 			scaledSize: new google.maps.Size(33,33)
 		}
 	});

@@ -43,11 +43,11 @@
                 <div class='name'>
                     <tr><th>氏名：<a href='/users/{{$user->id}}'>{{$user->name}}</a></th></tr>
                 </div>
-                <div class='email'>
-                    <tr><td>email: {{$user->email}}</td></tr>
-                </div>
                 <div class='age'>
                     <tr><td>age: {{$user->age}} 歳</td></tr>
+                </div>
+                <div class='email'>
+                    <tr><td>email: {{$user->email}}</td></tr>
                 </div>
             </table>
         </div>
