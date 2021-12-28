@@ -93,19 +93,23 @@
         <!--<div class='btn delete-btn'>-->
             
         <!--</div>-->
-        
+        @if($application->status == 1)
         <p>[<a href='/driver/applications'>back</a>]</p>
+        @else
+        <p>[<a href='/drives/{{$application->drive_id}}'>back</a>]</p>
+        @endif
+        
     </div>
     
-    <script>
-        function deleteApplication(e){
-            event.preventDefault();
-            'use strict';
-            if(window.confirm('本当にこのドライバーに申請しますか?\n\n検索データ\n出発時刻：' + startDatetime + '\n出発地：' + origin + '\n緯度：' + latFrom + ' 経度：' + lngFrom +'\n目的地：' + To  + '\n緯度：' + latTo + ' 経度：' + lngTo)){
-                document.getElementById('form').submit();
-            }
-        }
-    </script>
+    // <script>
+    //     function deleteApplication(e){
+    //         event.preventDefault();
+    //         'use strict';
+    //         if(window.confirm('本当にこのドライバーに申請しますか?\n\n検索データ\n出発時刻：' + startDatetime + '\n出発地：' + origin + '\n緯度：' + latFrom + ' 経度：' + lngFrom +'\n目的地：' + To  + '\n緯度：' + latTo + ' 経度：' + lngTo)){
+    //             document.getElementById('form').submit();
+    //         }
+    //     }
+    // </script>
     
     <script>
         window.latitude = @json($post->latitude);

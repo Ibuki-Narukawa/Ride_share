@@ -89,6 +89,7 @@
                 <a href="/driver/posts/create">ドライバー登録</a>
                 <a href="/driver/posts">ドライバー登録履歴</a>
                 <a href="/carpooler/applications">「乗せて」一覧</a>
+                <a href="/drives">成立したドライブ一覧</a>
             </div>
             
             <div class="links">

@@ -5,14 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ChatRoom extends Model
+class Drive extends Model
 {
     use SoftDeletes;
     
     protected $guarded = array('id');
     
     public function carpooler(){
-        return $this->belongsTo('App\carpooler');
+        return $this->belongsTo('App\Carpooler');
     }
     
     public function driverPost(){

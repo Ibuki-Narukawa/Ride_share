@@ -15,5 +15,4 @@ class DriverPost extends Model
         return $this->belongsTo('App\User');
     }
     
-    
 }

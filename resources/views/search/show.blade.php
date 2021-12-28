@@ -37,10 +37,13 @@
         width:200px;
     }
     .footer {
-        text-align:center;
+        width:60%;
+        margin:0 auto;
+        display:flex;
     }
     .btn {
         margin:20px;
+        width:50%;
     }
     #map {
         width: 90%;

@@ -18,7 +18,7 @@ class ApplicationController extends Controller
     public function show(Request $request){
         $application = Carpooler::find($request->id);
         $post = DriverPost::find($application->driver_post_id);
-        return view('driver.applications.show',['post'=>$post]);
+        return view('driver.applications.show',['post'=>$post, 'application'=>$application]);
     }
     
     public function destroy(Request $request){

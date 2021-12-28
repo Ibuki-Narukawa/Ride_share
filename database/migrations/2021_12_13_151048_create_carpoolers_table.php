@@ -25,7 +25,7 @@ class CreateCarpoolersTable extends Migration
             $table->tinyInteger('status')->unsigned()->default(1)->comment('ステータス : 1 : 承認待ち : 2 : 承認済み : 3 :拒否');
             $table->integer('user_id')->unsigned();
             $table->integer('driver_post_id')->unsigned();
-            $table->integer('chat_room_id')->unsigned()->nullable();
+            $table->integer('drive_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
