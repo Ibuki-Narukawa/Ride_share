@@ -127,9 +127,9 @@
                 <tr><td class='error-message'>Error:{{$errors->first('car_image')}}</td></tr>
                 @endif
             </table>
-            <p class='submit-btn'><button onclick='return submitPost(this);'>登録</button></p>
             <input name='lat' style='display:none' type='number' step='0.00000000000001' id='lat' value={{old('lat')}}>
             <input name='lng' style='display:none' type='number' step='0.00000000000001' id='lng' value={{old('lng')}}>
+            <p class='submit-btn'><button onclick='return submitPost(this);'>登録</button></p>
         </form>
     </div>
     <div class='footer'>

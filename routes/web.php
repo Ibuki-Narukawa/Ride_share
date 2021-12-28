@@ -42,8 +42,6 @@ Route::get('/search','SearchController@search');
 
 Route::post('/search/distanceMatrix','SearchController@distanceMatrix');
 
-Route::get('/search/driverlist','SearchController@driverlist');
-
 Route::post('/search/driverlist/{id}','SearchController@show');
 
 Route::get('/carpooler/applications','Carpooler\ApplicationController@index');
@@ -57,5 +55,13 @@ Route::post('/carpooler/applications/create','Carpooler\ApplicationController@st
 Route::get('/driver/applications','Driver\ApplicationController@index');
 
 Route::get('/driver/applications/{id}','Driver\ApplicationController@show');
+
+Route::get('/drives','DriveController@index');
+
+Route::get('/drives/{id}','DriveController@show');
+
+Route::post('/drives/create','DriveController@store');
+
+Route::post('/drives/messages/create','MessageController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');

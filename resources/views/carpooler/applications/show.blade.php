@@ -97,11 +97,16 @@
         </table>
     </div>
     
+    @if($application->status == 1)
     <div class='operationBar'>
         <div class='btn approve-btn'>
-            @csrf
-            <input type='submit' style='display:none' method='post'>
-            <button><span onclick='return approveApplication(this);'>承認する</span></button>
+            <form action='/drives/create' id='form_approve' method='post' enctype='multipart/form-data'>
+                @csrf
+                <input style='display:none' type='number' name='carpooler_id' value={{$application->id}}>
+                <input style='display:none' type='number' name='driver_post_id' value={{$application->driver_post_id}}>
+                <input type='submit' style='display:none'>
+                <button><span onclick='return approveApplication(this);'>承認する</span></button>
+            </form>
         </div>
         
         <div class='btn reject-btn'>
@@ -117,6 +122,12 @@
     <div class='footer'>
         <p>[<a href='/carpooler/applications'>back</a>]</p>   
     </div>
+    @else
+    <div class='footer'>
+        <p>[<a href='/drives/{{$application->drive_id}}'>back</a>]</p>   
+    </div>
+    @endif
+    
     
     <script>
         window.startDatetime = @json($application->start_datetime);
@@ -131,7 +142,7 @@
             event.preventDefault();
             'use strict';
             if(window.confirm('本当にこの相乗り者を承認しますか?')){
-                document.getElementById('form').submit();
+                document.getElementById('form_approve').submit();
             }
         }
         

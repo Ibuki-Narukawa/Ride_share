@@ -16,9 +16,10 @@ class MessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('comment',500)->nullable();
-            $table->integer('chat_room_id')->unsigned();
+            $table->integer('drive_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -11,8 +11,8 @@ class Message extends Model
     
     protected $guarded = array('id');
     
-    public function chat_room(){
-        return $this->belongsTo('App\ChatRoom');
+    public function drive(){
+        return $this->belongsTo('App\Drive');
     }
     
     public function user(){
