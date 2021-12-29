@@ -50,10 +50,62 @@
         height: 350px;
         margin:20px auto;
     }
+    
+    @media screen and (max-width:480px){
+        body {
+            front-size:16px;
+            color:#00BFFF;
+        }
+        h1 {
+            font-size:30px; 
+            color:#00BFFF; 
+            margin:20px;
+            text-align:center;
+        }
+        .driver-post {
+            width:90%;
+            margin:0 auto;
+            margin-bottom:20px;
+        }
+        table {
+            table-layout: fixed;
+            width:100%
+        }
+        th {
+            border: solid 1px #00BFFF;
+            background-color:#00BFFF;
+            color:#F0FFFF;
+            padding:5px; 
+            text-align:left;
+        }
+        td {
+            border:solid 1px #aaa; 
+            color:#999; 
+            text-align:left;
+            padding:10px;
+        }
+        img {
+            width:200px;
+        }
+        .footer {
+            width:80%;
+            margin:0 auto;
+            display:flex;
+        }
+        .btn {
+            margin:20px;
+            width:50%;
+        }
+        #map {
+            width: 100%;
+            height: 300px;
+            margin:20px auto;
+        } 
+    }
 @endsection
 
 @section('content')
-    <h1>Driver Show</h1>
+    <h1>ドライバー詳細</h1>
     <div class='driver-post'>
         <table>
             <div class='name'>

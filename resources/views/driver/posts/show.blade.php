@@ -52,20 +52,77 @@
         height: 350px;
         margin:20px auto;
     }
+    
+    @media screen and (max-width:480px){
+        body {
+        front-size:16px;
+        color:#00BFFF;
+        text-align:center;
+        }
+        h1 {
+            font-size:30px; 
+            margin:20px;
+        }
+        h3 {
+            font-size:20px;
+        }
+        .driver-post {
+            width:90vw;
+            margin:0 auto;
+            margin-bottom:20px;
+        }
+        table {
+            table-layout: fixed;
+            width:100%
+        }
+        th {
+            border: solid 1px #00BFFF;
+            background-color:#00BFFF;
+            color:#F0FFFF;
+            padding:5px; 
+            text-align:left;
+        }
+        td {
+            border:solid 1px #aaa; 
+            color:#999; 
+            text-align:left;
+            padding:10px;
+        }
+        img {
+            width:200px;
+        }
+        .footer {
+            text-align:center;
+        }
+        .operationBar {
+            width:80%;
+            margin:0 auto;
+            display:flex;
+        }
+        .btn {
+            text-align:center;
+            width:50%;
+        }
+        #map {
+            width: 100%;
+            height: 300px;
+            margin:20px auto;
+        }
+    }
 @endsection
 
 @section('content')
-    <h1>Driver Show</h1>
+    <h1>ドライバー詳細</h1>
     <div class='operationBar'>
         <div class='editBtn btn'>
-            <h3>[<a href='/driver/posts/{{$post->id}}/edit'>Edit</a>]</h3>
+            <h3>[<a href='/driver/posts/{{$post->id}}/edit'>編集</a>]</h3>
         </div>
         <div class='deleteBtn btn'>
             <form action='/driver/posts/{{$post->id}}' id='form_delete' method='post' enctype='multipart/form-data'>
                 @csrf
                 @method('delete')
                 <input type='submit' style='display:none'>
-                <h3>[<span onclick='return deletePost(this);'>Delete</span>]</h3>
+                <h3>[<span onclick='return deletePost(this);'>削除</span>]</h3>
             </form>
         </div>
     </div>
@@ -125,7 +182,7 @@
         </table>
     </div>
     <div class='footer'>
-        <p>[<a href='/driver/posts'>back</a>]</p>   
+        <p>[<a href='/driver/posts'>戻る</a>]</p>   
     </div>
     <script>
         function deletePost(e){

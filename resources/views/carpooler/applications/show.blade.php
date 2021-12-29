@@ -12,7 +12,7 @@
         text-align:center;
     }
     .application {
-        width:75%;
+        width:75vw;
         margin:0 auto;
         margin-bottom:20px;
     }
@@ -60,6 +60,69 @@
     .btn {
         text-align:center;
         width:50%;
+    }
+    
+    @media screen and (max-width:480px){
+        body {
+            front-size:16px;
+            color:#00BFFF;
+        }
+        h1 {
+            font-size:30px; 
+            color:#00BFFF; 
+            margin:20px;
+            text-align:center;
+        }
+        .application {
+            width:90vw;
+            margin:0 auto;
+            margin-bottom:20px;
+        }
+        table {
+            table-layout: fixed;
+            width:100%
+        }
+        th {
+            border: solid 1px #00BFFF;
+            background-color:#00BFFF;
+            color:#F0FFFF;
+            padding:5px; 
+            text-align:left;
+        }
+        td {
+            border:solid 1px #aaa; 
+            color:#999; 
+            text-align:left;
+            padding:10px;
+        }
+        img {
+            width:200px;
+        }
+        .footer {
+            //width:60%;
+            //margin:0 auto;
+             //display:flex;
+            text-align:center;
+        }
+    
+        #map {
+            width: 100%;
+            height: 300px;
+            margin:20px auto;
+        }
+        #output {
+            text-align: center;
+            padding: 0px;
+        }
+        .operationBar {
+            width:80%;
+            margin:0 auto;
+            display:flex;
+        }
+        .btn {
+            text-align:center;
+            width:50%;
+        }    
     }
 @endsection
 
@@ -120,11 +183,11 @@
     </div>
     
     <div class='footer'>
-        <p>[<a href='/carpooler/applications'>back</a>]</p>   
+        <p>[<a href='/carpooler/applications'>戻る</a>]</p>   
     </div>
     @else
     <div class='footer'>
-        <p>[<a href='/drives/{{$application->drive_id}}'>back</a>]</p>   
+        <p>[<a href='/drives/{{$application->drive_id}}'>戻る</a>]</p>   
     </div>
     @endif
     

@@ -26,7 +26,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         main {
-            margin-top: 40px;
+            margin-top: 45px;
         }
         @yield('style')
     </style>

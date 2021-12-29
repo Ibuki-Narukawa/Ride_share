@@ -35,13 +35,53 @@
     img {
         width:200px;
     }
+    
+    @media screen and (max-width:480px){
+        body {
+            front-size:16px;
+            color:#00BFFF;
+            text-align:center;
+        }
+        h1 {
+            font-size:30px; 
+            margin:20px;
+        }
+        h3 {
+            font-size:20px;
+        }
+        .user {
+            width:90vw;
+            margin:0 auto;
+            margin-bottom:20px;
+        }
+        table {
+            table-layout: fixed;
+            width:100%;
+        }
+        th {
+            border: solid 1px #00BFFF;
+            background-color:#00BFFF;
+            color:#F0FFFF;
+            padding:5px; 
+            text-align:left;
+        }
+        td {
+            border:solid 1px #aaa; 
+            color:#999; 
+            text-align:left;
+            padding:10px;
+        }
+        img {
+            width:200px;
+        }
+    }
 @endsection
 
 @section('content')
-    <h1>My Page</h1>
+    <h1>プロフィール</h1>
     <div class='operationBar'>
         <div class='editBtn btn'>
-            <h3>[<a href='/users/{{$user->id}}/edit'>Edit</a>]</h3>
+            <h3>[<a href='/users/{{$user->id}}/edit'>編集</a>]</h3>
         </div>
     </div>
     <div class='user'>
@@ -86,6 +126,6 @@
         </table>
     </div>
     <div class='footer'>
-        <p>[<a href='/users'>back</a>]</p>   
+        <p>[<a href='/users'>戻る</a>]</p>   
     </div>
 @endsection
