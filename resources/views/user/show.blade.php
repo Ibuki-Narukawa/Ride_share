@@ -79,8 +79,8 @@
 
 @section('content')
     <h1>プロフィール</h1>
-    <div class='operationBar'>
-        <div class='editBtn btn'>
+    <div class='button-bar'>
+        <div class='edit-btn btn'>
             <h3>[<a href='/users/{{$user->id}}/edit'>編集</a>]</h3>
         </div>
     </div>
@@ -125,7 +125,7 @@
             </div>
         </table>
     </div>
-    <div class='footer'>
+    <div class='back-link'>
         <p>[<a href='/users'>戻る</a>]</p>   
     </div>
 @endsection

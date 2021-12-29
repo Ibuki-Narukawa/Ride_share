@@ -36,7 +36,7 @@
     img {
         width:200px;
     }
-    .footer {
+    .button-bar {
         width:60%;
         margin:0 auto;
         display:flex;
@@ -87,7 +87,7 @@
         img {
             width:200px;
         }
-        .footer {
+        .button-bar {
             width:80%;
             margin:0 auto;
             display:flex;
@@ -143,7 +143,7 @@
             </div>
         </table>
     </div>
-    <div class='footer'>
+    <div class='button-bar'>
         <div class='btn apply-btn'>
             <form action='/carpooler/applications/create' method='post' id='form'>
                 @csrf

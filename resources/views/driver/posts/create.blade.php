@@ -39,7 +39,7 @@
     img {
         width:200px;
     }
-    .footer {
+    .back-link {
         text-align:center;
     }
     ::placeholder {
@@ -98,7 +98,7 @@
         img {
             width:200px;
         }
-        .footer {
+        .back-link {
             text-align:center;
         }
         ::placeholder {
@@ -192,8 +192,8 @@
             <p class='submit-btn'><button onclick='return submitPost(this);'>登録</button></p>
         </form>
     </div>
-    <div class='footer'>
-        <p>[<a href='/driver/posts'>戻る</a>]</p>  
+    <div class='back-link'>
+        <p>[<a href='/'>戻る</a>]</p>  
     </div>
     
     <script>

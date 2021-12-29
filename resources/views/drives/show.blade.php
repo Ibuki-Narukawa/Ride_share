@@ -36,10 +36,7 @@
     img {
         width:200px;
     }
-    .footer {
-        //width:60%;
-        //margin:0 auto;
-         //display:flex;
+    .back-link {
         text-align:center;
     }
 
@@ -131,10 +128,7 @@
         img {
             width:200px;
         }
-        .footer {
-            //width:60%;
-            //margin:0 auto;
-             //display:flex;
+        .back-link {
             text-align:center;
         }
     
@@ -252,7 +246,7 @@
         </div>
     </div>
     
-    <div class='footer'>
+    <div class='back-link'>
         <p>[<a href='/drives'>戻る</a>]</p>   
     </div>
     

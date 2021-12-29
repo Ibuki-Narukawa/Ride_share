@@ -35,10 +35,10 @@
     img {
         width:200px;
     }
-    .footer {
+    .back-link {
         text-align:center;
     }
-    .operationBar {
+    .button-bar {
         width:60%;
         margin:0 auto;
         display:flex;
@@ -91,10 +91,10 @@
         img {
             width:200px;
         }
-        .footer {
+        .back-link {
             text-align:center;
         }
-        .operationBar {
+        .button-bar {
             width:80%;
             margin:0 auto;
             display:flex;
@@ -113,11 +113,11 @@
 
 @section('content')
     <h1>ドライバー詳細</h1>
-    <div class='operationBar'>
-        <div class='editBtn btn'>
+    <div class='button-bar'>
+        <div class='edit-btn btn'>
             <h3>[<a href='/driver/posts/{{$post->id}}/edit'>編集</a>]</h3>
         </div>
-        <div class='deleteBtn btn'>
+        <div class='delet-btn btn'>
             <form action='/driver/posts/{{$post->id}}' id='form_delete' method='post' enctype='multipart/form-data'>
                 @csrf
                 @method('delete')
@@ -181,7 +181,7 @@
             </div>
         </table>
     </div>
-    <div class='footer'>
+    <div class='back-link'>
         <p>[<a href='/driver/posts'>戻る</a>]</p>   
     </div>
     <script>

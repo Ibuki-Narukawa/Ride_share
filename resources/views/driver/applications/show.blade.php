@@ -36,7 +36,7 @@
     img {
         width:200px;
     }
-    .footer {
+    .back-link {
         text-align:center;
     }
     .btn {
@@ -85,7 +85,7 @@
         img {
             width:200px;
         }
-        .footer {
+        .back-link {
             text-align:center;
         }
         .btn {
@@ -139,7 +139,7 @@
             </div>
         </table>
     </div>
-    <div class='footer'>
+    <div class='back-link'>
         <!--<div class='btn delete-btn'>-->
             
         <!--</div>-->
