@@ -36,10 +36,7 @@
     img {
         width:200px;
     }
-    .footer {
-        //width:60%;
-        //margin:0 auto;
-         //display:flex;
+    .back-link {
         text-align:center;
     }
 
@@ -52,7 +49,7 @@
         text-align: center;
         padding: 5px;
     }
-    .operationBar {
+    .button-bar {
         width:60%;
         margin:0 auto;
         display:flex;
@@ -98,10 +95,7 @@
         img {
             width:200px;
         }
-        .footer {
-            //width:60%;
-            //margin:0 auto;
-             //display:flex;
+        .back-link {
             text-align:center;
         }
     
@@ -114,7 +108,7 @@
             text-align: center;
             padding: 0px;
         }
-        .operationBar {
+        .button-bar {
             width:80%;
             margin:0 auto;
             display:flex;
@@ -161,7 +155,7 @@
     </div>
     
     @if($application->status == 1)
-    <div class='operationBar'>
+    <div class='button-bar'>
         <div class='btn approve-btn'>
             <form action='/drives/create' id='form_approve' method='post' enctype='multipart/form-data'>
                 @csrf
@@ -182,11 +176,11 @@
         </div>
     </div>
     
-    <div class='footer'>
+    <div class='back-link'>
         <p>[<a href='/carpooler/applications'>戻る</a>]</p>   
     </div>
     @else
-    <div class='footer'>
+    <div class='back-link'>
         <p>[<a href='/drives/{{$application->drive_id}}'>戻る</a>]</p>   
     </div>
     @endif

@@ -35,7 +35,7 @@
     img {
         width:200px;
     }
-    .footer {
+    .back-link {
         text-align:center;
     }
     ::placeholder {
@@ -94,7 +94,7 @@
         img {
             width:200px;
         }
-        .footer {
+        .back-link {
             text-align:center;
         }
         ::placeholder {
@@ -200,7 +200,7 @@
             <input name='lng' style='display:none' type='number' step='0.00000000000001' id='lng' value={{old('lng',$form->longitude)}}>
         </form>
     </div>
-    <div class='footer'>
+    <div class='back-link'>
         <p>[<a href='/driver/posts/{{$form->id}}'>戻る</a>]</p>  
     </div>
     

@@ -35,7 +35,7 @@
     img {
         width:200px;
     }
-    .footer {
+    .back-link {
         text-align:center;
     }
     ::placeholder {
@@ -87,7 +87,7 @@
         img {
             width:200px;
         }
-        .footer {
+        .back-link {
             text-align:center;
         }
         ::placeholder {
@@ -174,7 +174,7 @@
             <p class='submit-btn'><input type='submit' value='更新'></p>
         </form>
     </div>
-    <div class='footer'>
+    <div class='back-link'>
         <p>[<a href='/users/{{$form->id}}'>戻る</a>]</p>  
     </div>
 @endsection
