@@ -70,7 +70,7 @@ var createPlacesMarker = function(name,latlng) {
 	google.maps.event.addListener(marker, 'click', function() {
 		// 吹き出しを表示
 		infowindowContent.children['place-name'].textContent = name;
-		infowindowContent.children['place-address'].textContent = latlng;
+		//infowindowContent.children['place-address'].textContent = latlng;
 		infowindow.open(mapObj, this);
 	});
 };

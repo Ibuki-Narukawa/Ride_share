@@ -12,7 +12,7 @@
         text-align:center;
     }
     .drive {
-        width:75%;
+        width:75vw;
         margin:0 auto;
         margin-bottom:20px;
     }
@@ -45,7 +45,7 @@
 
     #map {
         width: 90%;
-        height: 350px;
+        height: 400px;
         margin:20px auto;
     }
     #output {
@@ -60,7 +60,7 @@
         color:#999; 
         text-align:left;
         padding:10px;
-        height:300px;
+        height:400px;
         overflow:auto;
     }
     form {
@@ -73,7 +73,7 @@
     ::placeholder {
         opacity:0.4;
     }
-    h2 {
+    .messages h2 {
         border-bottom:solid 1px #aaa;
     }
     table.message-table{
@@ -94,10 +94,106 @@
     .message-table tr:last-child td {
         border-bottom: none;
     }
+    
+    @media screen and (max-width:480px){
+        body {
+            front-size:16px;
+            color:#00BFFF;
+        }
+        h1 {
+            font-size:30px; 
+            color:#00BFFF; 
+            margin:20px;
+            text-align:center;
+        }
+        .drive {
+            width:90vw;
+            margin:0 auto;
+            margin-bottom:20px;
+        }
+        table {
+            table-layout: fixed;
+            width:100%
+        }
+        th {
+            border: solid 1px #00BFFF;
+            background-color:#00BFFF;
+            color:#F0FFFF;
+            padding:5px; 
+            text-align:left;
+        }
+        td {
+            border:solid 1px #aaa; 
+            color:#999; 
+            text-align:left;
+            padding:10px;
+        }
+        img {
+            width:200px;
+        }
+        .footer {
+            //width:60%;
+            //margin:0 auto;
+             //display:flex;
+            text-align:center;
+        }
+    
+        #map {
+            width: 100%;
+            height: 300px;
+            margin:20px auto;
+        }
+        #output {
+            text-align: center;
+            padding: 0px;
+        }
+        .messages {
+            margin-top:30px;
+        }
+        .messages-space{
+            border:solid 1px #aaa; 
+            color:#999; 
+            text-align:left;
+            padding:10px;
+            height:400px;
+            overflow:auto;
+        }
+        form {
+            display:flex;
+        }
+        .comment {
+            width:100%;
+            margin:0 auto;
+        }
+        ::placeholder {
+            opacity:0.4;
+        }
+        .messages h2 {
+            border-bottom:solid 1px #aaa;
+        }
+        table.message-table{
+            margin-bottom:10px;
+            border-collapse: separate;
+            overflow: hidden;
+            border-spacing: 0;
+            border-radius: 10px;
+            border: 1px solid #aaa;
+        }
+        .message-table th, .message-table td {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 1px solid #aaa;
+        }
+        
+        .message-table tr:last-child td {
+            border-bottom: none;
+        }    
+    }
 @endsection
 
 @section('content')
-    <h1>Drive Show</h1>
+    <h1>ドライブ詳細</h1>
     <div class='drive'>
         <table>
             <tr><th>ドライブ情報</th></tr>
@@ -135,7 +231,7 @@
         </table>
         
         <div class='messages'>
-            <h2>メッセージ欄</h2>
+            <h1>メッセージ欄</h1>
             <div class='messages-space'>
                 @foreach($messages as $message)
                 <table class='message-table'>
@@ -157,7 +253,7 @@
     </div>
     
     <div class='footer'>
-        <p>[<a href='/drives'>back</a>]</p>   
+        <p>[<a href='/drives'>戻る</a>]</p>   
     </div>
     
     <script>

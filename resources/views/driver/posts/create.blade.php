@@ -62,10 +62,70 @@
         height: 350px;
         margin:20px auto;
     }
+    
+    @media screen and (max-width:480px){
+        body {
+        front-size:16px;
+        color:#00BFFF;
+        text-align:center;
+        }
+        h1 {
+            font-size:30px; 
+            margin:20px;
+        }
+        .driver-post {
+            width:90vw;
+            margin:0 auto;
+            margin-bottom:20px;
+        }
+        table {
+            table-layout: fixed;
+            width:100%
+        }
+        th {
+            border: solid 1px #00BFFF;
+            background-color:#00BFFF;
+            color:#F0FFFF;
+            padding:5px; 
+            text-align:left;
+        }
+        td {
+            border:solid 1px #aaa; 
+            color:#999; 
+            text-align:left;
+            padding:10px;
+        }
+        img {
+            width:200px;
+        }
+        .footer {
+            text-align:center;
+        }
+        ::placeholder {
+            opacity:0.4;
+        }
+        .current-location {
+            width:97%;
+        }
+        .asking {
+            width:97%;
+        }
+        .error-message {
+            color:red;
+        }
+        .button, input, select, textarea {
+            font-family: inherit;
+        }
+        #map {
+            width: 100%;
+            height: 300px;
+            margin:20px auto;
+        }    
+    }
 @endsection
 
 @section('content')
-    <h1>Driver Create</h1>
+    <h1>ドライバー投稿作成</h1>
     @if(count($errors)>0)
     <p>入力に問題があります。再入力してください。</p>
     @endif
@@ -133,7 +193,7 @@
         </form>
     </div>
     <div class='footer'>
-        <p>[<a href='/driver/posts'>back</a>]</p>  
+        <p>[<a href='/driver/posts'>戻る</a>]</p>  
     </div>
     
     <script>
