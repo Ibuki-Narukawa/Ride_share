@@ -109,6 +109,10 @@
         #result-body tr:hover { 
             background-color: #ddd; cursor: pointer; overflow-y:auto;
         }
+        
+        button {
+            z-index:999;
+        }
     }
 @endsection
 
