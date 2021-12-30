@@ -13,10 +13,7 @@
     <!-- Scripts -->
     <!--<script src="https://js.stripe.com/v3/"></script>-->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
-        async
-    ></script>
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
