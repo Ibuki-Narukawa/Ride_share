@@ -150,9 +150,9 @@ var calcDistanceMatrix = function(length, flag) {
 					var placeNo = sortResults[i][5];
 					var id = sortResults[i][6];
 					data.push('<tr data-index="' + placeNo + '" >');
-					data.push('<td class="route-btn">' + sortResults[i][1] + '</td>');
-					data.push('<td class="route-btn">' + sortResults[i][4].distance.text + '</td>');
-					data.push('<td class="route-btn">' + sortResults[i][4].duration.text + '</td>');
+					data.push('<td>' + sortResults[i][1] + '</td>');
+					data.push('<td>' + sortResults[i][4].distance.text + '</td>');
+					data.push('<td>' + sortResults[i][4].duration.text + '</td>');
 					data.push('<td><button onclick=submitForm('+ id + ');>詳細</button></td>');
 					data.push('</tr>');
 					html.push(data.join(''));
@@ -182,13 +182,7 @@ var calcDistanceMatrix = function(length, flag) {
 };
 
 var submitForm = function(id){
-	if(window.confirm('このドライバーの詳細を見ますか？')){
-            submit(id);
-        }
-};
-
-var submit = function(id){
-	//event.preventDefault();
+	event.stopPropagation();;
 	var form = document.createElement('form');  
 	form.method = 'post';
 	form.action = '/search/driverlist/'+ id ;
