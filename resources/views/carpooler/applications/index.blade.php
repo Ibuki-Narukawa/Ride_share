@@ -101,6 +101,9 @@
                 <div class='updated-at'>
                     <tr><td>着信日時：{{$application->updated_at}}</td></tr>
                 </div>
+                <div class='driver-info'>
+                    <tr><th><a href='/driver/applications/{{$application->id}}'>ドライバー詳細</a></th></tr>
+                </div>
             </table>
         </div>
         @endforeach

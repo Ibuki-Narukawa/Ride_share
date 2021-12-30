@@ -16,6 +16,6 @@ $factory->define(Carpooler::class, function (Faker $faker) {
         'latitude_to' => 34.7375437,
         'longitude_to' => 135.3414417,
         'user_id' => random_int(1,20),
-        'driver_post_id' => random_int(15,19),
+        'driver_post_id' => random_int(21,40),
     ];
 });

@@ -113,19 +113,24 @@
 
 @section('content')
     <h1>ドライバー詳細</h1>
-    <div class='button-bar'>
-        <div class='edit-btn btn'>
-            <h3>[<a href='/driver/posts/{{$post->id}}/edit'>編集</a>]</h3>
-        </div>
-        <div class='delet-btn btn'>
-            <form action='/driver/posts/{{$post->id}}' id='form_delete' method='post' enctype='multipart/form-data'>
-                @csrf
-                @method('delete')
-                <input type='submit' style='display:none'>
-                <h3>[<span onclick='return deletePost(this);'>削除</span>]</h3>
-            </form>
-        </div>
-    </div>
+    @auth
+        @if(Auth::id()==$post->user_id && $post->status==1)
+            <div class='button-bar'>
+                <div class='edit-btn btn'>
+                    <h3>[<a href='/driver/posts/{{$post->id}}/edit'>編集</a>]</h3>
+                </div>
+                <div class='delet-btn btn'>
+                    <form action='/driver/posts/{{$post->id}}' id='form_delete' method='post' enctype='multipart/form-data'>
+                        @csrf
+                        @method('delete')
+                        <input type='submit' style='display:none'>
+                        <h3>[<span onclick='return deletePost(this);'>削除</span>]</h3>
+                    </form>
+                </div>
+            </div>
+        @endif
+    @endauth
+    
     <div class='driver-post'>
         <table>
             <div class='name'>

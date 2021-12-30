@@ -74,6 +74,7 @@
         border-bottom:solid 1px #aaa;
     }
     table.message-table{
+        overflow-wrap:break-word;
         margin-bottom:10px;
         border-collapse: separate;
         overflow: hidden;
@@ -87,9 +88,24 @@
         border-right: none;
         border-bottom: 1px solid #aaa;
     }
-    
     .message-table tr:last-child td {
         border-bottom: none;
+    }
+    .created_at {
+        margin-top:-7px;
+        margin-bottom:17px;
+        padding-left:5px;
+        font-size:5px;
+    }
+    .delete-btn:hover {
+        cursor: pointer;
+    }
+    .my-message {
+        width:40%;
+        margin-left:60%;
+    }
+    .partner-message{
+        width: 40%;
     }
     
     @media screen and (max-width:480px){
@@ -166,6 +182,7 @@
             border-bottom:solid 1px #aaa;
         }
         table.message-table{
+            overflow-wrap:break-word;
             margin-bottom:10px;
             border-collapse: separate;
             overflow: hidden;
@@ -179,10 +196,25 @@
             border-right: none;
             border-bottom: 1px solid #aaa;
         }
-        
         .message-table tr:last-child td {
             border-bottom: none;
-        }    
+        }
+        .created_at {
+            margin-top:-7px;
+            margin-bottom:17px;
+            padding-left:5px;
+            font-size:5px;
+        }
+        .delete-btn:hover {
+            cursor:pointer;
+        }
+        .my-message {
+            width:45%;
+            margin-left:55%;
+        }
+        .partner-message{
+            width:45%;
+        }
     }
 @endsection
 
@@ -228,27 +260,57 @@
             <h1>メッセージ欄</h1>
             <div class='messages-space'>
                 @foreach($messages as $message)
-                <table class='message-table'>
-                    <tr><th>{{$message->user->name}}</th></tr>
-                    <tr><td>{{$message->comment}}</td></tr>
-                    <tr><td>{{$message->created_at}}</td></tr>
-                </table>
+                    @if(Auth::id()==$message->user_id)
+                        <div class='my-message'>
+                            <table class='message-table'>
+                            <tr><th>{{$message->user->name}}</th></tr>
+                            <tr><td>{{$message->comment}}</td></tr>
+                            </table>
+                            <form action='/drives/messages/{{$message->id}}' id='form_delete{{$message->id}}' method='post' enctype='multipart/form-data'>
+                                @csrf
+                                @method('delete')
+                                <input type='submit' style='display:none'>
+                                <p class='created_at'>{{$message->created_at}}　 <span class='delete-btn' onclick='return deleteMessage({{$message->id}});'>削除</span></p>
+                            </form>
+                        </div>
+                    @else
+                        <div class='partner-message'>
+                            <table class='message-table'>
+                                <tr><th>{{$message->user->name}}</th></tr>
+                                <tr><td>{{$message->comment}}</td></tr>
+                            </table>
+                            <p class='created_at'>{{$message->created_at}}</p>
+                        </div>
+                    @endif
                 @endforeach
             </div>
             
             <form action='/drives/messages/create' method='post' enctype='multipart/form-data'　id='message_create'>
                 @csrf
                 <input style='display:none' type='number' name='drive_id' value={{$drive->id}}>
-                <input style='display:none' type='number' name='user_id' value={{$drive->carpooler->user->id}}>
+                <input style='display:none' type='number' name='user_id' value={{Auth::id()}}>
                 <textarea class='comment' name='comment' placeholder='こんにちは！' value="{{old('comment')}}"></textarea>
                 <input class='submit-btn ' type='submit' value='送信'>
             </form>
+            @if($errors->has('comment'))
+                <p class='error-message'>Error:{{$errors->first('comment')}}</p>
+            @endif
         </div>
     </div>
     
     <div class='back-link'>
         <p>[<a href='/drives'>戻る</a>]</p>   
     </div>
+    
+    <script>
+        function deleteMessage(id){
+            'use strict';
+            var form_id = 'form_delete'+ id;
+            if(confirm('本当にこのメッセージを削除しますか？')){
+                document.getElementById(form_id).submit();
+            }
+        }
+    </script>
     
     <script>
         window.startDatetime = @json($drive->carpooler->start_datetime);

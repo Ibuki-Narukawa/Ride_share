@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,12 +20,23 @@ class UserController extends Controller
     }
     
     public function edit(Request $request){
+        $id = Auth::id();
         $user = User::find($request->id);
+        
+        if($id != $user->id){
+            return redirect('/');   
+        }
+        
         return view('user.edit',['form'=>$user]);
     }
     
     public function update(UserRequest $request){
+        $id = Auth::id();
         $user = User::find($request->id);
+        
+        if($id != $user->id){
+            return redirect('/');   
+        }
        
         if ($file = $request->file('user_image')){
             $file_name = time() . $file->getClientOriginalName();

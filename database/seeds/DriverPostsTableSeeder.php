@@ -12,7 +12,7 @@ class DriverPostsTableSeeder extends Seeder
     
     public function run()
     {
-        DB::table('driver_posts')->truncate();
+        // DB::table('driver_posts')->truncate();
         factory(App\DriverPost::class, 10)->create();
     }
 }

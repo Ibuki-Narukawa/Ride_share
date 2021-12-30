@@ -1,4 +1,4 @@
-console.log(driverPosts);
+//console.log(driverPosts);
 var lat;
 var lng;
 var map;
@@ -12,24 +12,17 @@ const infowindowContent = document.getElementById('infowindow-content');
 infowindow.setContent(infowindowContent);
 var LatLng;
 var origins = new Array();
-var destinations = new Array();
 var postId = new Array();
 var distanceMatrixService = new google.maps.DistanceMatrixService();
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
+var sortResults = new Array();
+var distinations_length;
 
 
 origins = [
     new google.maps.LatLng(latFrom, lngFrom),
 ];
-
-for(var i=0; i<driverPosts.length; i++){
-    lat = driverPosts[i].latitude;
-    lng = driverPosts[i].longitude;
-	LatLng = new google.maps.LatLng(lat, lng);
-	destinations.push(LatLng);
-	postId.push(driverPosts[i].id);
-}
 
 var initMap = function(){
 	var opt = {
@@ -70,7 +63,7 @@ var createPlacesMarker = function(name,latlng) {
 	google.maps.event.addListener(marker, 'click', function() {
 		// 吹き出しを表示
 		infowindowContent.children['place-name'].textContent = name;
-		//infowindowContent.children['place-address'].textContent = latlng;
+		// infowindowContent.children['place-address'].textContent = latlng;
 		infowindow.open(mapObj, this);
 	});
 };
@@ -84,7 +77,16 @@ var clearPlacesMarker = function() {
 };
 
 // DistanceMatrix の実行
-var calcDistanceMatrix = function() {
+var calcDistanceMatrix = function(length, flag) {
+	var destinations = new Array();
+	for (var i=0; i<length; i++) {
+	    lat = driverPosts[i].latitude;
+	    lng = driverPosts[i].longitude;
+		LatLng = new google.maps.LatLng(lat, lng);
+		destinations.push(LatLng);
+		postId.push(driverPosts[i].id);
+	}
+	
 	distanceMatrixService.getDistanceMatrix({
 		origins: origins, // 出発地点
 		destinations: destinations, // 到着地点
@@ -94,8 +96,8 @@ var calcDistanceMatrix = function() {
 			trafficModel: google.maps.TrafficModel.BEST_GUESS // 最適な検索
 		}
 	}, function(response, status) {
+		console.log(status);
 		if (status == google.maps.DistanceMatrixStatus.OK) {
-		    var sortResults = new Array();
 
 			// 出発地点と到着地点の住所（配列）を取得
 			var originsName = response.originAddresses;
@@ -123,50 +125,55 @@ var calcDistanceMatrix = function() {
 						}
 					}
 				}
-				if(sortResults.length>0){
-					mapObj.fitBounds(bounds);	
-				}
-				else{
-					window.alert('近くにドライバーはいませんでした。');
-				}
-			}
-			
-		    // 到着時間でソート
-			sortResults.sort(function(a, b) {
-				return b[2] - a[2];
-			});
-			console.log(sortResults);
-			
-			var html = new Array();
-			for (var i=0; i<sortResults.length; i++) {
-				var data = new Array();
-				var placeNo = sortResults[i][5];
-				var id = sortResults[i][6];
-				data.push('<tr data-index="' + placeNo + '" >');
-				data.push('<td>' + sortResults[i][1] + '</td>');
-				data.push('<td>' + sortResults[i][4].distance.text + '</td>');
-				data.push('<td>' + sortResults[i][4].duration.text + '</td>');
-				data.push('<td><button onclick=submitForm('+ id + ');>詳細</button></td>');
-				data.push('</tr>');
-				html.push(data.join(''));
-			}
-			
-			for(var i=0; i<html.length; i++){
-				const output = 	document.querySelector('#result-body');
-				output.insertAdjacentHTML('afterbegin',html[i]);
 				
-				// クリック時にルート検索を実行するようイベントを定義
-				document.querySelector('#result-body tr').addEventListener('click', function(e) {
-					var x = this.dataset.index;
-					//console.log(x);
-					var place = destinations[x];
-					//console.log(place);
-					calcRoute(place);
-					google.maps.event.trigger(markers[i], 'click');
+				if (flag==1) {
+					if (sortResults.length>0) {
+						mapObj.fitBounds(bounds);	
+					}
+					else{
+						window.alert('近くにドライバーはいませんでした。');
+					}
+				}
 		
-				});
 			}
-		console.log(sortResults);	
+			
+			if (flag==1) {
+				// 到着時間でソート
+				sortResults.sort(function(a, b) {
+					return b[2] - a[2];
+				});
+				console.log(sortResults);
+				
+				var html = new Array();
+				for (var i=0; i<sortResults.length; i++) {
+					var data = new Array();
+					var placeNo = sortResults[i][5];
+					var id = sortResults[i][6];
+					data.push('<tr data-index="' + placeNo + '" >');
+					data.push('<td>' + sortResults[i][1] + '</td>');
+					data.push('<td>' + sortResults[i][4].distance.text + '</td>');
+					data.push('<td>' + sortResults[i][4].duration.text + '</td>');
+					data.push('<td><button onclick=submitForm('+ id + ');>詳細</button></td>');
+					data.push('</tr>');
+					html.push(data.join(''));
+				}
+				
+				for(var i=0; i<html.length; i++){
+					const output = 	document.querySelector('#result-body');
+					output.insertAdjacentHTML('afterbegin',html[i]);
+					
+					// クリック時にルート検索を実行するようイベントを定義
+					document.querySelector('#result-body tr').addEventListener('click', function(e) {
+						var x = this.dataset.index;
+						//console.log(x);
+						var place = destinations[x];
+						//console.log(place);
+						calcRoute(place);
+						//google.maps.event.trigger(markers[i], 'click');
+			
+					});
+				}	
+			}
 		}
 		else {
 			alert('DistanceMatrix 失敗(' + status + ')');
@@ -240,5 +247,35 @@ var isset = function(data){
 
 window.onload = function(){
     initMap();
-    calcDistanceMatrix();
+    
+    if(driverPosts.length == 0){
+    	window.alert('近くにドライバーはいませんでした。');
+    }
+ 
+    var times = Math.floor(driverPosts.length / 25);
+    var remainder = driverPosts.length % 25;
+    var flag = 0;
+    
+    if (remainder!=0){
+    	for (var i=0; i<=times; i++){
+			if (i!=times){
+				calcDistanceMatrix(25, flag);	
+			}
+			else {
+				flag = 1;
+				calcDistanceMatrix(remainder, flag);
+			}
+		}  	
+    }
+    else {
+    	for (var i=0; i<=times; i++){
+			if (i!=times){
+				calcDistanceMatrix(25, flag);	
+			}
+			else {
+				flag = 1;
+				calcDistanceMatrix(25, flag);
+			}
+		}  	
+    }
 }

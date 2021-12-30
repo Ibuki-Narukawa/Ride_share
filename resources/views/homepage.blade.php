@@ -43,6 +43,10 @@
             font-size: 84px;
         }
         
+        .links-pc {
+            margin-bottom: 25px;
+        }
+        
         .links-pc > a {
             color: #636b6f;
             padding: 25px;
@@ -171,22 +175,31 @@
             <div class="links-pc">
                 <a href="/search">ドライバー検索</a>
                 <a href="/driver/applications">リクエスト送信履歴</a>
-                <a href="/users">ユーザー一覧</a>
+                <a href="/carpooler/applications">「乗せて」一覧</a>
+                <a href="/drives">成立したドライブ一覧</a>
+            </div>
+            
+            <div class="links-pc">
+                <!--<a href="/users">ユーザー一覧</a>-->
+                @auth
+                    <a href="/users/{{Auth::id()}}">マイページ</a>
+                @endauth
                 <a href="/driver/posts/create">ドライバー登録</a>
                 <a href="/driver/posts">ドライバー登録履歴</a>
-                <a href="/carpooler/applications">「乗せて」一覧</a>
-                <a href="/drives">成立したドライブ一覧</a>     
             </div>
             
             <div class="links-phone">
                 <ul>
                     <li><a href="/search">ドライバー検索</a></li>
                     <li><a href="/driver/applications">リクエスト送信履歴</a></li>
-                    <li><a href="/users">ユーザー一覧</a></li>
+                    <li><a href="/carpooler/applications">「乗せて」一覧</a></li>
+                    <li><a href="/drives">成立したドライブ一覧</a></li> 
+                    <!--<li><a href="/users">ユーザー一覧</a></li>-->
+                    @auth
+                        <li><a href="/users/{{Auth::id()}}">マイページ</a></li>
+                    @endauth
                     <li><a href="/driver/posts/create">ドライバー登録</a></li>
                     <li><a href="/driver/posts">ドライバー登録履歴</a></li>
-                    <li><a href="/carpooler/applications">「乗せて」一覧</a></li>
-                    <li><a href="/drives">成立したドライブ一覧</a></li>    
                 </ul>
             </div>
         </div>

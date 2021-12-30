@@ -83,7 +83,7 @@
         @endphp
         <div class='driver-post'>
             <table>
-                <div class='name'>
+                <div class='driver-name'>
                     <tr><th>ドライバー名：<a href='/driver/applications/{{$application->id}}'>{{$post->user->name}}</a></th></tr>
                 </div>
                 <div class='current-location'>
@@ -95,8 +95,13 @@
                 <div class='car'>
                     <tr><td>車種： {{$post->car_model}}</td></tr>
                 </div>
+                
                 <div class='update-at'>
                     <tr><td>最終更新日：{{$post->updated_at}}</td></tr>
+                </div>
+                
+                <div class='carpooler-info'>
+                    <tr><th><a href='/carpooler/applications/{{$application->id}}'>リクエスト詳細</a></th></tr>
                 </div>
             </table>
         </div>
