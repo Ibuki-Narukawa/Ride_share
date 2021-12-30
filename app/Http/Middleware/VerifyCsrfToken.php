@@ -19,6 +19,6 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'https://ride-share-2021.herokuapp.com/search/driverlist/*'
     ];
 }
