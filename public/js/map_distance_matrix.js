@@ -182,6 +182,12 @@ var calcDistanceMatrix = function(length, flag) {
 };
 
 var submitForm = function(id){
+	if(window.confirm('このドライバーの詳細を見ますか？')){
+            submit(id);
+        }
+};
+
+var submit = function(id){
 	//event.preventDefault();
 	var form = document.createElement('form');  
 	form.method = 'post';
