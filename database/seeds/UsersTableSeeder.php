@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         ];
         $user->fill($param)->save();*/
         
-        DB::table('users')->truncate();
+        // DB::table('users')->truncate();
         factory(App\User::class, 20)->create();
     }
 }

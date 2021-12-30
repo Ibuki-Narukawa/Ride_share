@@ -87,7 +87,13 @@
         <div class='drive'>
             <table>
                 <div class='role'>
-                    <tr><th>あなたの役割：<a href='/drives/{{$drive->id}}'>未定</a></th></tr>
+                    @if (Auth::id() == $drive->carpooler->user_id)
+                        <tr><th>あなたの役割：<a href='/drives/{{$drive->id}}'>相乗り者</a></th></tr>
+                    @elseif (Auth::id() == $drive->driverPost->user_id)
+                        <tr><th>あなたの役割：<a href='/drives/{{$drive->id}}'>ドライバー</a></th></tr>
+                    @else
+                        <tr><th>あなたの役割：<a href='/drives/{{$drive->id}}'>未定</a></th></tr>
+                    @endif
                 </div>
                 
                 <div class='driver_name'>

@@ -9,16 +9,30 @@ use App\Drive;
 use App\Carpooler;
 use App\DriverPost;
 use App\Message;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class DriveController extends Controller
 {
     public function index(){
-        $drives = Drive::with('carpooler')->with('driverPost')->orderBy('updated_at', 'DESC')->paginate(5);
+        $id = Auth::id();
+        $drives = Drive::with('carpooler')->with('driverPost')->whereHas('carpooler', function (Builder $query){
+            $query->where('user_id','=',Auth::id());
+        })->orwhereHas('driverPost', function (Builder $query){
+            $query->where('user_id','=',Auth::id());
+        })->orderBy('updated_at', 'DESC')->paginate(5);
+        
         return view('drives.index',['drives'=>$drives]);
     }
     
     public function show(Request $request){
+        $id = Auth::id();
         $drive = Drive::find($request->id);
+        
+        if($id != $drive->carpooler->user_id && $id != $drive->driverPost->user_id){
+            return redirect('/');       
+        }
+        
         $messages = Message::with('drive')->with('user')->where('drive_id','=',$request->id)->orderBy('created_at', 'ASC')->get();
         return view('drives.show',['drive'=>$drive, 'messages'=>$messages]);
     }

@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\DriverPost;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     public function index(){
-        $posts = DriverPost::with('user')->orderBy('updated_at', 'DESC')->paginate(5);
+        $id = Auth::id();
+        $posts = DriverPost::with('user')->where('user_id','=',$id)->orderBy('updated_at', 'DESC')->paginate(5);
         return view('driver.posts.index',['posts'=>$posts]);
     }
     
@@ -43,7 +45,7 @@ class PostController extends Controller
         }
         
         $post = new DriverPost;
-        $post->user_id = random_int(1,10);
+        $post->user_id = Auth::id();
         $post->start_datetime = $request->start_datetime;
         $post->end_datetime = $request->end_datetime;
         $post->current_location = $request->current_location;
@@ -58,12 +60,24 @@ class PostController extends Controller
     }
     
     public function edit(Request $request){
+        $id = Auth::id();
         $post = DriverPost::find($request->id);
+        
+        if($id != $post->user_id){
+            return redirect('/');   
+        }
+        
         return view('driver.posts.edit',['form'=>$post]);
     }
     
     public function update(PostRequest $request){
+        $id = Auth::id();
         $post = DriverPost::find($request->id);
+        
+        if($id != $post->user_id){
+            return redirect('/');   
+        }
+        
         if ($file = $request->file('car_image')){
             $file_name = time() . $file->getClientOriginalName();
             $file->storeAs('img/cars/', $file_name, 's3');
@@ -72,7 +86,6 @@ class PostController extends Controller
             $file_name = $post->car_image;
         }
         
-        $post->user_id = random_int(1,10);
         $post->start_datetime = $request->start_datetime;
         $post->end_datetime = $request->end_datetime;
         $post->current_location = $request->current_location;
@@ -87,7 +100,13 @@ class PostController extends Controller
     }
     
     public function destroy(Request $request){
+        $id = Auth::id();
         $post = DriverPost::find($request->id);
+        
+        if($id != $post->user_id){
+            return redirect('/');   
+        }
+        
         $post->delete();
         return redirect('/driver/posts');
     }

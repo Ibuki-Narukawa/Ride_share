@@ -78,12 +78,19 @@
 @endsection
 
 @section('content')
-    <h1>プロフィール</h1>
-    <div class='button-bar'>
-        <div class='edit-btn btn'>
-            <h3>[<a href='/users/{{$user->id}}/edit'>編集</a>]</h3>
-        </div>
-    </div>
+    @auth
+        @if(Auth::id()==$user->id)
+            <h1>マイページ</h1>
+            <div class='button-bar'>
+                <div class='edit-btn btn'>
+                    <h3>[<a href='/users/{{$user->id}}/edit'>編集</a>]</h3>
+                </div>
+            </div>
+        @else
+            <h1>プロフィール</h1>
+        @endif
+    @endauth
+    
     <div class='user'>
         <table>
             <div class='name'>
@@ -112,9 +119,13 @@
             <div class='age'>
                 <tr><td>age: {{$user->age}} 歳</td></tr>
             </div>
-            <div class='email'>
-                <tr><td>email: {{$user->email}}</td></tr>
-            </div>
+            @auth
+                @if(Auth::id()==$user->id)
+                    <div class='email'>
+                        <tr><td>email: {{$user->email}}</td></tr>
+                    </div>
+                @endif
+            @endauth
             <div class='self_introduction'>
                 <tr>
                     <td>
@@ -125,7 +136,7 @@
             </div>
         </table>
     </div>
-    <div class='back-link'>
-        <p>[<a href='/users'>戻る</a>]</p>   
-    </div>
+    <!--<div class='back-link'>-->
+    <!--    <p>[<a href='/users'>戻る</a>]</p>   -->
+    <!--</div>-->
 @endsection

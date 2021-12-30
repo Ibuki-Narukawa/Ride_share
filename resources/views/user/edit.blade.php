@@ -34,6 +34,7 @@
     }
     img {
         width:200px;
+        padding-bottom:14.4px;
     }
     .back-link {
         text-align:center;
@@ -86,6 +87,7 @@
         }
         img {
             width:200px;
+            padding-bottom:14.4px;
         }
         .back-link {
             text-align:center;

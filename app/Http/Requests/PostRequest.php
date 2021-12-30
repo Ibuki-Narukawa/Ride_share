@@ -43,6 +43,7 @@ class PostRequest extends FormRequest
             'end_datetime.required_with' => '開始日時と終了日時はセットで入力してください。',
             'end_datetime.after_or_equal' => '終了日時は開始時刻以降にしてください。',
             'current_location.required' => '現在地は必ず入力してください。',
+            'asking.max' => 'してほしいことは500文字以内にしてください',
             'car_model.required' => '車種は必ず入力してください。',
             'max_passengers.required' => '相乗り可能人数は必ず入力してください。',
             'max_passengers.between' => '相乗り可能人数は１～１０の間で入力してください。',

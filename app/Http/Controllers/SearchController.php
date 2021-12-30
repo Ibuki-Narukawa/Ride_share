@@ -13,8 +13,8 @@ class SearchController extends Controller
     }
     
     public function distanceMatrix(CarpoolerRequest $request){
-        $posts = DriverPost::where('status','=', 1)->get();
         $start_datetime = $request->start_datetime;
+        $posts = DriverPost::where('status','=', 1)->where('start_datetime','<=',$start_datetime)->where('end_datetime','>',$start_datetime)->get();
         $from = $request->from;
         $to = $request->to;
         $latFrom = $request->latFrom;

@@ -151,38 +151,41 @@
             <div class='updated-at'>
                 <tr><td>着信日時：{{$application->updated_at}}</td></tr>
             </div>
+            <div class='driver-info'>
+                <tr><th><a href='/driver/applications/{{$application->id}}'>ドライバー詳細</a></th></tr>
+            </div>
         </table>
     </div>
     
-    @if($application->status == 1)
-    <div class='button-bar'>
-        <div class='btn approve-btn'>
-            <form action='/drives/create' id='form_approve' method='post' enctype='multipart/form-data'>
-                @csrf
-                <input style='display:none' type='number' name='carpooler_id' value={{$application->id}}>
-                <input style='display:none' type='number' name='driver_post_id' value={{$application->driver_post_id}}>
-                <input type='submit' style='display:none'>
-                <button><span onclick='return approveApplication(this);'>承認する</span></button>
-            </form>
+    @if(Auth::id() != $application->user->id && $application->status == 1)
+        <div class='button-bar'>
+            <div class='btn approve-btn'>
+                <form action='/drives/create' id='form_approve' method='post' enctype='multipart/form-data'>
+                    @csrf
+                    <input style='display:none' type='number' name='carpooler_id' value={{$application->id}}>
+                    <input style='display:none' type='number' name='driver_post_id' value={{$application->driver_post_id}}>
+                    <input type='submit' style='display:none'>
+                    <button><span onclick='return approveApplication(this);'>承認する</span></button>
+                </form>
+            </div>
+            
+            <div class='btn reject-btn'>
+                <form action='/carpooler/applications/{{$application->id}}' id='form_delete' method='post' enctype='multipart/form-data'>
+                    @csrf
+                    @method('delete')
+                    <input type='submit' style='display:none'>
+                    <button><span onclick='return rejectApplication(this);'>拒否する</span></button>
+                </form>
+            </div>
         </div>
-        
-        <div class='btn reject-btn'>
-            <form action='/carpooler/applications/{{$application->id}}' id='form_delete' method='post' enctype='multipart/form-data'>
-                @csrf
-                @method('delete')
-                <input type='submit' style='display:none'>
-                <button><span onclick='return rejectApplication(this);'>拒否する</span></button>
-            </form>
-        </div>
-    </div>
     
-    <div class='back-link'>
-        <p>[<a href='/carpooler/applications'>戻る</a>]</p>   
-    </div>
+        <div class='back-link'>
+            <p>[<a href='/carpooler/applications'>戻る</a>]</p>   
+        </div>
     @else
-    <div class='back-link'>
-        <p>[<a href='/drives/{{$application->drive_id}}'>戻る</a>]</p>   
-    </div>
+        <!--<div class='back-link'>-->
+        <!--    <p>[<a href='/drives/{{$application->drive_id}}'>戻る</a>]</p>   -->
+        <!--</div>-->
     @endif
     
     

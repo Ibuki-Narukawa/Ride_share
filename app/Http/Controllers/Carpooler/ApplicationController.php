@@ -7,16 +7,27 @@ use Illuminate\Http\Request;
 use App\Carpooler;
 use App\DriverPost;
 use App\Http\Requests\CarpoolerRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class ApplicationController extends Controller
 {
     public function index(){
-        $applications = Carpooler::with('user')->with('driverPost')->where('status','=',1)->orderBy('updated_at', 'DESC')->paginate(5);
+        $id = Auth::id();
+        $applications = Carpooler::with('user')->with('driverPost')->whereHas('driverPost', function (Builder $query){
+            $query->where('user_id','=',Auth::id());
+        })->where('status','=',1)->orderBy('updated_at', 'DESC')->paginate(5);
         return view('carpooler.applications.index',['applications'=>$applications]);
     }
     
     public function show(Request $request){
+        $id = Auth::id();
         $application = Carpooler::find($request->id);
+        
+        if($id != $application->user_id && $id != $application->driverPost->user_id){
+            return redirect('/');       
+        }
+        
         return view('carpooler.applications.show',['application'=>$application]);
     }
     
@@ -31,7 +42,7 @@ class ApplicationController extends Controller
         $lngTo = $request->lngTo;
         
         $application = new Carpooler;
-        $application->user_id = random_int(1,20);
+        $application->user_id = Auth::id();
         $application->start_datetime = $start_datetime;
         $application->origin = $from;
         $application->latitude_from = $latFrom;
