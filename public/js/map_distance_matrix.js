@@ -188,7 +188,7 @@ var submitForm = function(id){
 	form.action = '/search/driverlist/'+ id ;
 	
 	//let token = document.head.querySelector('meta[name="csrf-token"]').content;
-	let token = document.head.querySelector('meta[name="csrf-token"]').content;
+	//let token = document.head.querySelector('meta[name="csrf-token"]').content;
 
 	document.body.appendChild(form);
 	
@@ -196,7 +196,7 @@ var submitForm = function(id){
 		var fd = e.formData;
 		  
 		// データをセット
-		fd.set('_token', token);
+		//fd.set('_token', token);
 		fd.set('start_datetime', startDatetime);
 		fd.set('from', origin);
 		fd.set('to', To);

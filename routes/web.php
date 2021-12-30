@@ -18,8 +18,6 @@ Route::get('/', function () {
 
 Route::get('/search','SearchController@search');
 
-Route::get('/search/distanceMatrix','SearchController@distanceMatrix');
-
 Route::post('/search/distanceMatrix','SearchController@distanceMatrix');
 
 Route::post('/search/driverlist/{id}','SearchController@show');
