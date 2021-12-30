@@ -136,7 +136,4 @@
             </div>
         </table>
     </div>
-    <!--<div class='back-link'>-->
-    <!--    <p>[<a href='/users'>戻る</a>]</p>   -->
-    <!--</div>-->
 @endsection

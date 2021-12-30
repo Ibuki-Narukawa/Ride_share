@@ -15,6 +15,6 @@ $factory->define(DriverPost::class, function (Faker $faker) {
         'max_passengers' => random_int(1,4),
         'current_location' => $faker->address,
         'asking' => 'おすすめのカフェ教えてください！',
-        'user_id' => 21,
+        'user_id' => 1,
     ];
 });

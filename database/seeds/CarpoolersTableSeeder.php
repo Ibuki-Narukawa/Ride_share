@@ -11,7 +11,7 @@ class CarpoolersTableSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('carpoolers')->truncate();
-        factory(App\Carpooler::class, 10)->create();
+        DB::table('carpoolers')->truncate();
+        factory(App\Carpooler::class, 20)->create();
     }
 }

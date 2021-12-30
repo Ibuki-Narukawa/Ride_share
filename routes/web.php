@@ -13,10 +13,8 @@
 Auth::routes();
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('home');
 });
-
-// Route::get('/users','UserController@index');
 
 Route::get('/search','SearchController@search');
 

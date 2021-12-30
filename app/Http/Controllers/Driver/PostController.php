@@ -31,14 +31,6 @@ class PostController extends Controller
         if ($file = $request->file('car_image')){
             $file_name = time() . $file->getClientOriginalName();
             $file->storeAs('img/cars/', $file_name, 's3');
-            
-            /*$path=Storage::disk('s3')->putFileAs('img/cars', $file, $file_name, 'public');*/
-            /*Storage::putFileAs('photos', new File('/path/to/photo'), 'photo.jpg');*/
-            /*Storage::disk('s3')->putFile('img/cars/' . $file_name, $file, 'public');*/
-            /*Storage::put('img/cars/' . $file_name, $file, 'public');
-            /*$target_path = Storage::disk('s3')->putFile('/img/cars/', $file, 'public');*/
-            /*$target_path = public_path('img/cars/');
-            $file->move($target_path, $fileName);*/
         } 
         else {
             $file_name = '';

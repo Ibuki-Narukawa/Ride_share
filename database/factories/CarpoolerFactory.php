@@ -15,7 +15,7 @@ $factory->define(Carpooler::class, function (Faker $faker) {
         'destination' => ' 日本、兵庫県西宮市六湛寺町１０−３ 西宮市',
         'latitude_to' => 34.7375437,
         'longitude_to' => 135.3414417,
-        'user_id' => random_int(1,20),
-        'driver_post_id' => random_int(21,40),
+        'user_id' => random_int(2,21),
+        'driver_post_id' => random_int(1,40),
     ];
 });

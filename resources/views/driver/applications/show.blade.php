@@ -156,25 +156,10 @@
     </div>
     
     <script>
-    //     function deleteApplication(e){
-    //         event.preventDefault();
-    //         'use strict';
-    //         if(window.confirm('本当にこのドライバーに申請しますか?\n\n検索データ\n出発時刻：' + startDatetime + '\n出発地：' + origin + '\n緯度：' + latFrom + ' 経度：' + lngFrom +'\n目的地：' + To  + '\n緯度：' + latTo + ' 経度：' + lngTo)){
-    //             document.getElementById('form').submit();
-    //         }
-    //     }
-    </script>
-    
-    <script>
         window.latitude = @json($post->latitude);
         window.longitude = @json($post->longitude);
         window.address = @json($post->current_location);
     </script>
-    
-    {{--<script
-        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
-        async
-    ></script>--}}
     
     <script src="{{ asset('js/map_show.js') }}"></script>
 @endsection

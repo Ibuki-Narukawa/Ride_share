@@ -157,12 +157,6 @@
             <input name='lngTo' style='display:none' type='number' step='0.00000000000001' id='lngTo' value={{old('lngTo')}}>
         </form>
     </div>
-    
-    {{--<script
-        src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&libraries=places&v=weekly"
-        async defer
-    ></script>--}}
-    {{--<script src="https://maps.google.com/maps/api/js?v=3&key=AIzaSyCfvExhGV8g1FmBMPfttIf-og7-Q7aFfMc&language=ja&libraries=drawing,geometry,places,visualization"></script>--}}
 
     <script src="{{ asset('js/map_directions.js') }}"></script>
 

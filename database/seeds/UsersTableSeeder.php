@@ -11,16 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        /*$user = new User;
-        $param = [
-            'name' => 'Ibuki',
-            'age' => 21,
-            'email' => 'Ibuki@gmail.com',
-            'password' => 'narukawa',
-        ];
-        $user->fill($param)->save();*/
-        
-        // DB::table('users')->truncate();
+        //DB::table('users')->truncate();
         factory(App\User::class, 20)->create();
     }
 }
