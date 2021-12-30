@@ -163,5 +163,5 @@
         async defer
     ></script>--}}
     
-    <script src="{{ asset('js/map_directions.js') }}"></script>
+    <script src="{{ asset('js/map_directions.js') }}" defer></script>
 @endsection
