@@ -20,6 +20,8 @@ Route::get('/search','SearchController@search');
 
 Route::post('/search/distanceMatrix','SearchController@distanceMatrix');
 
+Route::get('/search/driverlist/{id}','SearchController@show');
+
 Route::post('/search/driverlist/{id}','SearchController@show');
 
 Route::group(['middleware' => 'auth'], function(){
