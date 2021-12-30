@@ -12,8 +12,8 @@ var LatLng;
 
 var initMap = function(){
     if(isset(latitude) && isset(longitude) && isset(address)){
-        lat = latitude;
-        lng = longitude;
+        var lat = latitude;
+        var lng = longitude;
         LatLng = {lat, lng};
         opt = {
             zoom: 15,
