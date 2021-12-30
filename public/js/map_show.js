@@ -20,7 +20,7 @@ var initMap = function(){
         LatLng = {lat, lng};
         opt = {
             zoom: 15,
-            center: LatLng,
+            center: {lat: +lat, lng: +lng},
             mapTypeId: 'roadmap'
         };
         map = document.getElementById('map');
