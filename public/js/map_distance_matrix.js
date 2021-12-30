@@ -188,7 +188,7 @@ var submitForm = function(id){
 	form.action = '/search/driverlist/'+ id ;
 	
 	//let token = document.head.querySelector('meta[name="csrf-token"]').content;
-	let token = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content');
+	let token = document.head.querySelector('meta[name="csrf-token"]').content;
 
 	document.body.appendChild(form);
 	
