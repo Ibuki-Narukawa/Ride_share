@@ -17,10 +17,10 @@ var initMap = function(){
         console.log(address);
         lat = latitude;
         lng = longitude;
-        LatLng = {lat, lng};
+        LatLng = {lat: +lat, lng: +lng};
         opt = {
             zoom: 15,
-            center: {lat: +lat, lng: +lng},
+            center: LatLng,
             mapTypeId: 'roadmap'
         };
         map = document.getElementById('map');
