@@ -130,7 +130,7 @@
 				</tr>
 			</thead>
 			<tbody id='result-body'>
-			    <form name="csrf-token" value="1234567890" ></form>
+			    
 			</tbody>
 		</table>
 	</div> 
