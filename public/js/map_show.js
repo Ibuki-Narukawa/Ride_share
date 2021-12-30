@@ -12,12 +12,7 @@ var LatLng;
 
 var initMap = function(){
     if(isset(latitude) && isset(longitude) && isset(address)){
-        console.log(latitude);
-        console.log(longitude);
-        console.log(address);
-        lat = latitude;
-        lng = longitude;
-        LatLng = {lat, lng};
+        LatLng = {latitude, longitude};
         opt = {
             zoom: 15,
             center: LatLng,
