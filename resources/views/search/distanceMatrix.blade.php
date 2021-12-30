@@ -109,10 +109,6 @@
         #result-body tr:hover { 
             background-color: #ddd; cursor: pointer; overflow-y:auto;
         }
-        
-        button {
-            z-index:999;
-        }
     }
 @endsection
 
@@ -134,7 +130,7 @@
 				</tr>
 			</thead>
 			<tbody id='result-body'>
-			    
+			    <form name="csrf-token" value="1234567890" ></form>
 			</tbody>
 		</table>
 	</div> 
