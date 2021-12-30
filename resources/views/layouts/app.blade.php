@@ -13,7 +13,7 @@
     <!-- Scripts -->
     <!--<script src="https://js.stripe.com/v3/"></script>-->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://maps.google.com/maps/api/js?v=3.46&key={{ config('services.google-map.apikey') }}&language=ja&libraries=drawing,geometry,places,visualization"></script>
+    <script src="https://maps.google.com/maps/api/js?v=3&key={{ config('services.google-map.apikey') }}&language=ja&libraries=drawing,geometry,places,visualization"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
