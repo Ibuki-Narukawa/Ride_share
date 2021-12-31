@@ -34,7 +34,7 @@ class SearchController extends Controller
         ]);
     }
     
-    public function show(CarpoolerRequest $request){
+    public function show(Request $request){
         $post = DriverPost::find($request->id);
         $start_datetime = $request->start_datetime;
         $from = $request->from;
