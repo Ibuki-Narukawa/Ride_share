@@ -228,20 +228,6 @@ var submitForm = function(id){
     LngTo.setAttribute('value', lngTo);
     form.appendChild(LngTo);
 	
-	// form.addEventListener('formdata', (e) => {
-	// 	var fd = e.formData;
-	// 	console.log(origin);
-	// 	console.log(fd);
-	// 	// データをセット
-	// 	fd.set('start_datetime', startDatetime);
-	// 	fd.set('from', origin);
-	// 	fd.set('to', To);
-	// 	fd.set('latFrom', latFrom);
-	// 	fd.set('lngFrom', lngFrom);
-	// 	fd.set('latTo', latTo);
-	// 	fd.set('lngTo', lngTo);
- //   });
-	
 	document.body.appendChild(form);
 	form.submit();
 };

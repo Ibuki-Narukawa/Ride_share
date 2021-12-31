@@ -30,8 +30,8 @@ function calcRoute(){
     directionsRenderer.setMap(mapObj); 
     
     var request = {
-        origin: {lat: latFrom, lng: lngFrom},     
-        destination: {lat: latTo, lng: lngTo},   
+        origin: {lat: +latFrom, lng: +lngFrom},     
+        destination: {lat: +latTo, lng: +lngTo},   
         travelMode: 'DRIVING' 
       };
     
