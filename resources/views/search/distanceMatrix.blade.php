@@ -77,7 +77,7 @@
             height:30vh;
             width:90vw;
             margin:0 auto;
-            overflow:auto;
+            overflow-y:auto;
         }
         table {
             font-size:11px;
