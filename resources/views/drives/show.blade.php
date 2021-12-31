@@ -94,7 +94,7 @@
     .created_at {
         margin-top:-7px;
         margin-bottom:17px;
-        padding-left:5px;
+        padding-left:12px;
         font-size:5px;
     }
     .delete-btn:hover {
@@ -203,7 +203,7 @@
             margin-top:-7px;
             margin-bottom:17px;
             padding-left:5px;
-            font-size:5px;
+            font-size:12px;
         }
         .delete-btn:hover {
             cursor:pointer;

@@ -51,6 +51,11 @@
         margin:20px auto;
     }
     
+    .confirm {
+        text-align:center;
+        color:red;
+    }
+    
     @media screen and (max-width:480px){
         body {
             front-size:16px;
@@ -108,7 +113,7 @@
     <h1>ドライバー詳細</h1>
     @auth
         @if(Auth::id() == $post->user_id)
-            <p>※このドライバーはあなたです</p>
+            <p class='confirm'>※このドライバーはあなたです</p>
         @endif
     @endauth
     <div class='driver-post'>
