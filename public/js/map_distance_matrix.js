@@ -12,12 +12,11 @@ const infowindowContent = document.getElementById('infowindow-content');
 infowindow.setContent(infowindowContent);
 var LatLng;
 var origins = new Array();
-var postId = new Array();
 var distanceMatrixService = new google.maps.DistanceMatrixService();
 var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
 var sortResults = new Array();
-var distinations_length;
+var all_distinations = new Array();
 
 
 origins = [
@@ -79,6 +78,7 @@ var clearPlacesMarker = function() {
 // DistanceMatrix の実行
 var calcDistanceMatrix = function(length, flag) {
 	var destinations = new Array();
+	var postId = new Array();
 	for (var i=0; i<length; i++) {
 	    lat = driverPosts[i].latitude;
 	    lng = driverPosts[i].longitude;
@@ -96,7 +96,6 @@ var calcDistanceMatrix = function(length, flag) {
 			trafficModel: google.maps.TrafficModel.BEST_GUESS // 最適な検索
 		}
 	}, function(response, status) {
-		console.log(status);
 		if (status == google.maps.DistanceMatrixStatus.OK) {
 
 			// 出発地点と到着地点の住所（配列）を取得
@@ -142,7 +141,6 @@ var calcDistanceMatrix = function(length, flag) {
 				sortResults.sort(function(a, b) {
 					return b[2] - a[2];
 				});
-				console.log(sortResults);
 				
 				var html = new Array();
 				for (var i=0; i<sortResults.length; i++) {
@@ -181,6 +179,7 @@ var calcDistanceMatrix = function(length, flag) {
 	});
 };
 
+//検索情報を送信
 var submitForm = function(id){
 	event.stopPropagation();;
 	var form = document.createElement('form');  
@@ -191,31 +190,59 @@ var submitForm = function(id){
 	var Token=document.createElement('input');
     Token.setAttribute('type','hidden');
     Token.setAttribute('name','_token');
-    Token.setAttribute('value',token);
+    Token.setAttribute('value', token);
     form.appendChild(Token);
     
     var StartDateime=document.createElement('input');
     StartDateime.setAttribute('name','start_datetime');
-    StartDateime.setAttribute('value',startDatetime);
+    StartDateime.setAttribute('value', startDatetime);
     form.appendChild(StartDateime);
     
+    var From=document.createElement('input');
+    From.setAttribute('name','from');
+    From.setAttribute('value', origin);
+    form.appendChild(From);
     
-	
-	form.addEventListener('formdata', (e) => {
-		var fd = e.formData;
-		  
-		// データをセット
-		// fd.set('start_datetime', startDatetime);
-		fd.set('from', origin);
-		fd.set('to', To);
-		fd.set('latFrom', latFrom);
-		fd.set('lngFrom', lngFrom);
-		fd.set('latTo', latTo);
-		fd.set('lngTo', lngTo);
-    });
+    var to=document.createElement('input');
+    to.setAttribute('name','to');
+    to.setAttribute('value', To);
+    form.appendChild(to);
     
-    document.body.appendChild(form);
+    var LatFrom=document.createElement('input');
+    LatFrom.setAttribute('name','latFrom');
+    LatFrom.setAttribute('value', latFrom);
+    form.appendChild(LatFrom);
+    
+    var LngFrom=document.createElement('input');
+    LngFrom.setAttribute('name','lngFrom');
+    LngFrom.setAttribute('value', lngFrom);
+    form.appendChild(LngFrom);
+    
+    var LatTo=document.createElement('input');
+    LatTo.setAttribute('name','latTo');
+    LatTo.setAttribute('value', latTo);
+    form.appendChild(LatTo);
+    
+    var LngTo=document.createElement('input');
+    LngTo.setAttribute('name','lngTo');
+    LngTo.setAttribute('value', lngTo);
+    form.appendChild(LngTo);
 	
+	// form.addEventListener('formdata', (e) => {
+	// 	var fd = e.formData;
+	// 	console.log(origin);
+	// 	console.log(fd);
+	// 	// データをセット
+	// 	fd.set('start_datetime', startDatetime);
+	// 	fd.set('from', origin);
+	// 	fd.set('to', To);
+	// 	fd.set('latFrom', latFrom);
+	// 	fd.set('lngFrom', lngFrom);
+	// 	fd.set('latTo', latTo);
+	// 	fd.set('lngTo', lngTo);
+ //   });
+	
+	document.body.appendChild(form);
 	form.submit();
 };
 
@@ -279,14 +306,15 @@ window.onload = function(){
 		}  	
     }
     else {
-    	// for (var i=0; i<=times; i++){
-			// if (i!=times){
-			// 	calcDistanceMatrix(25, flag);	
-			// }
-			// else {
+    	for (var i=0; i<=times; i++){
+			 if (i!=times){
+			 	calcDistanceMatrix(25, flag);	
+			}
+			else {
 				flag = 1;
 				calcDistanceMatrix(25, flag);
-			// }
-		// }  	
+			}
+		}  	
     }
+    console.log(all_distinations);
 }
