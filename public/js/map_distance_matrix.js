@@ -191,8 +191,6 @@ var submitForm = function(id){
 	form.action = '/search/driverlist/'+ id ;
 	
 	let token = document.head.querySelector('meta[name="csrf-token"]').content;
-
-	document.body.appendChild(form);
 	
 	form.addEventListener('formdata', (e) => {
 		var fd = e.formData;
@@ -207,6 +205,8 @@ var submitForm = function(id){
 		fd.set('latTo', latTo);
 		fd.set('lngTo', lngTo);
     });
+    
+    document.body.appendChild(form);
 	
 	form.submit();
 };
