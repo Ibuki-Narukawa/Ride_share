@@ -193,7 +193,6 @@
                     <li><a href="/driver/applications">リクエスト送信履歴</a></li>
                     <li><a href="/carpooler/applications">「乗せて」一覧</a></li>
                     <li><a href="/drives">成立したドライブ一覧</a></li> 
-                    <li><a href="/users">ユーザー一覧</a></li>
                     @auth
                         <li><a href="/users/{{Auth::id()}}">マイページ</a></li>
                     @endauth
