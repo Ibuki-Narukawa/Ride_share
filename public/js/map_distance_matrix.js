@@ -191,12 +191,17 @@ var submitForm = function(id){
 	form.action = '/search/driverlist/'+ id ;
 	
 	let token = document.head.querySelector('meta[name="csrf-token"]').content;
+	var Token=document.createElement("input");
+    Token.setAttribute("type","hidden");
+    Token.setAttribute("name","_token");
+    Token.setAttribute("value",token);
+    form.appendChild(Token);
+    
 	
 	form.addEventListener('formdata', (e) => {
 		var fd = e.formData;
 		  
 		// データをセット
-		fd.set('_token', token);
 		fd.set('start_datetime', startDatetime);
 		fd.set('from', origin);
 		fd.set('to', To);
@@ -271,14 +276,14 @@ window.onload = function(){
 		}  	
     }
     else {
-    	for (var i=0; i<=times; i++){
-			if (i!=times){
-				calcDistanceMatrix(25, flag);	
-			}
-			else {
+    	// for (var i=0; i<=times; i++){
+			// if (i!=times){
+			// 	calcDistanceMatrix(25, flag);	
+			// }
+			// else {
 				flag = 1;
 				calcDistanceMatrix(25, flag);
-			}
-		}  	
+			// }
+		// }  	
     }
 }
