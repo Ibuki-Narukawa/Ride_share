@@ -176,10 +176,10 @@
                 <a href="/search">ドライバー検索</a>
                 <a href="/driver/applications">リクエスト送信履歴</a>
                 <a href="/carpooler/applications">「乗せて」一覧</a>
-                <a href="/drives">成立したドライブ一覧</a>
             </div>
             
             <div class="links-pc">
+                <a href="/drives">成立したドライブ一覧</a>
                 @auth
                     <a href="/users/{{Auth::id()}}">マイページ</a>
                 @endauth
@@ -193,7 +193,7 @@
                     <li><a href="/driver/applications">リクエスト送信履歴</a></li>
                     <li><a href="/carpooler/applications">「乗せて」一覧</a></li>
                     <li><a href="/drives">成立したドライブ一覧</a></li> 
-                    <!--<li><a href="/users">ユーザー一覧</a></li>-->
+                    <li><a href="/users">ユーザー一覧</a></li>
                     @auth
                         <li><a href="/users/{{Auth::id()}}">マイページ</a></li>
                     @endauth

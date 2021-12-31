@@ -26,6 +26,72 @@
             margin-top: 45px;
         }
         @yield('style')
+        
+        .FooterSection a{
+          display: block;
+          text-decoration: none;
+        }
+        .FooterSection img{
+          width: 100%;
+          height: auto;
+        }
+        
+        .FooterSection {
+          padding-top: 24px;
+          padding-bottom: 24px;
+          background: #F0F8FF;
+        }
+        .Footer-Inner {
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 1200px;
+          width: 100%;
+        }
+    
+        .Footer-Inner-List {
+          margin-top: 20px;
+          margin-left: auto;
+          margin-right: auto;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+        @media screen and (max-width: 540px) {
+          .Footer-Inner-List {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+        .Footer-Inner-List-Item {
+          margin-right: 2.3%;
+          padding-left: 3%;
+          text-align: center;
+          color: #636b6f;
+          font-weight: bold;
+          font-size: 13px;
+        }
+        @media screen and (max-width: 540px) {
+          .Footer-Inner-List-Item {
+            margin-right: 0;
+            padding-left: 0;
+            width: 100%;
+          }
+        }
+        .Footer-Inner-List-Item:not(:first-child) {
+          border-left: 1px solid #636b6f;
+        }
+        @media screen and (max-width: 540px) {
+          .Footer-Inner-List-Item:not(:first-child) {
+            border-left: none;
+            margin-top: 20px;
+          }
+        }
+        .Footer-Inner-CopyRight {
+          margin-top: 20px;
+          text-align: center;
+          color: #636b6f;
+          font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -84,5 +150,23 @@
     <main class="py-4">
         @yield('content')
     </main>
+    <div class="FooterSection">
+      <div class="Footer">
+        <div class="Footer-Inner">
+          <div class="Footer-Inner-List">
+            <a href="/search" class="Footer-Inner-List-Item">ドライバー検索</a>
+            <a href="/driver/applications" class="Footer-Inner-List-Item">リクエスト送信履歴</a>
+            <a href="/carpooler/applications" class="Footer-Inner-List-Item">「乗せて」一覧</a>
+            <a href="/drives" class="Footer-Inner-List-Item">成立したドライブ一覧</a>
+            @auth<a href="/users/{{Auth::id()}}" class="Footer-Inner-List-Item">マイページ</a>@endauth
+            <a href="/driver/posts/create" class="Footer-Inner-List-Item">ドライバー登録</a>
+            <a href="/driver/posts" class="Footer-Inner-List-Item">ドライバー登録履歴</a>
+          </div>
+          <div class="Footer-Inner-CopyRight">
+            Copyright © Ibuki Narukawa All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>

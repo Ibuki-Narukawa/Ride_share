@@ -22,6 +22,8 @@ Route::post('/search/distanceMatrix','SearchController@distanceMatrix');
 
 Route::post('/search/driverlist/{id}','SearchController@show');
 
+ Route::get('/users/{id}','UserController@show');
+
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/driver/posts','Driver\PostController@index');
     
@@ -36,8 +38,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/driver/posts/{id}','Driver\PostController@update');
     
     Route::delete('/driver/posts/{id}','Driver\PostController@destroy');
-    
-    Route::get('/users/{id}','UserController@show');
     
     Route::get('/users/{id}/edit','UserController@edit');
     

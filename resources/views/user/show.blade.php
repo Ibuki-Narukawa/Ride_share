@@ -86,9 +86,9 @@
                     <h3>[<a href='/users/{{$user->id}}/edit'>編集</a>]</h3>
                 </div>
             </div>
-        @else
-            <h1>プロフィール</h1>
         @endif
+    @else
+        <h1>プロフィール</h1>
     @endauth
     
     <div class='user'>
