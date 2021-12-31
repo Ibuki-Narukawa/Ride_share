@@ -203,7 +203,7 @@
             margin-top:-7px;
             margin-bottom:17px;
             padding-left:5px;
-            font-size:12px;
+            font-size:10px;
         }
         .delete-btn:hover {
             cursor:pointer;
