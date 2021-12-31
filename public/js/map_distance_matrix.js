@@ -18,6 +18,9 @@ var directionsService = new google.maps.DirectionsService();
 var directionsRenderer = new google.maps.DirectionsRenderer();
 var sortResults = new Array();
 var distinations_length;
+let token = document.head.querySelector('meta[name="csrf-token"]').content;
+
+console.log(token);
 
 
 origins = [
