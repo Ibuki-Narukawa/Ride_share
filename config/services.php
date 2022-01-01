@@ -33,4 +33,8 @@ return [
     'google-map' => [
         'apikey' => env('GOOGLE_MAP_API'),
     ],
+    
+    'google-analytics' => [
+        'id' => env('GOOGLE_ANALYTICS_ID'),
+    ],
 ];
