@@ -171,7 +171,6 @@ sup {
 
 a {
   color: #3490dc;
-  text-decoration: none;
   background-color: transparent;
 }
 
@@ -4538,6 +4537,10 @@ input[type=button].btn-block {
   padding: 0.5rem 1rem;
   background-color: #F0F8FF;
   z-index:999;
+}
+
+.navbar a {
+  text-decoration:  none;
 }
 
 .navbar .container,
