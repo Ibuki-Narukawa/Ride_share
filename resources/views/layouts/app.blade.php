@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3DME49EY5B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-3DME49EY5B');
+    </script>
+    
     @yield('head')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -86,11 +96,27 @@
             margin-top: 20px;
           }
         }
-        .Footer-Inner-CopyRight {
-          margin-top: 20px;
+        .Footer-Inner-Contact-Email {
+          margin-top: 30px;
           text-align: center;
           color: #636b6f;
-          font-size: 16px;
+          font-size: 12px; 
+        }
+        @media screen and (max-width: 540px) {
+          .Footer-Inner-Contact-Email {
+            font-size: 11px;
+          }
+        }
+        .Footer-Inner-CopyRight {
+          margin-top: 10px;
+          text-align: center;
+          color: #636b6f;
+          font-size: 12px;
+        }
+        @media screen and (max-width: 540px) {
+          .Footer-Inner-CopyRight {
+            font-size: 11px;
+          }
         }
     </style>
 </head>
@@ -148,7 +174,7 @@
         </nav>
     </div>
     <main class="py-4">
-        @yield('content')
+      @yield('content')
     </main>
     <div class="FooterSection">
       <div class="Footer">
@@ -162,6 +188,12 @@
             <a href="/driver/posts/create" class="Footer-Inner-List-Item">ドライバー登録</a>
             <a href="/driver/posts" class="Footer-Inner-List-Item">ドライバー登録履歴</a>
           </div>
+          
+          <div class="Footer-Inner-Contact-Email">
+            お問い合わせは以下のメールアドレスまでお願いします.<br>
+            ride.share.is2021@gmail.com 
+          </div>
+          
           <div class="Footer-Inner-CopyRight">
             Copyright © Ibuki Narukawa All Rights Reserved.
           </div>
