@@ -81,7 +81,12 @@
 @endsection
 
 @section('content')
-    <h1>成立したドライブ一覧</h1>
+    @if($status == 2 )
+        <h1>これからのドライブ一覧</h1>
+    @else($satus == 3)
+        <h1>過去のドライブ一覧</h1>
+    @endif
+        
     <div class='drives'>
         @foreach($drives as $drive)
         <div class='drive'>

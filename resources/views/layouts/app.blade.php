@@ -78,13 +78,14 @@
           text-align: center;
           color: #636b6f;
           font-weight: bold;
-          font-size: 13px;
+          font-size: 10px;
         }
         @media screen and (max-width: 540px) {
           .Footer-Inner-List-Item {
             margin-right: 0;
             padding-left: 0;
             width: 100%;
+            font-size: 13px;
           }
         }
         .Footer-Inner-List-Item:not(:first-child) {
@@ -159,7 +160,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('ログアウト') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -181,10 +182,11 @@
         <div class="Footer-Inner">
           <div class="Footer-Inner-List">
             <a href="/search" class="Footer-Inner-List-Item">ドライバー検索</a>
+            @auth<a href="/users/{{Auth::id()}}" class="Footer-Inner-List-Item">マイページ</a>@endauth
             <a href="/driver/applications" class="Footer-Inner-List-Item">リクエスト送信履歴</a>
             <a href="/carpooler/applications" class="Footer-Inner-List-Item">「乗せて」一覧</a>
-            <a href="/drives" class="Footer-Inner-List-Item">成立したドライブ一覧</a>
-            @auth<a href="/users/{{Auth::id()}}" class="Footer-Inner-List-Item">マイページ</a>@endauth
+            <a href="/drives" class="Footer-Inner-List-Item">これからのドライブ一覧</a>
+            <a href="/history/drives" class="Footer-Inner-List-Item">過去のドライブ一覧</a>
             <a href="/driver/posts/create" class="Footer-Inner-List-Item">ドライバー登録</a>
             <a href="/driver/posts" class="Footer-Inner-List-Item">ドライバー登録履歴</a>
           </div>

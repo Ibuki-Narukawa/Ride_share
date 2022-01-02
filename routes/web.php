@@ -59,6 +59,12 @@ Route::group(['middleware' => 'auth'], function(){
     
     Route::get('/drives/{id}','DriveController@show');
     
+    Route::get('/history/drives','DriveController@indexComplete');
+     
+    Route::get('/drives/history/{id}','DriveController@show');
+    
+    Route::put('/drives/{id}','DriveController@complete');
+    
     Route::post('/drives/create','DriveController@store');
     
     Route::delete('/drives/messages/{id}', 'MessageController@destroy');

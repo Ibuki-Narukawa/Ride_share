@@ -99,10 +99,6 @@
                 <div class='update-at'>
                     <tr><td>最終更新日：{{$post->updated_at}}</td></tr>
                 </div>
-                
-                <div class='carpooler-info'>
-                    <tr><th><a href='/carpooler/applications/{{$application->id}}'>リクエスト詳細</a></th></tr>
-                </div>
             </table>
         </div>
         @endforeach

@@ -200,15 +200,16 @@
             
             <div class="links-pc">
                 <a href="/search">ドライバー検索</a>
+                @auth
+                    <a href="/users/{{Auth::id()}}">マイページ</a>
+                @endauth
                 <a href="/driver/applications">リクエスト送信履歴</a>
                 <a href="/carpooler/applications">「乗せて」一覧</a>
             </div>
             
             <div class="links-pc">
-                <a href="/drives">成立したドライブ一覧</a>
-                @auth
-                    <a href="/users/{{Auth::id()}}">マイページ</a>
-                @endauth
+                <a href="/drives">これからのドライブ一覧</a>
+                <a href="/history/drives">過去のドライブ一覧</a>
                 <a href="/driver/posts/create">ドライバー登録</a>
                 <a href="/driver/posts">ドライバー登録履歴</a>
             </div>
@@ -216,12 +217,13 @@
             <div class="links-phone">
                 <ul>
                     <li><a href="/search">ドライバー検索</a></li>
-                    <li><a href="/driver/applications">リクエスト送信履歴</a></li>
-                    <li><a href="/carpooler/applications">「乗せて」一覧</a></li>
-                    <li><a href="/drives">成立したドライブ一覧</a></li> 
                     @auth
                         <li><a href="/users/{{Auth::id()}}">マイページ</a></li>
                     @endauth
+                    <li><a href="/driver/applications">リクエスト送信履歴</a></li>
+                    <li><a href="/carpooler/applications">「乗せて」一覧</a></li>
+                    <li><a href="/drives">これからのドライブ一覧</a></li>
+                    <li><a href="/history/drives">過去のドライブ一覧</a></li>
                     <li><a href="/driver/posts/create">ドライバー登録</a></li>
                     <li><a href="/driver/posts">ドライバー登録履歴</a></li>
                 </ul>

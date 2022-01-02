@@ -137,19 +137,24 @@
                     </td>
                 </tr>
             </div>
-            <div class='carpooler-info'>
-                <tr><th><a href='/carpooler/applications/{{$application->id}}'>リクエスト詳細</a></th></tr>
-            </div>
+            @if($application->status == 1 && Auth::id() == $application->user->id)
+                <div class='carpooler-info'>
+                    <tr><th><a href='/carpooler/applications/{{$application->id}}'>リクエスト詳細</a></th></tr>
+                </div>
+            @endif
         </table>
     </div>
     <div class='back-link'>
         <!--<div class='btn delete-btn'>-->
             
         <!--</div>-->
-        @if($application->status == 1 && Auth::id() == $application->user_id)
-            <p>[<a href='/driver/applications'>戻る</a>]</p>
-        @endif
-        @if($application->status != 1)
+        @if($application->status == 1)
+            @if(Auth::id() == $application->user->id)
+                <p>[<a href='/driver/applications'>戻る</a>]</p>
+            @else
+                <p>[<a href='/carpooler/applications/{{$application->id}}'>戻る</a>]</p>
+            @endif
+        @else
             <p>[<a href='/drives/{{$application->drive_id}}'>戻る</a>]</p>
         @endif
         

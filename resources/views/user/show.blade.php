@@ -78,24 +78,19 @@
 @endsection
 
 @section('content')
+    <h1>{{$user->name}}<br></h1>
     @auth
         @if(Auth::id()==$user->id)
-            <h1>マイページ</h1>
             <div class='button-bar'>
                 <div class='edit-btn btn'>
                     <h3>[<a href='/users/{{$user->id}}/edit'>編集</a>]</h3>
                 </div>
             </div>
         @endif
-    @else
-        <h1>プロフィール</h1>
     @endauth
     
     <div class='user'>
         <table>
-            <div class='name'>
-                <tr><th>氏名：{{$user->name}}</a></th></tr>
-            </div>
             <div class='gender'>
                 @if($user->gender==1)
                 <tr><td>性別：男性</td></tr>

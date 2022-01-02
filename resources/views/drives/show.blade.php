@@ -104,8 +104,17 @@
         width:40%;
         margin-left:60%;
     }
-    .partner-message{
+    .partner-message {
         width: 40%;
+    }
+    .complete-btn p {
+        margin:35px 0px;
+    }
+    .complete-btn form {
+        display:inline;
+    }
+    .drive-complete {
+        text-align:center;
     }
     
     @media screen and (max-width:480px){
@@ -298,16 +307,45 @@
         </div>
     </div>
     
-    <div class='back-link'>
-        <p>[<a href='/drives'>戻る</a>]</p>   
-    </div>
+    @auth
+        @if($drive->driverPost->status == 2)
+            <div class='complete-btn'>
+                <form action='/drives/{{$drive->id}}' id='drive_complete' class='drive-complete' method='post' enctype='multipart/form-data'>
+                    @csrf
+                    @method('put')
+                    <input type='submit' style='display:none'>
+                    <p><button><span onclick='return completeDrive(this);'>ドライブ完了</span></button></p>
+                </form>
+            </div>
+        @endif
+    @endauth
+    
+    @if($drive->driverPost->status == 2)
+        <div class='back-link'>
+            <p>[<a href='/drives'>戻る</a>]</p>   
+        </div>
+    @else
+        <div class='back-link'>
+            <p>[<a href='/history/drives'>戻る</a>]</p>   
+        </div>
+    @endif
     
     <script>
         function deleteMessage(id){
             'use strict';
             var form_id = 'form_delete'+ id;
-            if(confirm('本当にこのメッセージを削除しますか？')){
+            if(window.confirm('本当にこのメッセージを削除しますか？')){
                 document.getElementById(form_id).submit();
+            }
+        }
+    </script>
+    
+    <script>
+        function completeDrive(e){
+            event.preventDefault();
+            'use strict';
+            if(window.confirm('本当にこのドライブは完了しましたか?')){
+                document.getElementById('drive_complete').submit();
             }
         }
     </script>
