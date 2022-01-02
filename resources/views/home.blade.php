@@ -43,6 +43,22 @@
             font-size: 84px;
         }
         
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
+        
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        
         .links-pc {
             margin-bottom: 35px;
         }
@@ -105,7 +121,17 @@
             right: 10px;
             top: 18px;
         }
-    
+        
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        
         .content {
             text-align: center;
         }
@@ -152,19 +178,19 @@
 
 @section('content')
     <div class="flex-center position-ref full-height center">
-        <!--@if (Route::has('login'))-->
-        <!--    <div class="top-right links">-->
-        <!--        @auth-->
-        <!--            <a href="{{ url('/home') }}">Home</a>-->
-        <!--        @else-->
-        <!--            <a href="{{ route('login') }}">Login</a>-->
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/') }}">ホーム</a>
+                @else
+                    <a href="{{ route('login') }}">ログイン</a>
 
-        <!--            @if (Route::has('register'))-->
-        <!--                <a href="{{ route('register') }}">Register</a>-->
-        <!--            @endif-->
-        <!--        @endauth-->
-        <!--    </div>-->
-        <!--@endif-->
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">新規登録</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
 
         <div class="content">
             <div class="title m-b-md">

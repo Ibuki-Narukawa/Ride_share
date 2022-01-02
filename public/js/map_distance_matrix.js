@@ -145,7 +145,6 @@ var calcDistanceMatrix = function(length, flag, callback, count_times, times, re
 					return b[2] - a[2];
 				});
 				
-				console.log(sortResults.length);
 				var html = new Array();
 				for (var i=0; i<sortResults.length; i++) {
 					var data = new Array();

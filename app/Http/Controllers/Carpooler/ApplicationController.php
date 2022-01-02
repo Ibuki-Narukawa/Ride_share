@@ -31,7 +31,7 @@ class ApplicationController extends Controller
         return view('carpooler.applications.show',['application'=>$application]);
     }
     
-    public function store(CarpoolerRequest $request){
+    public function store(Request $request){
         $start_datetime = $request->start_datetime;
         $from = $request->from;
         $to = $request->to;

@@ -165,7 +165,7 @@
                     <input style='display:none' type='number' name='carpooler_id' value={{$application->id}}>
                     <input style='display:none' type='number' name='driver_post_id' value={{$application->driver_post_id}}>
                     <input type='submit' style='display:none'>
-                    <button><span onclick='return approveApplication(this);'>承認する</span></button>
+                    <button><span onclick='return approveApplication(this);'>承認</span></button>
                 </form>
             </div>
             
@@ -174,7 +174,7 @@
                     @csrf
                     @method('delete')
                     <input type='submit' style='display:none'>
-                    <button><span onclick='return rejectApplication(this);'>拒否する</span></button>
+                    <button><span onclick='return rejectApplication(this);'>拒否</span></button>
                 </form>
             </div>
         </div>

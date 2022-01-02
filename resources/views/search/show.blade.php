@@ -168,7 +168,7 @@
                         <input name='latTo' style='display:none' type='number' step='0.00000000000001' id='latTo' value={{$latTo}}>
                         <input name='lngTo' style='display:none' type='number' step='0.00000000000001' id='lngTo' value={{$lngTo}}>
                         <input type='submit' style='display:none'>
-                        <button><span onclick='return applyPost(this);'>申請する</span></button>
+                        <button><span onclick='return applyPost(this);'>申請</span></button>
                     </form>
                 </div>
             @endif
