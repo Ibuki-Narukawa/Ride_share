@@ -233,6 +233,16 @@
         <table>
             <tr><th>ドライブ情報</th></tr>
             
+            <div class='status'>
+                @if($drive->driverPost->status==1)
+                <tr><td>状態：空車</td></tr>
+                @elseif($drive->driverPost->status==2)
+                <tr><td>状態：予約済み</td></tr>
+                @elseif($drive->driverPost->status==3)
+                <tr><td>状態：ドライブ完了</td></tr>
+                @endif
+            </div>
+            
             <div class='driver_name'>
                 <tr><td>ドライバー名：<a href='/driver/applications/{{$drive->carpooler->id}}'>{{$drive->driverPost->user->name}}</a></td></tr>
             </div>

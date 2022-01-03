@@ -16,12 +16,12 @@ class DriveController extends Controller
 {
     public function index(){
         $id = Auth::id();
-        $drives = Drive::with('carpooler')->with('driverPost')->whereHas('carpooler', function (Builder $query){
+        $drives = Drive::with('carpooler')->with('driverPost')->whereHas('driverPost', function (Builder $query){
+            $query->where('status','=',2);
+        })->whereHas('carpooler', function (Builder $query){
             $query->where('user_id','=',Auth::id());
         })->orwhereHas('driverPost', function (Builder $query){
             $query->where('user_id','=',Auth::id());
-        })->whereHas('driverPost', function (Builder $query){
-            $query->where('status','=',2);
         })->orderBy('updated_at', 'DESC')->paginate(5);
         
         return view('drives.index',['drives'=>$drives, 'status'=>2]);
@@ -29,12 +29,12 @@ class DriveController extends Controller
     
     public function indexComplete(){
         $id = Auth::id();
-        $drives = Drive::with('carpooler')->with('driverPost')->whereHas('carpooler', function (Builder $query){
+        $drives = Drive::with('carpooler')->with('driverPost')->whereHas('driverPost', function (Builder $query){
+            $query->where('status','=',3);
+        })->whereHas('carpooler', function (Builder $query){
             $query->where('user_id','=',Auth::id());
         })->orwhereHas('driverPost', function (Builder $query){
             $query->where('user_id','=',Auth::id());
-        })->whereHas('driverPost', function (Builder $query){
-            $query->where('status','=',3);
         })->orderBy('updated_at', 'DESC')->paginate(5);
         
         return view('drives.index',['drives'=>$drives, 'status'=>3]);
