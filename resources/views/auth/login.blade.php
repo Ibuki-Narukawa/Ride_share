@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('style')
+    @media screen and (min-width:550px){
+        .FooterSection {
+            margin-top:27vh;
+        }
+    }
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

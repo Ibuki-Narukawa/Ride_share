@@ -30,9 +30,7 @@
         }
     
         .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
+            display: none;
         }
     
         .content {
@@ -41,12 +39,6 @@
     
         .title {
             font-size: 84px;
-        }
-        
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
         }
         
         .links > a {
@@ -118,8 +110,8 @@
     
         .top-right {
             position: absolute;
-            right: 10px;
-            top: 18px;
+            right: 0.1vw;
+            top: 0vh;
         }
         
         .links > a {
