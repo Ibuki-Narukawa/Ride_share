@@ -1,71 +1,54 @@
-# Physics_Sim_Py
+# Ride Share
  
-"Physics_Sim_Py" is a tutorial of physics simulations with Python.
+一般人のドライバーと車にのせてほしい人をマッチングするアプリケーションです。
  
-# DEMO
+## URL
+https://ride-share-2021.herokuapp.com/
  
-You can learn how to making cute physics simulations (looks retro game).
+***テスト用アカウント***
+
+メールアドレス：test@gmail.com  
+パスワード：laraveltest
  
-![](https://cpp-learning.com/wp-content/uploads/2019/05/pyxel-190505-161951.gif)
+## 利用方法
+ドライバー側：  
+ログインをして、「ドライバー登録」にて、送迎開始時刻や現在地、車の情報を登録します。「乗せて」一覧から、リクエストを承認すると、「これからのドライブ一覧」にて詳細確認とメッセージができます。　
+
+相乗り者側：  
+ログインをして、「ドライバー検索」から、出発時刻、出発地と目的地を入力すると、出発地から20km以内のドライバーの一覧が表示され、詳細ページへ遷移し、申請ができます。申請情報は、「リクエスト送信履歴」から確認できます。
+
+## 目指した課題解決
+
+地方の交通の便の改善。地方の人口に対する自動車所有率の高さから、席が絶対に余っていることに目をつけ、ライドシェアサービスによって有効活用できると考えました。
  
-This animation is a "Cat playing on trampoline"!
-You can get basic skills for making physics simulations.
+## 機能
  
-# Features
+- ドライバー検索
+- マイページ（編集、詳細）
+- リクエスト送信履歴一覧
+- 「乗せて」一覧
+- これからのドライブ一覧
+- 過去のドライブ一覧
+- メッセージ（作成、削除）
+- ドライバー登録（作成、編集、詳細、削除）
+- ドライバー登録履歴
+- Google Maps API
+
+## 使用技術
  
-Physics_Sim_Py used [pyxel](https://github.com/kitao/pyxel) only.
+- PHP 7.3.31
+- Laravel Framework 6.20.43
+- MySQL  Ver 15.1 Distrib 10.2.38-MariaDB
+- AWS
+    - Cloud9
+    - S3
+- Google Maps API
+    - Maps JavaScript API
+    - Places API
+    - Directions API
+    - Distance Matrix API
  
-```python
-import pyxel
-```
-[Pyxel](https://github.com/kitao/pyxel) is a retro game engine for Python.
-You can feel free to enjoy making pixel art style physics simulations.
+## 作者
  
-# Requirement
- 
-* Python 3.6.5
-* pyxel 1.0.2
- 
-Environments under [Anaconda for Windows](https://www.anaconda.com/distribution/) is tested.
- 
-```bash
-conda create -n pyxel pip python=3.6 Anaconda
-activate pyxel
-```
- 
-# Installation
- 
-Install Pyxel with pip command.
- 
-```bash
-pip install pyxel
-```
- 
-# Usage
- 
-Please create python code named "demo.py".
-And copy &amp; paste [Day4 tutorial code](https://cpp-learning.com/pyxel_physical_sim4/).
- 
-Run "demo.py"
- 
-```bash
-python demo.py
-```
- 
-# Note
- 
-I don't test environments under Linux and Mac.
- 
-# Author
- 
-* Hayabusa
-* R&D Center
-* Twitter : https://twitter.com/Cpp_Learning
- 
-# License
- 
-"Physics_Sim_Py" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
- 
-Enjoy making cute physics simulations!
- 
-Thank you!
+Ibuki Narukawa  
+mail to: ibuki0212job@gmail.com
