@@ -6,9 +6,12 @@
 https://ride-share-2021.herokuapp.com/
  
 ***テスト用アカウント***
-
-メールアドレス：test@gmail.com  
-パスワード：laraveltest
+- ドライバー用
+    - メールアドレス：test@gmail.com  
+    - パスワード：laraveltest
+- 相乗り者用
+    - メールアドレス：test02@gmail.com  
+    - パスワード：phptest2
  
 ## 利用方法
 ドライバー側：  
