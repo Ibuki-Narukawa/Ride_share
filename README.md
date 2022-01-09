@@ -47,7 +47,28 @@ https://ride-share-2021.herokuapp.com/
     - Places API
     - Directions API
     - Distance Matrix API
- 
+    - Geocoding API
+
+## 工夫した機能：ドライバー検索機能
+
+- 機能詳細 
+    - Distance Matrix APIを用いて、DB上に登録していて、近くにいるドライバーの場所を表示。
+    - 結果テーブルの行をクリックするとルート表示（Directions APIを使用）。
+- 作成背景  
+タクシーアプリのように、自分の近くにいるドライバーをマップ上に可視化した方が、距離感を実感しやすいと考えたため。
+- 工夫点
+    - ドライバー登録をする段階で現在地の緯度と経度を取得しておくことで、計算過程を省略しました。
+    - 結果テーブルは、Distance Matrix APIの結果を所要時間が少ない順で並び替え、jsから表示させています。それにともない、jsから「詳細ボタン」のクリックを発火にして、詳細ページへ検索結果をPOST送信しています。
+    - Distance Matrix APIは一度に25個の目的地しか計算できないので、callbackしてそれ以上のドライバー数にも対応しています。
+
+![image](https://user-images.githubusercontent.com/92006553/148695162-5378309a-281c-412e-a8cb-8cfa5f51acd9.png)
+
+
+
+
+
+
+
 ## 作者
  
 Ibuki Narukawa  
