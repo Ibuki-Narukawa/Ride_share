@@ -52,7 +52,7 @@ https://ride-share-2021.herokuapp.com/
     - Distance Matrix API
     - Geocoding API
 
-## 工夫した機能：ドライバー検索機能
+## 注力した機能：ドライバー検索機能
 
 - 機能詳細 
     - Distance Matrix APIを用いて、DB上に登録していて、近くにいるドライバーの場所を表示。
