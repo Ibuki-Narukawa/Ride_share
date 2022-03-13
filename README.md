@@ -41,7 +41,7 @@ https://ride-share-2021.herokuapp.com/
  
 - PHP 7.3.31
 - Laravel Framework 6.20.43
-- MySQL  Ver 15.1 Distrib 10.2.38-MariaDB
+- MariaDB  Ver 15.1 Distrib 10.2.38-MariaDB
 - AWS
     - Cloud9
     - S3
